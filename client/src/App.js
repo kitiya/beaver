@@ -1,5 +1,6 @@
 import React from 'react';
 import Users from './components/Users'
+import Activities from './components/Activities'
 import './App.css';
 
 function App() {
@@ -16,8 +17,13 @@ function App() {
         </nav>
 
         <div className="row">
+            <Activities />
+        </div>
+
+        <div className="row">
             <Users />
         </div>
+
     </div>
 
   );
