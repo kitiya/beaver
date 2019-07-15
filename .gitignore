@@ -30,3 +30,11 @@ build/
 ### VS Code ###
 .vscode/
 .DS_Store
+.mvn/
+mvnw
+mvnw.cmd
+client/.gitignore
+client/package-lock.json
+client/public/favicon.ico
+client/public/manifest.json
+client/src/logo.svg
