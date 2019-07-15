@@ -1,5 +1,7 @@
-package com.kitiya.beaver.model.user;
+package com.kitiya.beaver.dataloader;
 
+import com.kitiya.beaver.model.User;
+import com.kitiya.beaver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

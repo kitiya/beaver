@@ -1,4 +1,4 @@
-package com.kitiya.beaver.model;
+package com.kitiya.beaver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

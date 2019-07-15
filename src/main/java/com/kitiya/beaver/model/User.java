@@ -1,4 +1,4 @@
-package com.kitiya.beaver.model.user;
+package com.kitiya.beaver.model;
 
 import lombok.Data;
 
