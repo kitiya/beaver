@@ -4,6 +4,8 @@ import SingleActivity from './SingleActivity';
 export default class Activities extends Component {
     constructor(props) {
         super(props);
+
+        // state is an object that can have various keys.
         this.state = {
             activities: []
         }

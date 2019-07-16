@@ -1,29 +1,29 @@
 import React from 'react';
-import Users from './components/Users'
-import Activities from './components/Activities'
+import Users from './components/user/Users'
+import Activities from './components/activity/Activities'
+import Header from './components/header'
+import Footer from './components/footer/'
 import './App.css';
 
 function App() {
   return (
     <div className="container">
-        <nav className="navbar navbar-light bg-light">
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className = "nav-item active">
-                        <a className="nav-link" href="/">Users</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div className="row">
+        <div className="row bg-dark">
+            <Header />
+        </div>
+        <div className="row pl-3 pr-3">
             <Activities />
         </div>
 
+        {/*
         <div className="row">
             <Users />
         </div>
+        */}
 
+        <div className="row justify-content-center bg-dark color-light">
+            <Footer />
+        </div>
     </div>
 
   );
