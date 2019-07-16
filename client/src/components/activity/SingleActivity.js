@@ -1,26 +1,16 @@
 import React from 'react';
 
 class SingleActivity extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            registered: false
-        }
+    state = {register: false};
 
-        // bind(this): to make the keyword "this" accessible in the context of the toggleRegister() method.
-        this.toggleRegister = this.toggleRegister.bind(this);
-    }
-
-    toggleRegister() {
+    // using the arrow function to automatically bind "this" inside of the context of the toggleRegister() function
+    toggleRegister = () => {
         this.setState(prevState => ({
             registered: !prevState.registered
-
         }))
     }
 
     render() {
-        console.log(this.state);
-
         // ES6 destructure
         // const item = this.props.item;
         const {item} = this.props;
@@ -40,7 +30,6 @@ class SingleActivity extends React.Component {
                         <div className="col-6 text-right">
                             <span className="text-dark bg-light pl-1 pr-1 rounded">Cost: ${item.cost}</span>
                         </div>
-
                     </div>
                     <p className="text-left">{item.description}</p>
                     <p className="text-left"><span className="lead text-info">{item.provider}</span> | {item.location}</p>
