@@ -38,3 +38,5 @@ client/package-lock.json
 client/public/favicon.ico
 client/public/manifest.json
 client/src/logo.svg
+
+/node_modules
