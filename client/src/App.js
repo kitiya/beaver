@@ -1,21 +1,28 @@
 import React from 'react';
-//import Activities from './components/activity/Activities';
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import ActivityView from './components/activity/ActivityView';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Providers from './components/provider/Providers';
+import Users from './components/user/Users';
+import NotFound from './components/NotFound'
 import './App.css';
 
-class App extends React.Component {
-    render() {
-        return (
-            <div className="container">
-                <div className="row bg-dark"><Header /></div>
-                <main><ActivityView /></main>
-                <div className="row justify-content-center bg-dark color-light"><Footer /></div>
-            </div>
-        );
-    }
-}
+const App = () => (
+    <BrowserRouter>
+        <main>
+            <Header />
+            <Switch>
+                <Redirect from="/home" to="/" />
+                <Route exact path="/" component={Home} />
+                <Route path="/providers" component={Providers} />
+                <Route path="/users" component={Users} />
+                <Route component={NotFound} />
+            </Switch>
+            <Footer />
+        </main>
+    </BrowserRouter>
+);
 
 export default App;
