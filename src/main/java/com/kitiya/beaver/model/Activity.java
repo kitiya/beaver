@@ -33,7 +33,7 @@ public class Activity {
     //private Date endTime;
     private BigDecimal cost;
 
-    private Activity() {}
+    public Activity() {}
 
     public Activity(String name, String type, String description, String provider, String location, String startDate, String endDate, String startTime, String endTime, BigDecimal cost) {
         this.name = name;

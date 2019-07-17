@@ -24,6 +24,12 @@ public class ActivityController {
         return (Collection<Activity>) activityRepository.findAll();
     }
 
+    @GetMapping("/activities/{id}")
+    Activity activity(@PathVariable Long id) {
+        // returns null if id is invalid. is this okay??
+        return activityRepository.findById(id).orElse(null);
+    }
+
     @PostMapping("/activities")
     ResponseEntity<Activity> createActivity(@Valid @RequestBody Activity activity) throws URISyntaxException {
         Activity result = activityRepository.save(activity);
