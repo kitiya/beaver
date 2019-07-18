@@ -24,7 +24,7 @@ export default class AddUsers extends Component {
 
     render() {
         return (
-            <form onSubmit={this.submitUser.bind(this)}>
+            <form onSubmit={this.submitUser.bind(this)} className="mx-auto p-3 border rounded">
                 <div className="form-group">
                     <label htmlFor="firstName">First Name</label>
                     <input type="text" className="form-control" ref="firstName" placeholder="First Name" />
@@ -38,7 +38,7 @@ export default class AddUsers extends Component {
                     <input type="email" className="form-control" ref="email" placeholder="name@example.com" />
                 </div>
                 <div className="row">
-                    <button type="submit" className="btn btn-primary" name="action">Sign in</button>
+                    <button type="submit" className="btn btn-info  mx-auto" name="action">Sign in</button>
                 </div>
             </form>
         )

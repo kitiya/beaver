@@ -1,19 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ActivityList = (props) => (
+import ActivityListItem from './ActivityListItem'
+
+const ActivityList = ({ activities, favorites, ...props }) => (
     <div className="row">
-        <ul>
-            {props.activities.map(activity => (
-                <li
-                    key={activity.id}
-                    onClick={() => props.onClick(activity.id)}
-                 >
-                    <span>{activity.name}</span> |
-                    <span>{activity.provider}</span>
-                </li>
+        <ul className="list-group">
+            {activities.map(activity => (
+                <ActivityListItem
+                    key={ activity.id }
+                    activity = { activity }
+                    favorited = { favorites.includes(activity.id) }
+                    {...props}
+                ></ActivityListItem>
             ))}
         </ul>
     </div>
 )
+
+ActivityList.propTypes = {
+    activities: PropTypes.array,
+    favorites: PropTypes.array,
+};
+
+ActivityList.defaultProps = {
+    activities: [],
+    favorites: [],
+};
 
 export default ActivityList

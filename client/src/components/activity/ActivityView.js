@@ -9,6 +9,7 @@ class ActivityView extends React.Component {
         // state is an object that can have various keys.
         this.state = {
             activities: [],
+            favorites: [],
             selectedActivity: null,
         };
     }
@@ -22,23 +23,36 @@ class ActivityView extends React.Component {
     onActivityClick = (id) => {
         fetch('http://localhost:8080/api/activities/'+id)
         .then(response => response.json())
-        .then(activity => this.setState({selectedActivity: activity}));
+        .then(activity => this.setState({ selectedActivity: activity }));
+    }
+
+    toggleFavorite = id => {
+        this.setState(({ favorites, ...state }) => {
+            const idx = favorites.indexOf(id);
+
+            if (idx !== -1) {
+                return { ...state, favorites: favorites.filter(f => f.id !== id)}; //should be f.id !== id ???
+            }
+            return { ...state, favorites: [...favorites, id] };
+        })
     }
 
     render() {
-        const { activities, selectedActivity } = this.state;
+        const { activities, favorites, selectedActivity } = this.state;
 
         return (
-            <div className="row">
+            <div className="row mt-3">
                 <div className="col-4">
                     <ActivityList
-                        activities={activities}
-                        onClick={this.onActivityClick}
+                        activities = { activities }
+                        favorites = { favorites }
+                        onClick = { this.onActivityClick }
+                        onFavorited={ this.toggleFavorite }
                     />
                 </div>
 
                 <div className="col-8">
-                    <ActivityDetail activity={selectedActivity} />
+                    <ActivityDetail activity={ selectedActivity } />
                 </div>
                 {/* <div className="row pl-3 pr-3"><Activities /></div>*/}
             </div>

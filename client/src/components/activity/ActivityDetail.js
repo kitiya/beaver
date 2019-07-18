@@ -3,13 +3,13 @@ import React from 'react';
 const ActivityDetail = (props) => {
     if (!props.activity) {
         return (
-            <p>select one</p>
+            <p>select one...</p>
         );
     }
 
     return (
         <div className="card border-0">
-            <div className="card-body text-center">
+            <div className="card-body text-center border rounded">
                 <h5 className="card-title bg-info text-light p-2 rounded">{props.activity.name}</h5>
                 <div className="row">
                     <span className="col-6 text-left">{props.activity.type}</span>
