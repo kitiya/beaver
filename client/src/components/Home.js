@@ -9,7 +9,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="container mt-3">
-                <h1 className="text-center text-info">Find Things To Do With Kids in Saskatoon</h1>
+                <h1 className="text-center text-info">Find Things To Do For Kids in Saskatoon</h1>
                 <SearchForm></SearchForm>
                 <img alt="kids" className="img-fluid rounded" src={homeUrl} />
                 <h3 className="text-center text-info mt-3">Discover Amazing Kids' Activities</h3>

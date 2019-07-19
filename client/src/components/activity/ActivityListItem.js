@@ -22,7 +22,7 @@ const ActivityListItem = ({ activity, favorited, onClick, onFavorited }) => (
             icon={ favorited ? fasHeart : farHeart }
         />
         <span>{activity.name}</span> |
-        <span>{activity.provider}</span>
+        <span> {activity.provider}</span>
     </li>
 )
 

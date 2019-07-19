@@ -1,7 +1,15 @@
 import React from 'react';
+//import ActivityDetail from './ActivityDetail';
 
 class SingleActivity extends React.Component {
-    state = {register: false};
+    constructor(props) {
+        super(props);
+        const activity = this.props;
+
+        this.state = {
+            register: false,
+        };
+    }
 
     // using the arrow function to automatically bind "this" inside of the context of the toggleRegister() function
     toggleRegister = () => {
@@ -13,7 +21,7 @@ class SingleActivity extends React.Component {
     render() {
         // ES6 destructure
         // const item = this.props.item;
-        const {item} = this.props;
+        const {activity} = this.props;
 
         const registerMessage = this.state.registered
                                 ? "You've already registered to this course."
@@ -22,26 +30,29 @@ class SingleActivity extends React.Component {
                                 ? "Unregister"
                                 : "Register"
         return (
+        <div>
+            <h1>Single Activity</h1>
+
             <div className="card border-0">
                 <div className="card-body text-center">
-                    <h5 className="card-title bg-info text-light p-2 rounded">{item.name}</h5>
+                    <h5 className="card-title bg-info text-light p-2 rounded">{activity.name}</h5>
                     <div className="row">
-                        <span className="col-6 text-left">{item.type}</span>
+                        <span className="col-6 text-left">{activity.type}</span>
                         <div className="col-6 text-right">
-                            <span className="text-dark bg-light pl-1 pr-1 rounded">Cost: ${item.cost}</span>
+                            <span className="text-dark bg-light pl-1 pr-1 rounded">Cost: ${activity.cost}</span>
                         </div>
                     </div>
-                    <p className="text-left">{item.description}</p>
-                    <p className="text-left"><span className="lead text-info">{item.provider}</span> | {item.location}</p>
+                    <p className="text-left">{activity.description}</p>
+                    <p className="text-left"><span className="lead text-info">{activity.provider}</span> | {activity.location}</p>
                     <div className="row mb-3">
                         <span className="col-6">
-                            Start Date: {item.startDate}
+                            Start Date: {activity.startDate}
                             <br/>
-                            End Date: {item.endDate}</span>
+                            End Date: {activity.endDate}</span>
                         <span className="col-6">
-                            Start Time: {item.startTime}
+                            Start Time: {activity.startTime}
                             <br/>
-                            End Time: {item.endTime}
+                            End Time: {activity.endTime}
                         </span>
                     </div>
                     <p className="text-info">{registerMessage}</p>
@@ -50,6 +61,8 @@ class SingleActivity extends React.Component {
                             onClick={this.toggleRegister}>{buttonMessage}</button>
                 </div>
             </div>
+        </div>
+
         )
     }
 }

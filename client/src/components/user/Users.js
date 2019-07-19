@@ -19,7 +19,7 @@ export default class Users extends Component {
     render() {
         return (
             <div className="container">
-                <div className="row mt-3 mx-auto">
+                <div className="row mt-3 justify-content-center">
                     <div className="col-3">
                         <AddUsers />
                     </div>

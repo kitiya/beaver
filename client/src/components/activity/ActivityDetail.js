@@ -1,18 +1,25 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const ActivityDetail = (props) => {
     if (!props.activity) {
         return (
-            <img
-                className="img-fluid rounded"
-                src="http://speakenglishcenter.com/wp-content/uploads/2015/06/kid-summer-itcu-dot-org.jpg"
-                alt="activity"
-            />
+            <div>
+                <h2 className="text-center text-info">Discover Amazing Kids' Activities</h2>
+                <p className="text-center ">
+                    Get inspired and browse through the businesses offering programs for kids in & around Saskatoon.
+                </p>
+                <img
+                    className="img-fluid rounded"
+                    src="http://speakenglishcenter.com/wp-content/uploads/2015/06/kid-summer-itcu-dot-org.jpg"
+                    alt="activity"
+                />
+            </div>
         );
     }
 
     var activity = props.activity;
-
+    var url = "activity/".concat(activity.id);
     return (
         <div className="card border-0">
             <div className="card-body text-center border rounded">
@@ -30,18 +37,27 @@ const ActivityDetail = (props) => {
                         <span className="text-dark bg-light pl-1 pr-1 rounded">Cost: ${activity.cost}</span>
                     </div>
                 </div>
-                <p className="text-left">{props.activity.description}</p>
-                <p className="text-left"><span className="lead text-info">{props.activity.provider}</span> | {props.activity.location}</p>
+                <p className="text-left">{activity.description}</p>
+                <p className="text-left"><span className="lead text-info">{activity.provider}</span> | {activity.location}</p>
                 <div className="row mb-3">
                     <span className="col-6">
-                        Start Date: {props.activity.startDate}
+                        Start Date: {activity.startDate}
                         <br/>
-                        End Date: {props.activity.endDate}</span>
+                        End Date: {activity.endDate}</span>
                     <span className="col-6">
-                        Start Time: {props.activity.startTime}
+                        Start Time: {activity.startTime}
                         <br/>
-                        End Time: {props.activity.endTime}
+                        End Time: {activity.endTime}
                     </span>
+                </div>
+                <div className="row justify-content-end">
+                    <NavLink
+                        className="mr-3"
+                        to={url}
+                        href={url}
+                    >
+                        Read more...
+                    </NavLink>
                 </div>
             </div>
         </div>

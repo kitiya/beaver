@@ -1,6 +1,7 @@
 import React from 'react';
 import ActivityList from './ActivityList';
 import ActivityDetail from './ActivityDetail';
+import SearchForm from '../SearchForm';
 
 class ActivityView extends React.Component {
     constructor(props) {
@@ -42,6 +43,7 @@ class ActivityView extends React.Component {
 
         return (
             <div className="container">
+                <SearchForm></SearchForm>
                 <div className="row mt-3 justify-content-around">
                     <div className="col-3">
                             <ActivityList
