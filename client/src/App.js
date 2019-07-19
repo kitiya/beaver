@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import ActivityView from './components/activity/ActivityView';
 import Providers from './components/provider/Providers';
 import Users from './components/user/Users';
 import NotFound from './components/NotFound'
@@ -16,6 +17,7 @@ const App = () => (
             <Switch>
                 <Redirect from="/home" to="/" />
                 <Route exact path="/" component={Home} />
+                <Route path="/activities" component={ActivityView} />
                 <Route path="/providers" component={Providers} />
                 <Route path="/users" component={Users} />
                 <Route component={NotFound} />

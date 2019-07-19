@@ -41,6 +41,9 @@ const Header = () => (
                         <HeaderLink to="/">Home</HeaderLink>
                     </li>
                     <li className="nav-item">
+                        <HeaderLink to="/activities">Activity</HeaderLink>
+                    </li>
+                    <li className="nav-item">
                         <HeaderLink to="/providers">Provider</HeaderLink>
                     </li>
                     <li className="nav-item dropdown">

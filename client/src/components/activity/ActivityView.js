@@ -41,22 +41,22 @@ class ActivityView extends React.Component {
         const { activities, favorites, selectedActivity } = this.state;
 
         return (
-            <div className="row mt-3">
-                <div className="col-3">
-                    <ActivityList
-                        activities = { activities }
-                        favorites = { favorites }
-                        onClick = { this.onActivityClick }
-                        onFavorited={ this.toggleFavorite }
-                    />
-                </div>
+            <div className="container">
+                <div className="row mt-3 justify-content-around">
+                    <div className="col-3">
+                            <ActivityList
+                                activities = { activities }
+                                favorites = { favorites }
+                                onClick = { this.onActivityClick }
+                                onFavorited={ this.toggleFavorite }
+                            />
+                    </div>
 
-                <div className="col-9">
-                    <ActivityDetail activity={ selectedActivity } />
+                    <div className="col-9">
+                            <ActivityDetail activity={ selectedActivity } />
+                    </div>
                 </div>
-                {/* <div className="row pl-3 pr-3"><Activities /></div>*/}
             </div>
-
         );
     }
 }

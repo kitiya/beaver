@@ -25,8 +25,9 @@ public class ActivityLoader implements CommandLineRunner {
         List<String> imageUrls;
 
         imageUrls = new ArrayList<>(Arrays.asList(
-                "https://www.atcoblueflamekitchen.com/Classes/Kids-Cooking-Classes/PublishingImages/spring-camp-500x300.jpg",
-                "https://miro.medium.com/max/1838/1*xJOHJj5gsN-29OkaG-JzOg.jpeg"
+                "https://uc.uxpin.com/files/1002565/982286/cooking-04-201a2c.jpeg",
+                "https://uc.uxpin.com/files/1002565/982286/cooking-01-f97a54.jpg",
+                "https://uc.uxpin.com/files/1002565/982286/cooking-03-6e4e4a.jpeg"
         ));
         this.activityRepository.save(new Activity(
                 "Chef's Academy",
@@ -43,6 +44,7 @@ public class ActivityLoader implements CommandLineRunner {
         ));
 
         imageUrls = new ArrayList<>(Arrays.asList(
+                "https://melodica.ae/wp-content/uploads/2018/09/Untitled-1-1.jpg",
                 "https://s3.amazonaws.com/osmd-wp/wp-content/uploads/2015/05/21170139/leap-n-learn-photo.jpg",
                 "http://inmotiondc.com/wp-content/uploads/2018/06/160816twinklestars-069-e1529434735473.jpg?quality=100.3015071716250"
         ));
@@ -62,8 +64,29 @@ public class ActivityLoader implements CommandLineRunner {
         ));
 
         imageUrls = new ArrayList<>(Arrays.asList(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjcZfkKfppmb50sWjkg-RryiUcpbcm0Ma2jZ0fIjK6f2toHF_B3w",
-                "https://static1.squarespace.com/static/56be3472f8baf34b6af54be7/t/5887f04d197aea163184bdc8/1485303919146/violin+ensemble.jpg?format=1500w"
+                "https://dynamicmedia.zuza.com/zz/m/original_/0/3/03c2cc2c-4af9-448e-a63d-9a258d1b5b7b/IYN5_CF___Super_Portrait.jpg",
+                "https://d302e0npexowb4.cloudfront.net/wp-content/uploads/2018/07/17093826/Emaar-kids-vacation-VR-Park.jpg",
+                "https://coursehorse.imgix.net/images/course/1410/main/rolling_robots_5481b52ce8db8.jpeg?auto=format%2Cenhance%2Ccompress&crop=entropy&fit=crop&h=220&ixlib=php-1.2.1&q=90&w=330"
+        ));
+        this.activityRepository.save(new Activity(
+                "VR Camp",
+                "Science and Tech",
+                "Embark on an EPIC adventure in virtual reality! In this cutting-edge class, you’ll learn the foundations of VR design by creating your own virtual world, exploring simulated environments and crafting memorable 3D experiences." ,
+                "SaskPoly",
+                "1130 Idylwyld Dr N, Saskatoon, Saskatchewan, S7K 3R5",
+                "22 June 2019",
+                "126 June 2019",
+                "8:00 AM",
+                "12:00 PM",
+                imageUrls,
+                new BigDecimal(275)
+
+        ));
+
+        imageUrls = new ArrayList<>(Arrays.asList(
+                "https://static1.squarespace.com/static/550ba261e4b0215d222516fe/t/551ec715e4b06389c8234377/1428080408643/violinteacher.jpg?format=1500w",
+                "https://static1.squarespace.com/static/56be3472f8baf34b6af54be7/t/5887f04d197aea163184bdc8/1485303919146/violin+ensemble.jpg?format=1500w",
+                "https://ofmvc40dolyrl7u9xigg5kyy-wpengine.netdna-ssl.com/wp-content/uploads/2012/09/Kids-Violin-Lesson-at-Sage-Music-School-11.jpg"
         ));
         this.activityRepository.save(new Activity(
                 "Violin Lessons",

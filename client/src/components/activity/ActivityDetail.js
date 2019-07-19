@@ -19,8 +19,8 @@ const ActivityDetail = (props) => {
                 <h5 className="card-title bg-info text-light p-2 rounded">{activity.name}</h5>
                 <div className="row mb-2">
                 {props.activity.imageUrls.map( url => (
-                    <div className="col-6">
-                        <img className="card-img-top rounded" src={url} alt={activity.name} />
+                    <div className="col-4">
+                        <img className="card-img-top rounded border" src={url} alt={activity.name} />
                     </div>
                 ))}
                 </div>
