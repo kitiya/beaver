@@ -2,12 +2,10 @@ package com.kitiya.beaver.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,6 +23,10 @@ public class Activity {
     private String endDate;
     private String startTime;
     private String endTime;
+
+    @Column
+    @ElementCollection(targetClass = String.class)
+    private List<String> imageUrls;
     //private Provider provider;
     //private Location location;
     //private Date startDate;
@@ -35,7 +37,7 @@ public class Activity {
 
     public Activity() {}
 
-    public Activity(String name, String type, String description, String provider, String location, String startDate, String endDate, String startTime, String endTime, BigDecimal cost) {
+    public Activity(String name, String type, String description, String provider, String location, String startDate, String endDate, String startTime, String endTime, List<String> imageUrls, BigDecimal cost) {
         this.name = name;
         this.type = type;
         this.description = description;
@@ -45,6 +47,7 @@ public class Activity {
         this.endDate = endDate;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.imageUrls = imageUrls;
         this.cost = cost;
     }
 }

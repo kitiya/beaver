@@ -42,7 +42,7 @@ class ActivityView extends React.Component {
 
         return (
             <div className="row mt-3">
-                <div className="col-4">
+                <div className="col-3">
                     <ActivityList
                         activities = { activities }
                         favorites = { favorites }
@@ -51,7 +51,7 @@ class ActivityView extends React.Component {
                     />
                 </div>
 
-                <div className="col-8">
+                <div className="col-9">
                     <ActivityDetail activity={ selectedActivity } />
                 </div>
                 {/* <div className="row pl-3 pr-3"><Activities /></div>*/}
