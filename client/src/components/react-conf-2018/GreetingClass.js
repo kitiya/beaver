@@ -6,24 +6,30 @@ export default class GreetingClass extends React.Component {
 
         this.state = {
             name: "Marry",
+            surname: "Poppins",
         }
-
-        this.handleNameChange = this.handleNameChange.bind(this);
     }
 
-    handleNameChange(e) {
-        this.setState({
-            name: e.target.value
-        });
+    componentDidMount() {
+        document.title = this.state.name + " " + this.state.surname;
+
     }
 
-    /*
+    componentDidUpdate() {
+        document.title = this.state.name + " " + this.state.surname;
+    }
+
     handleNameChange = ((e) => {
         this.setState({
             name: e.target.value
-        })
+        });
     });
-    */
+
+    handleSurnameChange = ((e) => {
+        this.setState({
+            surname: e.target.value
+        });
+    });
 
     render() {
         return (
@@ -33,6 +39,12 @@ export default class GreetingClass extends React.Component {
                         value = {this.state.name}
                         onChange={this.handleNameChange}
                     />
+                </div>
+                <div className="row">
+                     <input
+                         value = {this.state.surname}
+                         onChange={this.handleSurnameChange}
+                     />
                 </div>
             </section>
         );
