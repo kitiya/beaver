@@ -16,6 +16,15 @@ export default function GreetingHooks(props) {
         document.title = name + " " + surname;
     });
 
+    const [windowWidth, setWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    });
+
     return (
         <section className="container mt-3">
             <div className="row">
@@ -29,6 +38,9 @@ export default function GreetingHooks(props) {
                     value = {surname}
                     onChange = {handleSurnameChange}
                 />
+            </div>
+            <div className="row">
+                <p>{windowWidth}</p>
             </div>
         </section>
     );
