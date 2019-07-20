@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import Logo from '../static/images/logo/logo03_dark.png'
 
-var logoStyle = {
+let logoStyle = {
     width: '50px',
     height: 'auto'
 }
@@ -60,6 +60,18 @@ const Header = () => (
                     </li>
                     <li className="nav-item">
                         <HeaderLink to="/users">User</HeaderLink>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <HeaderLink to="/categories" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            React Conf
+                        </HeaderLink>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <DropDownItemLink to="/conf18/greeting_class">React Class</DropDownItemLink>
+                            <DropDownItemLink to="/conf18/greeting_hooks">React Hooks</DropDownItemLink>
+                            <div className="dropdown-divider"></div>
+                            <DropDownItemLink to="/conf18/ryan/media">Media</DropDownItemLink>
+                            <DropDownItemLink to="/conf18/ryan/carousel">Carousel</DropDownItemLink>
+                        </div>
                     </li>
                 </ul>
             </div>

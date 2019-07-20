@@ -1,6 +1,6 @@
 import React from 'react';
 
-var imgStyle = {
+let imgStyle = {
     height: '100px',
     'margin-left': 'auto',
     'margin-right': 'auto',
