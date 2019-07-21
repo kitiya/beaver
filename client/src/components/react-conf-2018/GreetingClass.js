@@ -27,7 +27,7 @@ export default class GreetingClass extends React.Component {
     handleResize = ((e) => {
         this.setState({
             windowWidth: window.innerWidth
-        })
+        });
     });
 
     handleNameChange = ((e) => {

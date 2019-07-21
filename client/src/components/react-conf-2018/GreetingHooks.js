@@ -1,43 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 export default function GreetingHooks(props) {
-    const [name,setName] = useState('Dan');
-    const [surname, setSurname] = useState('Abramov');
-
-    function handleNameChange(e) {
-        setName(e.target.value);
-    }
-
-    function handleSurnameChange(e) {
-        setSurname(e.target.value);
-    }
-
-    useEffect(() => {
-        document.title = name + " " + surname;
-    });
-
-    const [windowWidth, setWidth] = useState(window.innerWidth);
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
-    });
+    const name = useFormInput('Dan');
+    const surname = useFormInput('Abramov');
+    const windowWidth = useWindowWidth();
+    useDocumentTitle(name.value + ' ' + surname.value);
 
     return (
         <section className="container mt-3">
             <div className="row">
-                <input
-                    value = {name}
-                    onChange = {handleNameChange}
-                />
+                <input {...name} />
             </div>
             <div className="row">
-                <input
-                    value = {surname}
-                    onChange = {handleSurnameChange}
-                />
+                <input {...surname}/>
             </div>
             <div className="row">
                 <p>{windowWidth}</p>
@@ -45,3 +20,34 @@ export default function GreetingHooks(props) {
         </section>
     );
 };
+
+function useFormInput(initialValue) {
+    const [value,setValue] = useState(initialValue);
+
+    function handleChange(e) {
+        setValue(e.target.value);
+    }
+
+    return {
+        value,
+        onChange: handleChange,
+    }
+}
+
+function useDocumentTitle(title) {
+    useEffect(() => {
+        document.title = title;
+    });
+}
+
+function useWindowWidth() {
+    const [windowWidth, setWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    });
+    return windowWidth;
+}
