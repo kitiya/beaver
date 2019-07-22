@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import ThemeContextProvider from './contexts/theme-context/ThemeContext';
+import AuthContextProvider from './contexts/auth-context/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
@@ -18,22 +19,24 @@ import './App.css';
 const App = () => (
     <BrowserRouter>
         <ThemeContextProvider>
-            <main>
-                <Header />
-                <Switch>
-                    <Redirect from="/home" to="/" />
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/activities" component={ActivityView} />
-                    <Route path="/activity/:id" component={Activity} />
-                    <Route path="/providers" component={Providers} />
-                    <Route path="/users" component={Users} />
-                    <Route exact path="/tutorials" component={Tutorials} />
-                    <Route path="/tutorials/greeting_class" component={GreetingClass} />
-                    <Route path="/tutorials/greeting_hooks" component={GreetingHooks} />
-                    <Route component={NotFound} />
-                </Switch>
-                <Footer />
-            </main>
+            <AuthContextProvider>
+                <main>
+                    <Header />
+                    <Switch>
+                        <Redirect from="/home" to="/" />
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/activities" component={ActivityView} />
+                        <Route path="/activity/:id" component={Activity} />
+                        <Route path="/providers" component={Providers} />
+                        <Route path="/users" component={Users} />
+                        <Route exact path="/tutorials" component={Tutorials} />
+                        <Route path="/tutorials/greeting_class" component={GreetingClass} />
+                        <Route path="/tutorials/greeting_hooks" component={GreetingHooks} />
+                        <Route component={NotFound} />
+                    </Switch>
+                    <Footer />
+                </main>
+            </AuthContextProvider>
         </ThemeContextProvider>
     </BrowserRouter>
 );
