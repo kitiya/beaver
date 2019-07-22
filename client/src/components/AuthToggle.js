@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AuthContext } from '../contexts/auth-context/AuthContext';
+//import { ThemeContext } from '../contexts/theme-context/ThemeContext';
 
 export default class AuthToggle extends Component {
     static contextType = AuthContext;

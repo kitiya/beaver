@@ -9,6 +9,7 @@ import Home from './components/Home';
 import ActivityView from './components/activity/ActivityView';
 import Activity from './components/activity/Activity';
 import Providers from './components/provider/Providers';
+import AddProvider from './components/provider/AddProvider';
 import Users from './components/user/Users';
 import Tutorials from './components/tutorial/Tutorials';
 import GreetingClass from './components/tutorial/GreetingClass';
@@ -27,7 +28,8 @@ const App = () => (
                         <Route exact path="/" component={Home} />
                         <Route exact path="/activities" component={ActivityView} />
                         <Route path="/activity/:id" component={Activity} />
-                        <Route path="/providers" component={Providers} />
+                        <Route exact path="/providers" component={Providers} />
+                        <Route path="/providers/new" component={AddProvider} />
                         <Route path="/users" component={Users} />
                         <Route exact path="/tutorials" component={Tutorials} />
                         <Route path="/tutorials/greeting_class" component={GreetingClass} />
