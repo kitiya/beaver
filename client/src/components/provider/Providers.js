@@ -1,8 +1,8 @@
 import React from 'react';
-import UnderConstruction from '../UnderConstruction';
+import ProviderList from './ProviderList';
 
-const Provider = () => (
-    <UnderConstruction />
-);
-
-export default Provider
+export default function Providers() {
+    return (
+        <ProviderList />
+    );
+}

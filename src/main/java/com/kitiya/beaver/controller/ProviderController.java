@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.Collection;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
 public class ProviderController {
     private ProviderRepository providerRepository;

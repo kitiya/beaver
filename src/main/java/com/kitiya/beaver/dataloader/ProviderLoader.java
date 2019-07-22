@@ -24,17 +24,18 @@ public class ProviderLoader implements CommandLineRunner {
         List<String> imageUrls;
 
         imageUrls = new ArrayList<>(Arrays.asList(
-                "https://media.chatterblock.com/cache/30/59/3059e02fe5ec4a262798b64c16ebdebe.jpg",
-                "https://media.chatterblock.com/cache/f8/d5/f8d5a44203095f31656d751dff66fb2e.jpg",
-                "https://media.chatterblock.com/cache/a8/eb/a8eb45d19bd24d46bd7221f263f0b9f7.jpg"
+           "https://media.chatterblock.com/cache/43/44/434444a8ec86f2fd981ac3a804e686aa.jpg",
+           "https://media.chatterblock.com/cache/94/d1/94d1f418de3ffcf1a524398d3734b6de.jpg",
+           "https://media.chatterblock.com/cache/a0/52/a052354bff44f18c2c91e41342a7f8cb.jpg"
         ));
         this.providerRepository.save(new Provider(
-                "Saskatchewan Polytechnic",
-                "This summer, try something new and experience hands-on learning at Sask Polytech Summer Camps! Sask Polytech is Saskatchewan's primary public institution for post-secondary technical education and skills training, recognized nationally and internationally for its expertise and innovation. ",
-                "1130 Idylwyld Dr N, Saskatoon",
-                "www.saskpolytech.ca/camps",
+                "Wet Paint Pottery",
+                "Our mission at Wet Paint Pottery is to create a relaxed , fun atmosphere where everyone feels welcome. We help the “creatively challenged” find their creative side. Our goal is to provide enough assistance that the customer is delighted with their masterpiece.",
+                "50 632 1st ave north, Saskatoon",
+                "https://www.wetpaintpottery.com/",
                 imageUrls
         ));
+
 
         imageUrls = new ArrayList<>(Arrays.asList(
                 "https://media.chatterblock.com/cache/cf/4f/cf4fe89cbb52a7e312227c0688289276.jpg",
@@ -49,16 +50,17 @@ public class ProviderLoader implements CommandLineRunner {
                 imageUrls
         ));
 
+
         imageUrls = new ArrayList<>(Arrays.asList(
-           "https://media.chatterblock.com/cache/94/d1/94d1f418de3ffcf1a524398d3734b6de.jpg",
-           "https://media.chatterblock.com/cache/43/44/434444a8ec86f2fd981ac3a804e686aa.jpg",
-           "https://media.chatterblock.com/cache/a0/52/a052354bff44f18c2c91e41342a7f8cb.jpg"
+                "https://media.chatterblock.com/cache/20/6b/206b74523d8d2b425d3a76e7d6c9064d.jpg",
+                "https://media.chatterblock.com/cache/f8/d5/f8d5a44203095f31656d751dff66fb2e.jpg",
+                "https://media.chatterblock.com/cache/a8/eb/a8eb45d19bd24d46bd7221f263f0b9f7.jpg"
         ));
         this.providerRepository.save(new Provider(
-                "Wet Paint Pottery",
-                "Our mission at Wet Paint Pottery is to create a relaxed , fun atmosphere where everyone feels welcome. We help the “creatively challenged” find their creative side. Our goal is to provide enough assistance that the customer is delighted with their masterpiece.",
-                "50 632 1st ave north, Saskatoon",
-                "https://www.wetpaintpottery.com/",
+                "Saskatchewan Polytechnic",
+                "This summer, try something new and experience hands-on learning at Sask Polytech Summer Camps! Sask Polytech is Saskatchewan's primary public institution for post-secondary technical education and skills training, recognized nationally and internationally for its expertise and innovation. ",
+                "1130 Idylwyld Dr N, Saskatoon",
+                "www.saskpolytech.ca/camps",
                 imageUrls
         ));
     }
