@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const useFetch = (initialState, url) => {
     const [data, setData] = useState(initialState);
@@ -18,17 +19,19 @@ const useFetch = (initialState, url) => {
         setLoading(false);
     }, [url]);
     return { data, loading };
-}
+};
 
 export default function ProviderList() {
     const { data, loading } = useFetch({providers: []}, "http://localhost:8080/api/providers");
 
+    let url = "providers/new"
     return (
         <div className="container mt-3">
+            <div className="row justify-content-end">
+                <NavLink to={url}>Add new provider...</NavLink>
+            </div>
             {   loading ?
-
                 <p>...loading</p> :
-
                 <div className="row">
                     {data.providers.map((provider) => (
                         <section key={provider.id}>
