@@ -18,8 +18,8 @@ const ActivityDetail = (props) => {
         );
     }
 
-    var activity = props.activity;
-    var url = "activity/".concat(activity.id);
+    let activity = props.activity;
+    let url = "activity/".concat(activity.id);
     return (
         <div className="card border-0">
             <div className="card-body text-center border rounded">

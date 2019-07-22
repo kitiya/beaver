@@ -2,7 +2,7 @@ import React from 'react';
 //import SingleActivity from './SingleActivity';
 import UnderConstruction from '../UnderConstruction';
 
-class Activity extends React.Component {
+export default class Activity extends React.Component {
     constructor(props) {
         super(props);
 
@@ -28,9 +28,5 @@ class Activity extends React.Component {
                 <UnderConstruction />
             </div>
         );
-
     }
-
 }
-
-export default Activity;
