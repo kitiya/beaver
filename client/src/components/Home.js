@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchForm from './SearchForm';
+import SearchForm from './shared/SearchForm';
 //import DatePicker from "react-datepicker";
 //import "react-datepicker/dist/react-datepicker.css";
 

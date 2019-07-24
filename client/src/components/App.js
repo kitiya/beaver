@@ -1,24 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import ThemeContextProvider from './contexts/theme-context/ThemeContext';
-import AuthContextProvider from './contexts/auth-context/AuthContext';
+import ThemeContextProvider from '../contexts/ThemeContext';
+import AuthContextProvider from '../contexts/AuthContext';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './components/Home';
+import Header from './shared/Header';
+import Footer from './shared/Footer';
+import Home from './Home';
 
-import ActivityView from './components/activity/ActivityView';
-import Activity from './components/activity/Activity';
-import Providers from './components/provider/Providers';
-import ProviderDetails from './components/provider/ProviderDetails';
-import AddProvider from './components/provider/AddProvider';
-import Users from './components/user/Users';
-import Tutorials from './components/tutorial/Tutorials';
-import GreetingClass from './components/tutorial/GreetingClass';
-import GreetingHooks from './components/tutorial/GreetingHooks';
-import NotFound from './components/NotFound'
-import './App.css';
+import ActivityView from './activity/ActivityView';
+import Activity from './activity/Activity';
+import Providers from './provider/Providers';
+import ProviderDetails from './provider/ProviderDetails';
+import AddProvider from './provider/AddProvider';
+import Users from './user/Users';
+import Tutorials from './tutorial/Tutorials';
+import GreetingClass from './tutorial/GreetingClass';
+import GreetingHooks from './tutorial/GreetingHooks';
+
+import NotFound from './shared/NotFound'
 
 const App = () => (
     <Router>

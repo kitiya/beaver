@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../../contexts/auth-context/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { NavLink } from 'react-router-dom';
 import Login from '../user/Login';
 

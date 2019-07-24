@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
-import DarkLogo from '../static/images/logo/logo03_dark.png'
-import LightLogo from '../static/images/logo/logo01_white.png'
+import DarkLogo from '../../static/images/logo/logo03_dark.png'
+import LightLogo from '../../static/images/logo/logo01_white.png'
 import ThemeToggle from './ThemeToggle';
 import AuthToggle from './AuthToggle';
-import { ThemeContext } from '../contexts/theme-context/ThemeContext';
-import { AuthContext } from '../contexts/auth-context/AuthContext';
+import { ThemeContext } from '../../contexts/ThemeContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 let logoStyle = {
     width: '50px',
@@ -86,15 +86,13 @@ class Header extends Component {
                                         </li>
                                         <li className="nav-item dropdown">
                                             <HeaderLink to="/tutorials" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Tutorials
+                                                Sandbox
                                             </HeaderLink>
                                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <DropDownItemLink to="/tutorials">Sandbox</DropDownItemLink>
+                                                <DropDownItemLink to="/tutorials">Misc</DropDownItemLink>
+                                                <div className="dropdown-divider"></div>
                                                 <DropDownItemLink to="/tutorials/greeting_class">React Class</DropDownItemLink>
                                                 <DropDownItemLink to="/tutorials/greeting_hooks">React Hooks</DropDownItemLink>
-                                                <div className="dropdown-divider"></div>
-                                                <DropDownItemLink to="/tutorials/ryan/media">Media</DropDownItemLink>
-                                                <DropDownItemLink to="/tutorials/ryan/carousel">Carousel</DropDownItemLink>
                                             </div>
                                         </li>
                                     </ul>

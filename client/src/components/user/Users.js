@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SingleUser from './SingleUser';
 import AddUsers from './AddUsers';
-//import { AuthContext } from '../../contexts/auth-context/AuthContext';
 
 export default class Users extends Component {
     constructor(props) {
