@@ -1,9 +1,9 @@
 import React from 'react';
 
-let imgStyle = {
+const imgStyle = {
     height: '100px',
-    'margin-left': 'auto',
-    'margin-right': 'auto',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     width: 'auto'
 }
 

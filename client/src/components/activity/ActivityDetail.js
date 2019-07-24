@@ -19,14 +19,14 @@ const ActivityDetail = (props) => {
     }
 
     let activity = props.activity;
-    let url = "activity/".concat(activity.id);
+    //let url = "activity/".concat(activity.id);
     return (
         <div className="card border-0">
             <div className="card-body text-center border rounded">
                 <h5 className="card-title bg-info text-light p-2 rounded">{activity.name}</h5>
                 <div className="row mb-2">
-                {props.activity.imageUrls.map( url => (
-                    <div className="col-4">
+                {props.activity.imageUrls.map( (url,index) => (
+                    <div key={index} className="col-4">
                         <img className="card-img-top rounded border" src={url} alt={activity.name} />
                     </div>
                 ))}
@@ -53,8 +53,7 @@ const ActivityDetail = (props) => {
                 <div className="row justify-content-end">
                     <NavLink
                         className="mr-3"
-                        to={url}
-                        href={url}
+                        to={`/activity/${activity.id}`}
                     >
                         Read more...
                     </NavLink>

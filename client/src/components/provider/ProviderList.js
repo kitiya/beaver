@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+//import { withRouter } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth-context/AuthContext';
 import { NavLink } from 'react-router-dom';
 import Login from '../user/Login';
@@ -26,13 +27,12 @@ const useFetch = (initialState, url) => {
 const ProviderList = () => {
     const {isAuthenticated} = useContext(AuthContext);
     const { data, loading } = useFetch({providers: []}, "http://localhost:8080/api/providers");
-    const url = "providers/new"
 
     const Providers = () => {
         return(
             <div className="container mt-3">
                 <div className="row justify-content-end">
-                    <NavLink to={url}>Add new provider...</NavLink>
+                    <NavLink to={`providers/new`}>Add new provider...</NavLink>
                 </div>
                 {   loading ?
                     <p>...loading</p> :
@@ -50,6 +50,14 @@ const ProviderList = () => {
                                 <p>{provider.description}</p>
                                 <p>Location: {provider.location}</p>
                                 <p>Website: {provider.website}</p>
+                                <div className="row justify-content-end">
+                                    <NavLink
+                                        className="mr-3"
+                                        to={`/provider/${provider.id}`}
+                                    >
+                                        Read more...
+                                    </NavLink>
+                                </div>
                             </section>
                         ))}
                     </div>
