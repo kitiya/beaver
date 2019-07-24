@@ -41,7 +41,7 @@ const ProviderList = () => {
                                 <h3 className="bg-light text-info text-center rounded py-1 border border-bottom-0 border-right-0 border-left-0">{provider.name}</h3>
                                 <div className="row mb-3">
                                     {provider.imageUrls.map((url, index) => (
-                                        <div className="col-4" key={index}>
+                                        <div className="col-sm-4" key={index}>
                                             <img className="card-img-top rounded border" src={url} alt={provider.name} />
                                         </div>
                                     ))}
@@ -49,14 +49,14 @@ const ProviderList = () => {
                                 <p>{provider.description}</p>
                                 <p>Location: {provider.location}</p>
                                 <p>Website: {provider.website}</p>
-                                <div className="row justify-content-end">
+                                <p className="row justify-content-end">
                                     <NavLink
                                         className="mr-3"
                                         to={`/provider/${provider.id}`}
                                     >
                                         Read more...
                                     </NavLink>
-                                </div>
+                                </p>
                             </section>
                         ))}
                     </div>

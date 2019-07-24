@@ -52,7 +52,7 @@ const ActivityListSummary = (props) => {
                 </div>
                 <div className="row justify-content-end">
                     <NavLink
-                        className="mr-3"
+                        className="mr-3 text-decoration-none"
                         to={`/activity/${activity.id}`}
                         href={`/activity/${activity.id}`}
                     >

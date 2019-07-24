@@ -20,6 +20,8 @@ import GreetingHooks from './tutorial/GreetingHooks';
 
 import NotFound from './shared/NotFound'
 
+import '../static/styles/App.css';
+
 const App = () => (
     <Router>
         <ThemeContextProvider>
