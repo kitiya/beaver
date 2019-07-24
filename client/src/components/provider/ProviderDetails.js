@@ -1,5 +1,5 @@
 import React from 'react';
-import UnderConstructions from '../UnderConstruction';
+import UnderConstructions from '../shared/UnderConstruction';
 
 const ProviderDetails = () => {
     return (

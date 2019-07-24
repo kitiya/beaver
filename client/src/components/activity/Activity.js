@@ -1,6 +1,6 @@
 import React from 'react';
 //import SingleActivity from './SingleActivity';
-import UnderConstruction from '../UnderConstruction';
+import UnderConstruction from '../shared/UnderConstruction';
 
 export default class Activity extends React.Component {
     constructor(props) {

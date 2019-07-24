@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AuthContext } from '../contexts/auth-context/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 //import { ThemeContext } from '../contexts/theme-context/ThemeContext';
 
 export default class AuthToggle extends Component {

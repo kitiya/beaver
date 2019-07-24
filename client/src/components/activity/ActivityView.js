@@ -1,7 +1,7 @@
 import React from 'react';
 import ActivityList from './ActivityList';
 import ActivityDetail from './ActivityDetail';
-import SearchForm from '../SearchForm';
+import SearchForm from '../shared/SearchForm';
 
 class ActivityView extends React.Component {
     constructor(props) {
