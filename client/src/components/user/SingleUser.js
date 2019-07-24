@@ -3,7 +3,7 @@ import React from 'react';
 let imgStyle = {
     height: '100px',
     marginLeft: 'auto',
-    marginRightm : 'auto',
+    marginRight: 'auto',
     width: 'auto'
 }
 

@@ -8,7 +8,7 @@ import Header from './shared/Header';
 import Footer from './shared/Footer';
 import Home from './Home';
 
-import ActivityView from './activity/ActivityView';
+import ActivityMainPage from './activity/ActivityMainPage';
 import Activity from './activity/Activity';
 import Providers from './provider/Providers';
 import ProviderDetails from './provider/ProviderDetails';
@@ -29,7 +29,7 @@ const App = () => (
                     <Switch>
                         <Redirect from="/home" to="/" />
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/activities" component={ActivityView} />
+                        <Route exact path="/activities" component={ActivityMainPage} />
                         <Route path="/activity/:id" component={Activity} />
                         <Route exact path="/providers" component={Providers} />
                         <Route path="/provider/:id" component={ProviderDetails} />

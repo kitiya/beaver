@@ -1,9 +1,9 @@
 import React from 'react';
 import ActivityList from './ActivityList';
-import ActivityDetail from './ActivityDetail';
+import ActivityListSummary from './ActivityListSummary';
 import SearchForm from '../shared/SearchForm';
 
-class ActivityView extends React.Component {
+class ActivityMainPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -55,7 +55,7 @@ class ActivityView extends React.Component {
                     </div>
 
                     <div className="col-9">
-                            <ActivityDetail activity={ selectedActivity } />
+                            <ActivityListSummary activity={ selectedActivity } />
                     </div>
                 </div>
             </div>
@@ -63,4 +63,4 @@ class ActivityView extends React.Component {
     }
 }
 
-export default ActivityView;
+export default ActivityMainPage;
