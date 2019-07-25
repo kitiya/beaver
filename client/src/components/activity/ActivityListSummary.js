@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const ActivityDetail = (props) => {
+const ActivityListSummary = (props) => {
     if (!props.activity) {
         return (
             <div>
@@ -34,7 +34,7 @@ const ActivityDetail = (props) => {
                 <div className="row">
                     <span className="col-6 text-left">{activity.type}</span>
                     <div className="col-6 text-right">
-                        <span className="text-dark bg-light pl-1 pr-1 rounded">Cost: ${activity.cost}</span>
+                        <span className="badge badge-pill badge-danger px-3 py-1">Cost: ${activity.cost}</span>
                     </div>
                 </div>
                 <p className="text-left">{activity.description}</p>
@@ -52,7 +52,7 @@ const ActivityDetail = (props) => {
                 </div>
                 <div className="row justify-content-end">
                     <NavLink
-                        className="mr-3"
+                        className="mr-3 text-decoration-none"
                         to={`/activity/${activity.id}`}
                         href={`/activity/${activity.id}`}
                     >
@@ -64,4 +64,4 @@ const ActivityDetail = (props) => {
     )
 }
 
-export default ActivityDetail;
+export default ActivityListSummary;

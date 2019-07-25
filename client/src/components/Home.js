@@ -3,7 +3,6 @@ import SearchForm from './shared/SearchForm';
 //import DatePicker from "react-datepicker";
 //import "react-datepicker/dist/react-datepicker.css";
 
-
 const homeUrl = "https://uc.uxpin.com/files/1002565/982286/bg-camping-810247.jpg";
 
 class Home extends React.Component {

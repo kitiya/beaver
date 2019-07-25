@@ -8,10 +8,10 @@ export default class ThemeToggle extends React.Component {
         const { toggleTheme } = this.context;
         return(
             <button
-                className="btn btn-outline-info my-2 my-sm-0"
+                className="btn btn-outline-info my-2 my-sm-0 d-none d-md-inline-block"
                 onClick={toggleTheme}
             >
-                Toggle Theme
+                Theme
             </button>
         );
     }
