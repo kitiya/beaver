@@ -103,21 +103,30 @@ const AddProviderForm = (props) => {
                     <div className="row">
                         <legend className="mx-3">Image URLs</legend>
                         <label className="col-sm-4">
-                            <TextInput required placeholder="Image URL #1"
+                            <TextInput required
                                 value={imageUrl}
                                 onChange={(e)=> setImageUrl(e.target.value)}
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                title="image url #1"
                             />
                         </label>
                         <label className="col-sm-4">
-                            <TextInput required placeholder="Image URL #2"
+                            <TextInput required
                                 value={imageUrl2}
                                 onChange={(e)=> setImageUrl2(e.target.value)}
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                title="image url #2"
                             />
                         </label>
                         <label className="col-sm-4">
-                            <TextInput required placeholder="Image URL #3"
+                            <TextInput required
                                 value={imageUrl3}
                                 onChange={(e)=> setImageUrl3(e.target.value)}
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                title="image url #3"
                             />
                         </label>
                     </div>

@@ -99,10 +99,8 @@ class Header extends Component {
                     );
                 }}</ThemeContext.Consumer>
             )}</AuthContext.Consumer>
-
         );
     }
-
 }
 
 export default Header;
