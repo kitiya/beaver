@@ -21,6 +21,7 @@ import GreetingHooks from './tutorial/GreetingHooks';
 import NotFound from './shared/NotFound'
 
 import '../static/styles/App.css';
+import '../static/styles/styles.css';
 
 const App = () => (
     <Router>

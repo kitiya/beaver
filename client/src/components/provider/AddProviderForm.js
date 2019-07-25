@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom'
 
 const TextInput = ({children, ...props}) => {
     return (
         <input
             type="text"
-            className="form-control my-2"
+            className="form-control"
             {...props}
         />
     );
 };
 
-const AddProviderForm = () => {
+const AddProviderForm = (props) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
@@ -41,47 +42,94 @@ const AddProviderForm = () => {
         })
         .then(response => response.json());
 
-        window.location.reload();
+        //window.location.reload();
+        let redirectUrl = `/providers`;
+        props.history.push(redirectUrl);
     };
 
     return (
         <div className="container mt-3">
+            <h2 className="text-info">Add New Provider</h2>
             <form onSubmit={handleSubmit} className="mx-auto p-3 border rounded">
-                <TextInput required placeholder="Company Name"
-                    value={name}
-                    onChange={(e)=> setName(e.target.value)}
-                />
-                <TextInput required placeholder="Description"
-                    value={description}
-                    onChange={(e)=> setDescription(e.target.value)}
-                />
-                <TextInput required placeholder="Location"
-                    value={location}
-                    onChange={(e)=> setLocation(e.target.value)}
-                />
-                <TextInput required placeholder="Website"
-                    value={website}
-                    onChange={(e)=> setWebsite(e.target.value)}
-                />
-                <div className="form-group">
-                    <TextInput required placeholder="Image URL#1"
-                        value={imageUrl}
-                        onChange={(e)=> setImageUrl(e.target.value)}
-                    />
-                    <TextInput required placeholder="Image URL#2"
-                        value={imageUrl2}
-                        onChange={(e)=> setImageUrl2(e.target.value)}
-                    />
-                    <TextInput required placeholder="Image URL#3"
-                        value={imageUrl3}
-                        onChange={(e)=> setImageUrl3(e.target.value)}
-                    />
+                <fieldset className="form-group mb-1">
+                    <legend>General Info</legend>
+                    <div className="row">
+                        <label className="col">Company Name:
+                            <TextInput required
+                                value={name}
+                                onChange={(e)=> setName(e.target.value)}
+                            />
+                        </label>
+                    </div>
+
+                    <div className="row">
+                        <label className="col">Description:
+                            <textarea required
+                                className="form-control"
+                                rows="3"
+                                value={description}
+                                onChange={(e)=> setDescription(e.target.value)}
+                            />
+                        </label>
+                    </div>
+
+                    <div className="row">
+                        <label className="col-6">Address:
+                            <TextInput required
+                                value={location}
+                                onChange={(e)=> setLocation(e.target.value)}
+                            />
+                        </label>
+                        <label className="col-sm-3">City:
+                            <TextInput />
+                        </label>
+                        <label className="col-sm-3">Province:
+                            <TextInput />
+                        </label>
+                    </div>
+
+                    <div className="row">
+                        <label className="col-6">Email:
+                            <TextInput />
+                        </label>
+                        <label className="col-6">Website:
+                            <TextInput required
+                                value={website}
+                                onChange={(e)=> setWebsite(e.target.value)}
+                            />
+                        </label>
+                    </div>
+
+                    <div className="row">
+                        <legend className="mx-3">Image URLs</legend>
+                        <label className="col-sm-4">
+                            <TextInput required placeholder="Image URL #1"
+                                value={imageUrl}
+                                onChange={(e)=> setImageUrl(e.target.value)}
+                            />
+                        </label>
+                        <label className="col-sm-4">
+                            <TextInput required placeholder="Image URL #2"
+                                value={imageUrl2}
+                                onChange={(e)=> setImageUrl2(e.target.value)}
+                            />
+                        </label>
+                        <label className="col-sm-4">
+                            <TextInput required placeholder="Image URL #3"
+                                value={imageUrl3}
+                                onChange={(e)=> setImageUrl3(e.target.value)}
+                            />
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div className="row justify-content-center">
+                    <button type="submit" className="btn btn-outline-info  mx-2">Submit</button>
+                    <button className="btn btn-outline-info  mx-2">Cancel</button>
                 </div>
 
-                <button type="submit" className="btn btn-info  mx-auto">Submit</button>
             </form>
         </div>
     );
 }
-
-export default AddProviderForm;
+export default withRouter(AddProviderForm);
