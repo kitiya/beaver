@@ -37,10 +37,24 @@
     --font-family-monospace: 'Pangolin',SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 
     /* Create new variables */
-    --font-family-serif: 'Walter Turncoat', cursive;
+    --font-family-serif: 'Walter Turncoat', serif;
 
     --pinkish: #f92c5c;
     --yellowish: #f5ad12;
+}
+
+.site-footer {
+    background: url("http://www.bmninfotech.com/wp-content/uploads/2018/12/footer-background.jpg");
+    background: url("http://www.elsa-belgium.org/wp-content/uploads/2014/12/footer-background-011-1.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.footer-layout-social .layout-icon {
+    font-size: 2rem;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .kty-bg-pinkish {
@@ -60,12 +74,12 @@
 }
 
 body {
-    font-family: var(--font-family-sans-serif);
+    font-family: var(--font-family-sans-serif) !important;
     letter-spacing: 0.05rem;
 }
 
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     letter-spacing: normal;
     font-family: var(--font-family-serif);
 }

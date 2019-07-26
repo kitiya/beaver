@@ -14,7 +14,7 @@ let logoStyle = {
 const HeaderLink = ({children, ...props}) => (
     <NavLink
         exact
-        className="nav-item nav-link"
+        className="nav-item nav-link ml-2 text-center"
         // activeClassName="active text-white border-info border border-5 border-top-0 border-left-0 border-right-0"
         activeClassName="active bg-info text-white border border-info rounded"
         {...props}
@@ -41,9 +41,9 @@ class Header extends Component {
                                 <span className="navbar-toggler-icon"></span>
                             </button>
 
-                            <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <section className="row">
-                                    <div className="navbar-nav align-items-center">
+                                    <div className="navbar-nav">
                                         <HeaderLink to="/">Home</HeaderLink>
                                         <HeaderLink to="/activities">Activity</HeaderLink>
                                         <HeaderLink to="/providers">Provider</HeaderLink>
@@ -52,7 +52,7 @@ class Header extends Component {
                                         <HeaderLink to="/tutorials">Sandbox</HeaderLink>
                                     </div> {/* navbar-nav <ul> */}
                                 </section>
-                                <section class="d-block">
+                                <section class="d-block ml-auto">
                                     <div><AuthToggle /></div>
                                 </section>
                             </div> {/* id="navbarSupportedContent" */}
