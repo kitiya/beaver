@@ -10,8 +10,8 @@ const ActivityListItem = ({ activity, favorited, onClick, onFavorited }) => (
         <i
             className={
                 favorited ?
-                "fa fa-heart fa-lg text-danger mr-2" :
-                "fa fa-heart-o fa-lg text-danger mr-2"
+                "fa fa-heart fa-lg kty-text-pinkish mr-2" :
+                "fa fa-heart-o fa-lg kty-text-pinkish mr-2"
             }
             onClick = {e => {
                             e.stopPropagation();

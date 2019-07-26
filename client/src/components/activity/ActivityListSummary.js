@@ -34,7 +34,7 @@ const ActivityListSummary = (props) => {
                 <div className="row">
                     <span className="col-6 text-left">{activity.type}</span>
                     <div className="col-6 text-right">
-                        <span className="badge badge-pill badge-danger px-3 py-1">Cost: ${activity.cost}</span>
+                        <span className="badge badge-pill badge-danger kty-bg-pinkish px-3 py-1">Cost: ${activity.cost}</span>
                     </div>
                 </div>
                 <p className="text-left">{activity.description}</p>

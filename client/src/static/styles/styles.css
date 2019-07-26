@@ -1,15 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Lora:400i,700|Pangolin|Roboto:400,700|Walter+Turncoat&display=swap');
+
+:root {
+    /*
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    */
+
+    /* Override Bootstrap Defaults */
+    --font-family-sans-serif: 'Pangolin',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace: 'Pangolin',SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+
+    /* Create new variables */
+    --font-family-serif: 'Walter Turncoat', cursive;
+
+    --pinkish: #f92c5c;
+    --yellowish: #f5ad12;
+}
+
+.kty-bg-pinkish {
+    background-color: var(--pinkish) !important;
+}
+
+.kty-text-pinkish {
+    color: var(--pinkish) !important;
+}
+
+.kty-bg-yellowish {
+    background-color: var(--yellowish) !important;
+}
+
+.kty-text-yellowish {
+    color: var(--yellowish) !important;
+}
+
+body {
+    font-family: var(--font-family-sans-serif);
+    letter-spacing: 0.05rem;
+}
+
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Walter Turncoat', cursive;
+    letter-spacing: normal;
+    font-family: var(--font-family-serif);
 }
 
 nav a, NavLink {
-    letter-spacing: 0.03rem;
+    font-size: 1rem;
+    letter-spacing: normal;
+    color: #fff;
 }
 
 div, form, p, span, a, ul, li {
-    font-family: 'Pangolin', cursive;
     font-size: 1.1rem;
-    letter-spacing: 0.05rem;
+
 }
 
 p, span {
@@ -21,7 +90,7 @@ p, span {
 h1 {font-size: 1.5rem;}
 }
 
-@media (min-width: 540px) {
+@media (min-width: 576px) {
 h1 {font-size: 1.75rem;}
 }
 
