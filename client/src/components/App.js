@@ -13,6 +13,8 @@ import Activity from './activity/Activity';
 import Providers from './provider/Providers';
 import ProviderDetails from './provider/ProviderDetails';
 import AddProvider from './provider/AddProvider';
+import EventMainPage from './event/EventMainPage';
+import ThingsToDoMainPage from './things-to-do/ThingsToDoMainPage';
 import Users from './user/Users';
 import Tutorials from './tutorial/Tutorials';
 import GreetingClass from './tutorial/GreetingClass';
@@ -37,6 +39,8 @@ const App = () => (
                         <Route exact path="/providers" component={Providers} />
                         <Route path="/provider/:id" component={ProviderDetails} />
                         <Route path="/providers/new" component={AddProvider} />
+                        <Route exact path="/events" component={EventMainPage} />
+                        <Route exact path="/things-to-do" component={ThingsToDoMainPage} />
                         <Route path="/users" component={Users} />
                         <Route exact path="/tutorials" component={Tutorials} />
                         <Route path="/tutorials/greeting_class" component={GreetingClass} />

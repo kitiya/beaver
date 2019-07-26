@@ -11,10 +11,16 @@ let logoStyle = {
     marginRight: '10px',
 }
 
+let navLinkStyle = {
+    fontSize: '1rem',
+    letterSpacing: 'normal',
+}
+
 const HeaderLink = ({children, ...props}) => (
     <NavLink
         exact
-        className="nav-item nav-link ml-2 text-center"
+        className="nav-item nav-link mx-2 text-center"
+        style={navLinkStyle}
         // activeClassName="active text-white border-info border border-5 border-top-0 border-left-0 border-right-0"
         activeClassName="active bg-info text-white border border-info rounded"
         {...props}
@@ -45,14 +51,16 @@ class Header extends Component {
                                 <section className="row">
                                     <div className="navbar-nav">
                                         <HeaderLink to="/">Home</HeaderLink>
-                                        <HeaderLink to="/activities">Activity</HeaderLink>
-                                        <HeaderLink to="/providers">Provider</HeaderLink>
-                                        <HeaderLink to="/categories">Category</HeaderLink>
+                                        <HeaderLink to="/activities">Camps & Classes</HeaderLink>
+                                        <HeaderLink to="/providers">[Provider]</HeaderLink>
+                                        <HeaderLink to="/things-to-do">Things To Do</HeaderLink>
+                                        <HeaderLink to="/events">Events</HeaderLink>
+                                        <HeaderLink to="/blogs">Blog</HeaderLink>
                                         <HeaderLink to="/users">User</HeaderLink>
                                         <HeaderLink to="/tutorials">Sandbox</HeaderLink>
                                     </div> {/* navbar-nav <ul> */}
                                 </section>
-                                <section class="d-block ml-auto">
+                                <section className="d-block ml-auto">
                                     <div><AuthToggle /></div>
                                 </section>
                             </div> {/* id="navbarSupportedContent" */}
