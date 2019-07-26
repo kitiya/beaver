@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import DarkLogo from '../../static/images/logo/logo03_dark.png'
-import AuthToggle from './AuthToggle';
+import AuthToggle from '../shared/AuthToggle';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { AuthContext } from '../../contexts/AuthContext';
 

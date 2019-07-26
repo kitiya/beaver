@@ -21,10 +21,10 @@ const ThingsToDoMainPage = () => {
                     <div className="col-sm-6 col-md-8">
                         <img
                             className="w-100 rounded"
-                            src="https://www.rainforest-alliance.org/sites/default/files/2017-08/kids-running-grass-teaser.jpg"
+                            src="https://www.lloydminster.ca/en/living-in-lloydminster/resources/kids-in-park-banner.jpg"
                             alt="camp" />
                     </div>
-                    <div className="col-sm-6 col-md-4">
+                    <div className="col-sm-6 col-md-4 align-self-center">
                         <h5 className="text-info">Discover the Perfect Summer Camp</h5>
                         <p>Use our powerful search tool to find and book a camp for your child, it's never been easier!</p>
                         <button className="btn text-white border-warning rounded bg-yellowish">See Camp Listing</button>

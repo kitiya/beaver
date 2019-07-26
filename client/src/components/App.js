@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import ThemeContextProvider from '../contexts/ThemeContext';
 import AuthContextProvider from '../contexts/AuthContext';
 
-import Header from './shared/Header';
-import Footer from './shared/Footer';
-import Home from './Home';
+import Header from './common/Header';
+import Footer from './common/Footer';
+import Home from './home/Home';
 
 import ActivityMainPage from './activity/ActivityMainPage';
 import Activity from './activity/Activity';
