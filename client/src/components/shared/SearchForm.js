@@ -59,12 +59,12 @@ class SearchForm extends React.Component {
                     </div>
                     <div className="col-2">
                         <button type="button" className="btn btn-outline-info">
-                        <FontAwesomeIcon
-                            className="text-info mr-2"
-                            role="img"
-                            aria-label="search"
-                            icon={ faSearch }
-                        />
+                            <FontAwesomeIcon
+                                className="text-info mr-2"
+                                role="img"
+                                aria-label="search"
+                                icon={ faSearch }
+                            />
                             Search
                         </button>
                     </div>

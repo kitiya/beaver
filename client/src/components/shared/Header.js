@@ -16,6 +16,7 @@ const HeaderLink = ({children, ...props}) => (
     <NavLink
         exact
         className="nav-item nav-link"
+        // activeClassName="active text-white border-info border border-5 border-top-0 border-left-0 border-right-0"
         activeClassName="active bg-info text-white border border-info rounded"
         {...props}
     >
@@ -49,7 +50,7 @@ class Header extends Component {
                                 "navbar navbar-expand-md navbar-dark bg-dark pt-0 pb-0"
                             }
                         >
-                            <div className="container d-flex justify-content-between">
+                            <div className="container-fluid justify-content-between">
                                 <button className="navbar-toggler my-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span className="navbar-toggler-icon"></span>
                                 </button>
@@ -59,7 +60,6 @@ class Header extends Component {
                                                 style={logoStyle}
                                                 src={isLightTheme ? LightLogo : DarkLogo} />
                                     </NavLink>
-
                                     <div className="navbar-nav">
                                         <HeaderLink to="/">Home</HeaderLink>
                                         <HeaderLink to="/activities">Activity</HeaderLink>

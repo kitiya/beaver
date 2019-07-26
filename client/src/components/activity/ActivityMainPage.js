@@ -32,7 +32,7 @@ class ActivityMainPage extends React.Component {
             const idx = favorites.indexOf(id);
 
             if (idx !== -1) {
-                return { ...state, favorites: favorites.filter(f => f.id !== id)}; //should be f.id !== id ???
+                return { ...state, favorites: favorites.filter(f => f.id === idx)};
             }
             return { ...state, favorites: [...favorites, id] };
         })

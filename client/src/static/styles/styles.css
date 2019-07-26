@@ -1,3 +1,21 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Walter Turncoat', cursive;
+}
+
+nav a, NavLink {
+    letter-spacing: 0.03rem;
+}
+
+div, form, p, span, a, ul, li {
+    font-family: 'Pangolin', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 0.05rem;
+}
+
+p, span {
+    color: #444;
+}
+
 /* Small devices (landscape phones, 544px and up) */
 @media (min-width: 320px) {
 h1 {font-size: 1.5rem;}
@@ -20,4 +38,12 @@ h1 {font-size: 2.25rem;}
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
 h1 {font-size: 2.5rem;}
+}
+
+.kty-red {
+    background-color: crimson;
+}
+
+.kty-text-red {
+    color: #b81752 !important;
 }
