@@ -4,6 +4,7 @@ import UnderConstructions from '../shared/UnderConstruction';
 const ProviderDetails = () => {
     return (
         <div className="container">
+            <h1>Provider Detail...</h1>
             <UnderConstructions />
             {/*
             <div className="row">

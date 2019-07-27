@@ -5,13 +5,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 class SearchForm extends React.Component {
     render() {
         return (
-            <form className="m-4">
-                <div className="form-group row">
-                    <div className="col-2">
+            <form className="my-2 mx-auto">
+                <div className="form-group row mb-0 justify-content-center">
+                    <div className="mx-2">
                         <input type="text" className="form-control" ref="date" placeholder="What date?" />
                         {/*<DatePicker className="rounded border" />*/}
                     </div>
-                    <div className="col-2">
+                    <div className="mx-2">
                         <div className="form-group">
                             <select className="form-control" ref="category" placeholder="All Categories" >
                                 <option value="DEFAULT">All Categories</option>
@@ -22,7 +22,7 @@ class SearchForm extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <div className="col-2">
+                    <div className="mx-2">
                         <div className="form-group">
                             <select className="form-control" ref="provider" placeholder="All Providers" >
                                 <option value="DEFAULT">All Providers</option>
@@ -33,7 +33,7 @@ class SearchForm extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <div className="col-2">
+                    <div className="mx-2">
                         <div className="form-group">
                             <select className="form-control" ref="age" placeholder="Age" >
                                 <option value="DEFAULT">All Ages</option>
@@ -45,7 +45,7 @@ class SearchForm extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <div className="col-2">
+                    <div className="mx-2">
                         <div className="form-group">
                             <select className="form-control" ref="city" placeholder="City" >
                                 <option value="DEFAULT">All Cities</option>
@@ -57,14 +57,14 @@ class SearchForm extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <div className="col-2">
+                    <div className="mx-2">
                         <button type="button" className="btn btn-outline-info">
-                        <FontAwesomeIcon
-                            className="text-info mr-2"
-                            role="img"
-                            aria-label="search"
-                            icon={ faSearch }
-                        />
+                            <FontAwesomeIcon
+                                className="text-info mr-2"
+                                role="img"
+                                aria-label="search"
+                                icon={ faSearch }
+                            />
                             Search
                         </button>
                     </div>
