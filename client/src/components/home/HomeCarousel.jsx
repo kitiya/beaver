@@ -15,10 +15,10 @@ const HomeCarousel = () => {
                     </ol>
 
                     <section className="carousel-item active">
-                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://uc.uxpin.com/files/1002565/982286/bg-camping-810247.jpg"}  alt="kids 1"/>
+                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/QH6vYHP.jpg"}  alt="kids 1"/>
                     </section>
                     <section className="carousel-item">
-                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/mLCrHGS.jpg"}  alt="kids 2"/>
+                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/95OT8Ld.jpg"}  alt="kids 2"/>
                     </section>
                     <section className="carousel-item">
                         <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/BkCBF1g.jpg"}  alt="kids 3"/>

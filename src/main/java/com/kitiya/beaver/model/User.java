@@ -2,6 +2,7 @@ package com.kitiya.beaver.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 @Entity
 public class User {
     private @Id @GeneratedValue Long id;
+
+    @Column (name="first_name")
     private String firstName;
     private String lastName;
     private String email;

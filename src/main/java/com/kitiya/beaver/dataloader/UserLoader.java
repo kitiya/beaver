@@ -21,5 +21,7 @@ public class UserLoader implements CommandLineRunner {
         this.userRepository.save(new User("Pinkie", "Pie", "pinkie.pie@gmail.com"));
         this.userRepository.save(new User("Rainbow", "Dash", "rainbow.dash@gmail.com"));
         this.userRepository.save(new User("Apple", "Bloom", "apple.bloom@gmail.com"));
+        this.userRepository.save(new User("Princess", "Anya", "princess.anna@gmail.com"));
+        this.userRepository.save(new User("Queen", "Elsa", "queen.else@gmail.com"));
     }
 }

@@ -19,22 +19,22 @@ const Footer = () => (
             <h5 className="text-center text-light mb-3">Get connected with us on social networks!</h5>
 
             <section className="footer-layout-social d-flex justify-content-center">
-                <a className="text-light px-2" href="https://twitter.com/planetoftheweb">
+                <a className="text-light px-2" href="https://twitter.com/little-beaver">
                     <i className="layout-icon fa fa-twitter" style={iconStyle}></i>
                 </a>
-                <a className="text-light px-2" href="https://facebook.com/viewsource">
+                <a className="text-light px-2" href="https://facebook.com/little-beaver">
                     <i className="layout-icon fa fa-facebook" style={iconStyle}></i>
                 </a>
-                <a className="text-light px-2" href="https://linkedin.com/in/planetoftheweb">
+                <a className="text-light px-2" href="https://linkedin.com/in/little-beaver">
                     <i className="layout-icon fa fa-linkedin" style={iconStyle}></i>
                 </a>
-                <a className="text-light px-2" href="https://github.com/planetoftheweb">
+                <a className="text-light px-2" href="https://github.com/little-beaver">
                     <i className="layout-icon fa fa-github" style={iconStyle}></i>
                 </a>
-                <a className="text-light px-2" href="https://www.instagram.com/photos/planetoftheweb/sets/72157602932636630/">
+                <a className="text-light px-2" href="https://www.instagram.com/photos/little-beaver/">
                     <i className="layout-icon fa fa-instagram" style={iconStyle}></i>
                 </a>
-                <a className="text-light px-2" href="https://www.youtube.com/user/planetoftheweb">
+                <a className="text-light px-2" href="https://www.youtube.com/user/little-beaver">
                     <i className="layout-icon fa fa-youtube" style={iconStyle}></i>
                 </a>
             </section>

@@ -48,13 +48,13 @@ const ThingsToDoMainPage = () => {
                         <div className="col-sm-4">
                             <img
                             className="w-100 rounded"
-                            src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80"
+                            src="https://i.imgur.com/7eqf58J.jpg"
                             alt="camp" />
                         </div>
                         <div className="col-sm-4">
                             <img
                             className="w-100 rounded"
-                            src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80"
+                            src="https://i.imgur.com/9zRygP6.jpg"
                             alt="camp" />
                         </div>
                     </div>

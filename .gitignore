@@ -38,7 +38,7 @@ client/package-lock.json
 client/public/favicon.ico
 client/public/manifest.json
 client/src/logo.svg
-
+client/src/components/user/Beaver(VisualStudioCode).code-workspace
 
 .env
 client/node_modules
