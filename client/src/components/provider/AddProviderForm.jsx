@@ -14,7 +14,7 @@ const TextInput = ({children, ...props}) => {
 const AddProviderForm = (props) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [location, setLocation] = useState('');
+    const [address, setAddress] = useState('');
     const [website, setWebsite] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [imageUrl2, setImageUrl2] = useState('');
@@ -26,7 +26,7 @@ const AddProviderForm = (props) => {
         let newProvider = {
             name: name,
             description: description,
-            location: location,
+            address: address,
             website: website,
             imageUrls: [imageUrl, imageUrl2, imageUrl3],
 
@@ -76,8 +76,8 @@ const AddProviderForm = (props) => {
                     <div className="row">
                         <label className="col-6">Address:
                             <TextInput required
-                                value={location}
-                                onChange={(e)=> setLocation(e.target.value)}
+                                value={address}
+                                onChange={(e)=> setAddress(e.target.value)}
                             />
                         </label>
                         <label className="col-sm-3">City:

@@ -7,8 +7,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -20,28 +24,49 @@ public class ActivityLoader implements CommandLineRunner {
         this.activityRepository = activityRepository;
     }
 
+    DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
+    DateFormat timeFormatter = new SimpleDateFormat("HH:mm");
+
     @Override
     public void run(String... args) throws Exception {
         List<String> imageUrls;
+        Date startDate;
+        Date endDate;
+        Date startTime;
+        Date endTime;
+
+        // ---- insert an activity ---- //
+        startDate = dateFormatter.parse("18-09-2019");
+        endDate = dateFormatter.parse("31-12-2019");
+        startTime = timeFormatter.parse("10:00");
+        endTime = timeFormatter.parse("11:00");
 
         imageUrls = new ArrayList<>(Arrays.asList(
                 "https://uc.uxpin.com/files/1002565/982286/cooking-04-201a2c.jpeg",
                 "https://uc.uxpin.com/files/1002565/982286/cooking-01-f97a54.jpg",
                 "https://uc.uxpin.com/files/1002565/982286/cooking-03-6e4e4a.jpeg"
         ));
+
         this.activityRepository.save(new Activity(
                 "Chef's Academy",
                 "Art and Craft",
                 "Want to take your cooking skills to the next level? At this advanced camp, you’ll review food prep, kitchen safety and cooking techniques with expert instructors, then move on up to soups, sauces and braising. Plus, recipe development, layering of flavours, ethnic dishes, decorating and presentation. And, of course, your hat and apron are yours to take home, along with new skills and great recipes.",
                 "SaskPoly",
                 "Saskatchewan Polytechnic, Saskatoon Campus",
-                "1 August 2019",
-                "31 August 2019",
-                "4:00 PM",
-                "5:00 PM",
+                startDate,
+                endDate,
+                startTime,
+                endTime,
                 imageUrls,
+                DayOfWeek.MONDAY,
                 new BigDecimal(250)
         ));
+
+        // ---- insert an activity ---- //
+        startDate = dateFormatter.parse("01-08-2019");
+        endDate = dateFormatter.parse("31-08-2019");
+        startTime = timeFormatter.parse("16:00");
+        endTime = timeFormatter.parse("17:00");
 
         imageUrls = new ArrayList<>(Arrays.asList(
                 "https://melodica.ae/wp-content/uploads/2018/09/Untitled-1-1.jpg",
@@ -54,14 +79,21 @@ public class ActivityLoader implements CommandLineRunner {
                 "This program introduces the child to the primary basics of ballet technique in a dynamic and creative environment.  Children will improve poise, balance, coordination and muscle development. Musicality and individual creativity is encouraged in a safe and nurturing environment.",
                 "Studio One",
                 "1821 Jackson Ave, Saskatoon SK, S7H 2N5 Canada",
-                "1 July 2019",
-                "31 July 2019",
-                "10:00 AM",
-                "11:00 AM",
+                startDate,
+                endDate,
+                startTime,
+                endTime,
                 imageUrls,
+                DayOfWeek.TUESDAY,
                 new BigDecimal(300)
 
         ));
+
+        // ---- insert an activity ---- //
+        startDate = dateFormatter.parse("01-10-2019");
+        endDate = dateFormatter.parse("31-10-2019");
+        startTime = timeFormatter.parse("16:00");
+        endTime = timeFormatter.parse("18:00");
 
         imageUrls = new ArrayList<>(Arrays.asList(
                 "https://dynamicmedia.zuza.com/zz/m/original_/0/3/03c2cc2c-4af9-448e-a63d-9a258d1b5b7b/IYN5_CF___Super_Portrait.jpg",
@@ -74,14 +106,21 @@ public class ActivityLoader implements CommandLineRunner {
                 "Embark on an EPIC adventure in virtual reality! In this cutting-edge class, you’ll learn the foundations of VR design by creating your own virtual world, exploring simulated environments and crafting memorable 3D experiences." ,
                 "SaskPoly",
                 "1130 Idylwyld Dr N, Saskatoon, Saskatchewan, S7K 3R5",
-                "22 June 2019",
-                "126 June 2019",
-                "8:00 AM",
-                "12:00 PM",
+                startDate,
+                endDate,
+                startTime,
+                endTime,
                 imageUrls,
+                DayOfWeek.WEDNESDAY,
                 new BigDecimal(275)
 
         ));
+
+        // ---- insert an activity ---- //
+        startDate = dateFormatter.parse("01-09-2019");
+        endDate = dateFormatter.parse("30-09-2019");
+        startTime = timeFormatter.parse("09:00");
+        endTime = timeFormatter.parse("10:00");
 
         imageUrls = new ArrayList<>(Arrays.asList(
                 "https://static1.squarespace.com/static/550ba261e4b0215d222516fe/t/551ec715e4b06389c8234377/1428080408643/violinteacher.jpg?format=1500w",
@@ -94,11 +133,12 @@ public class ActivityLoader implements CommandLineRunner {
                 "One-on-one violin lessons are offered in Suzuki method or Traditional method for ages 5 through adult with one of our highly skilled instructors." ,
                 "Studio One",
                 "St John's Hall, 816 Spadina Cres E, Saskatoon, Saskatchewan, S7K3H4",
-                "3 September 2019",
-                "11 June 2020",
-                "10:00 AM",
-                "9:00 PM",
+                startDate,
+                endDate,
+                startTime,
+                endTime,
                 imageUrls,
+                DayOfWeek.SUNDAY,
                 new BigDecimal(1200)
 
         ));
