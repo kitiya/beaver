@@ -1,6 +1,8 @@
 package com.kitiya.beaver.dataloader;
 
+import com.kitiya.beaver.model.City;
 import com.kitiya.beaver.model.Provider;
+import com.kitiya.beaver.model.Province;
 import com.kitiya.beaver.repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -31,7 +33,9 @@ public class ProviderLoader implements CommandLineRunner {
         this.providerRepository.save(new Provider(
                 "Wet Paint Pottery",
                 "Our mission at Wet Paint Pottery is to create a relaxed , fun atmosphere where everyone feels welcome. We help the “creatively challenged” find their creative side. Our goal is to provide enough assistance that the customer is delighted with their masterpiece.",
-                "50 632 1st ave north, Saskatoon",
+                "50 632 1st ave north",
+                City.OTTAWA,
+                Province.ON,
                 "https://www.wetpaintpottery.com/",
                 imageUrls
         ));
@@ -45,7 +49,9 @@ public class ProviderLoader implements CommandLineRunner {
         this.providerRepository.save(new Provider(
                 "Can-Am Gymnastics Club",
                 "Can-Am Gymnastics Club is the largest gymnastics club in Saskatoon and is proud to offer the most programming selection in the city! With classes for babies to adults there is a program suitable for everyone.",
-                "3702 Mitchelmore Ave, Saskatoon",
+                "3702 Mitchelmore Ave",
+                City.SASKATOON,
+                Province.SK,
                 "http://canamgymnastics.ca/",
                 imageUrls
         ));
@@ -59,7 +65,9 @@ public class ProviderLoader implements CommandLineRunner {
         this.providerRepository.save(new Provider(
                 "Saskatchewan Polytechnic",
                 "This summer, try something new and experience hands-on learning at Sask Polytech Summer Camps! Sask Polytech is Saskatchewan's primary public institution for post-secondary technical education and skills training, recognized nationally and internationally for its expertise and innovation. ",
-                "1130 Idylwyld Dr N, Saskatoon",
+                "1130 Idylwyld Dr N",
+                City.SASKATOON,
+                Province.SK,
                 "www.saskpolytech.ca/camps",
                 imageUrls
         ));

@@ -3,18 +3,34 @@ package com.kitiya.beaver.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Data
 @Entity
+@Table(name="provider")
 public class Provider {
-    private @Id @GeneratedValue Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    @Column(name = "name")
     private String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name="description", columnDefinition = "TEXT")
     private String description;
 
-    private String location;
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "city")
+    private City city;
+
+    @Column(name = "province")
+    private Province province;
+
+    @Column(name = "website")
     private String website;
 
     @Column
@@ -23,10 +39,12 @@ public class Provider {
 
     public Provider () {}
 
-    public Provider(String name, String description, String location, String website, List<String> imageUrls) {
+    public Provider(@NotBlank String name, String description, String address, City city, Province province, String website, List<String> imageUrls) {
         this.name = name;
         this.description = description;
-        this.location = location;
+        this.address = address;
+        this.city = city;
+        this.province = province;
         this.website = website;
         this.imageUrls = imageUrls;
     }

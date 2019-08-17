@@ -49,7 +49,7 @@ const ProviderList = () => {
                                         ))}
                                     </div>
                                     <p>{provider.description}</p>
-                                    <p>Location: {provider.location}</p>
+                                    <p>Address: {provider.address}, {provider.city}, {provider.province}</p>
                                     <p>Website: {provider.website}</p>
                                     <p className="row justify-content-end">
                                         <NavLink
