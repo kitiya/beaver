@@ -27,6 +27,9 @@ public class Provider {
     @Column(name = "city")
     private City city;
 
+    @Column(name = "province")
+    private Province province;
+
     @Column(name = "website")
     private String website;
 
@@ -36,10 +39,12 @@ public class Provider {
 
     public Provider () {}
 
-    public Provider(String name, String description, String address, String website, List<String> imageUrls) {
+    public Provider(@NotBlank String name, String description, String address, City city, Province province, String website, List<String> imageUrls) {
         this.name = name;
         this.description = description;
         this.address = address;
+        this.city = city;
+        this.province = province;
         this.website = website;
         this.imageUrls = imageUrls;
     }

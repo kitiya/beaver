@@ -21,9 +21,9 @@ public class Activity {
     @Column(name = "name")
     private String name;
 
-    @NotBlank
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private String type;
+    private ActivityType type;
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
@@ -54,6 +54,7 @@ public class Activity {
     @ElementCollection(targetClass = String.class)
     private List<String> imageUrls;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="day_of_week")
     private DayOfWeek dayOfWeek;
 
@@ -62,7 +63,7 @@ public class Activity {
 
     public Activity() {}
 
-    public Activity(@NotBlank String name, @NotBlank String type, String description, String provider, String location, Date startDate, Date endDate, Date startTime, Date endTime, List<String> imageUrls, DayOfWeek dayOfWeek, BigDecimal cost) {
+    public Activity(@NotBlank String name, @NotBlank ActivityType type, String description, String provider, String location, Date startDate, Date endDate, Date startTime, Date endTime, List<String> imageUrls, DayOfWeek dayOfWeek, BigDecimal cost) {
         this.name = name;
         this.type = type;
         this.description = description;

@@ -1,5 +1,7 @@
 package com.kitiya.beaver.model;
 
+import org.springframework.util.StringUtils;
+
 public enum City {
     CALGARY ("Calgary"),
     EDMONTON ("Edmonton"),
@@ -16,5 +18,9 @@ public enum City {
 
     City(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return StringUtils.capitalize(name);
     }
 }

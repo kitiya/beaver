@@ -1,5 +1,6 @@
 package com.kitiya.beaver.dataloader;
 
+import com.kitiya.beaver.model.Role;
 import com.kitiya.beaver.model.User;
 import com.kitiya.beaver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,11 @@ public class UserLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.userRepository.save(new User("Twilight", "Sparkle", "twilight.sparkle@gmail.com"));
-        this.userRepository.save(new User("Pinkie", "Pie", "pinkie.pie@gmail.com"));
-        this.userRepository.save(new User("Rainbow", "Dash", "rainbow.dash@gmail.com"));
-        this.userRepository.save(new User("Apple", "Bloom", "apple.bloom@gmail.com"));
-        this.userRepository.save(new User("Princess", "Anya", "princess.anna@gmail.com"));
-        this.userRepository.save(new User("Queen", "Elsa", "queen.else@gmail.com"));
+        this.userRepository.save(new User("Twilight", "Sparkle", "twilight.sparkle@gmail.com", Role.USER));
+        this.userRepository.save(new User("Pinkie", "Pie", "pinkie.pie@gmail.com", Role.USER));
+        this.userRepository.save(new User("Rainbow", "Dash", "rainbow.dash@gmail.com", Role.USER));
+        this.userRepository.save(new User("Apple", "Bloom", "apple.bloom@gmail.com", Role.USER));
+        this.userRepository.save(new User("Princess", "Anna", "princess.anna@gmail.com", Role.ADMIN));
+        this.userRepository.save(new User("Queen", "Elsa", "queen.else@gmail.com", Role.ADMIN));
     }
 }

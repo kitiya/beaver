@@ -1,6 +1,7 @@
 package com.kitiya.beaver.dataloader;
 
 import com.kitiya.beaver.model.Activity;
+import com.kitiya.beaver.model.ActivityType;
 import com.kitiya.beaver.repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -49,7 +50,7 @@ public class ActivityLoader implements CommandLineRunner {
 
         this.activityRepository.save(new Activity(
                 "Chef's Academy",
-                "Art and Craft",
+                ActivityType.ART_CRAFT,
                 "Want to take your cooking skills to the next level? At this advanced camp, you’ll review food prep, kitchen safety and cooking techniques with expert instructors, then move on up to soups, sauces and braising. Plus, recipe development, layering of flavours, ethnic dishes, decorating and presentation. And, of course, your hat and apron are yours to take home, along with new skills and great recipes.",
                 "SaskPoly",
                 "Saskatchewan Polytechnic, Saskatoon Campus",
@@ -75,7 +76,7 @@ public class ActivityLoader implements CommandLineRunner {
         ));
         this.activityRepository.save(new Activity(
                 "Creative Ballet",
-                "Dance",
+                ActivityType.DANCE,
                 "This program introduces the child to the primary basics of ballet technique in a dynamic and creative environment.  Children will improve poise, balance, coordination and muscle development. Musicality and individual creativity is encouraged in a safe and nurturing environment.",
                 "Studio One",
                 "1821 Jackson Ave, Saskatoon SK, S7H 2N5 Canada",
@@ -102,7 +103,7 @@ public class ActivityLoader implements CommandLineRunner {
         ));
         this.activityRepository.save(new Activity(
                 "VR Camp",
-                "Science and Tech",
+                ActivityType.SCIENCE_TECH,
                 "Embark on an EPIC adventure in virtual reality! In this cutting-edge class, you’ll learn the foundations of VR design by creating your own virtual world, exploring simulated environments and crafting memorable 3D experiences." ,
                 "SaskPoly",
                 "1130 Idylwyld Dr N, Saskatoon, Saskatchewan, S7K 3R5",
@@ -129,7 +130,7 @@ public class ActivityLoader implements CommandLineRunner {
         ));
         this.activityRepository.save(new Activity(
                 "Violin Lessons",
-                "Music",
+                ActivityType.MUSIC,
                 "One-on-one violin lessons are offered in Suzuki method or Traditional method for ages 5 through adult with one of our highly skilled instructors." ,
                 "Studio One",
                 "St John's Hall, 816 Spadina Cres E, Saskatoon, Saskatchewan, S7K3H4",
