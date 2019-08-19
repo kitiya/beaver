@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import ActivityList from './ActivityList';
 import ActivityListSummary from './ActivityListSummary';
 import SearchForm from '../shared/SearchForm';
@@ -44,7 +45,7 @@ class ActivityMainPage extends React.Component {
         return (
             <div className="container">
                 <SearchForm></SearchForm>
-                <div className="row mt-3 justify-content-around">
+                <section className="row mt-3 justify-content-around">
                     <div className="col-3">
                             <ActivityList
                                 activities = { activities }
@@ -57,7 +58,10 @@ class ActivityMainPage extends React.Component {
                     <div className="col-9">
                             <ActivityListSummary activity={ selectedActivity } />
                     </div>
-                </div>
+                </section>
+                <section className="row justify-content-end pt-3">
+                    <NavLink to={`activities/new`} className="btn bg-success text-white mb-2 px-3 py-1 rounded-pill">Add new activity...</NavLink>
+                </section>
             </div>
         );
     }

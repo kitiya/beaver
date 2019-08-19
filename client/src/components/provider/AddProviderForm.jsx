@@ -42,8 +42,8 @@ const AddProviderForm = (props) => {
         })
         .then(response => response.json());
 
-        //window.location.reload();
         let redirectUrl = `/providers`;
+        window.location.reload();
         props.history.push(redirectUrl);
     };
 

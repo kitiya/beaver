@@ -10,6 +10,7 @@ import Home from './home/Home';
 
 import ActivityMainPage from './activity/ActivityMainPage';
 import Activity from './activity/Activity';
+import AddActivity from './activity/AddActivity';
 import Providers from './provider/Providers';
 import ProviderDetails from './provider/ProviderDetails';
 import AddProvider from './provider/AddProvider';
@@ -36,6 +37,7 @@ const App = () => (
                         <Route exact path="/" component={Home} />
                         <Route exact path="/activities" component={ActivityMainPage} />
                         <Route path="/activity/:id" component={Activity} />
+                        <Route path="/activities/new" component={AddActivity} />
                         <Route exact path="/providers" component={Providers} />
                         <Route path="/provider/:id" component={ProviderDetails} />
                         <Route path="/providers/new" component={AddProvider} />
