@@ -19,6 +19,15 @@ public enum ActivityType {
         this.name = name;
     }
 
+    public static ActivityType findbyName(String byName) {
+        for (ActivityType a: ActivityType.values()
+             ) {
+            if (a.name.equalsIgnoreCase(byName))
+                return a;
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return StringUtils.capitalize(name);

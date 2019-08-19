@@ -19,7 +19,12 @@ const ActivityListSummary = (props) => {
     }
 
     let activity = props.activity;
+    const DATE_OPTIONS = { year: 'numeric', month: 'short', day: 'numeric'};
+    const TIME_OPTIONS = { hour: 'numeric', minute: 'numeric'};
+    const DATETIME_OPTIONS = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
 
+    let t = new Date('1970-01-01T' + activity.startTime);
+    
     return (
         <div className="card border-0">
             <div className="card-body text-center border rounded">
@@ -38,17 +43,23 @@ const ActivityListSummary = (props) => {
                     </div>
                 </div>
                 <p className="text-left">{activity.description}</p>
+                <p className="text-left">Age: {activity.fromAge} - {activity.toAge}</p>
                 <p className="text-left"><span className="lead text-info">{activity.provider}</span> | {activity.location}</p>
                 <div className="row mb-3">
                     <span className="col-6">
-                        Start Date: {activity.startDate}
+                        Start Date: {new Date(activity.startDate).toLocaleString('en-US', DATE_OPTIONS)}
                         <br/>
-                        End Date: {activity.endDate}</span>
-                    <span className="col-6">
-                        Start Time: {activity.startTime}
-                        <br/>
-                        End Time: {activity.endTime}
+                        End Date: {new Date(activity.endDate).toLocaleString('en-US', DATE_OPTIONS)}
                     </span>
+                    <span className="col-6">
+                        Start Time: {new Date('1970-01-01T' + activity.startTime).toLocaleString('en-US', TIME_OPTIONS)}
+                        <br/>
+                        End Time: {new Date('1970-01-01T' + activity.endTime).toLocaleString('en-US', TIME_OPTIONS)}
+                    </span>
+                </div>
+                <div className="mb-3 text-left">
+                    <p>Date Created: {new Date(activity.createdDate).toLocaleString('en-CA', DATETIME_OPTIONS)}</p>
+                    <p>Last Modified: {new Date(activity.modifiedDate).toLocaleString('en-CA', DATETIME_OPTIONS)}</p>
                 </div>
                 <div className="row justify-content-end">
                     <NavLink
