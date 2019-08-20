@@ -16,6 +16,12 @@ class ActivityMainPage extends React.Component {
         };
     }
 
+    // componentDidMount() {
+    //     fetch('http://localhost:8080/api/activities')
+    //     .then(response => response.json())
+    //     .then(activities => this.setState({activities}));
+    // }
+
     componentDidMount() {
         fetch('http://localhost:8080/api/activities')
         .then(response => response.json())

@@ -23,7 +23,7 @@ const ActivityListSummary = (props) => {
     const TIME_OPTIONS = { hour: 'numeric', minute: 'numeric'};
     const DATETIME_OPTIONS = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
 
-    let t = new Date('1970-01-01T' + activity.startTime);
+    //let t = new Date('1970-01-01T' + activity.startTime);
     
     return (
         <div className="card border-0">

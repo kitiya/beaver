@@ -1,8 +1,8 @@
 package com.kitiya.beaver.dataloader;
 
-import com.kitiya.beaver.model.Role;
-import com.kitiya.beaver.model.User;
-import com.kitiya.beaver.repository.UserRepository;
+import com.kitiya.beaver.data.entity.Role;
+import com.kitiya.beaver.data.entity.User;
+import com.kitiya.beaver.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

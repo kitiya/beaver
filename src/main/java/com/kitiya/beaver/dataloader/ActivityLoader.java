@@ -1,8 +1,10 @@
 package com.kitiya.beaver.dataloader;
 
-import com.kitiya.beaver.model.Activity;
-import com.kitiya.beaver.model.ActivityType;
-import com.kitiya.beaver.repository.ActivityRepository;
+import com.kitiya.beaver.data.entity.Activity;
+import com.kitiya.beaver.data.entity.ActivityType;
+import com.kitiya.beaver.data.entity.Provider;
+import com.kitiya.beaver.data.repository.ActivityRepository;
+import com.kitiya.beaver.data.repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -11,18 +13,17 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class ActivityLoader implements CommandLineRunner {
     private final ActivityRepository activityRepository;
+    private final ProviderRepository providerRepository;
 
     @Autowired
-    public ActivityLoader(ActivityRepository activityRepository) {
+    public ActivityLoader(ActivityRepository activityRepository, ProviderRepository providerRepository) {
         this.activityRepository = activityRepository;
+        this.providerRepository = providerRepository;
     }
 
     DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -56,7 +57,7 @@ public class ActivityLoader implements CommandLineRunner {
                 "Want to take your cooking skills to the next level? At this advanced camp, you’ll review food prep, kitchen safety and cooking techniques with expert instructors, then move on up to soups, sauces and braising. Plus, recipe development, layering of flavours, ethnic dishes, decorating and presentation. And, of course, your hat and apron are yours to take home, along with new skills and great recipes.",
                 8,
                 12,
-                "SaskPoly",
+                providerRepository.save(new Provider("Master Chef Corp")),
                 "Saskatchewan Polytechnic, Saskatoon Campus",
                 startDate,
                 endDate,
@@ -87,7 +88,7 @@ public class ActivityLoader implements CommandLineRunner {
                 "This program introduces the child to the primary basics of ballet technique in a dynamic and creative environment.  Children will improve poise, balance, coordination and muscle development. Musicality and individual creativity is encouraged in a safe and nurturing environment.",
                 3,
                 4,
-                "Studio One",
+                providerRepository.save(new Provider("Dance Studio")),
                 "1821 Jackson Ave, Saskatoon SK, S7H 2N5 Canada",
                 startDate,
                 endDate,
@@ -119,7 +120,7 @@ public class ActivityLoader implements CommandLineRunner {
                 "Embark on an EPIC adventure in virtual reality! In this cutting-edge class, you’ll learn the foundations of VR design by creating your own virtual world, exploring simulated environments and crafting memorable 3D experiences." ,
                 12,
                 15,
-                "SaskPoly",
+                providerRepository.save(new Provider("Geek Guru")),
                 "1130 Idylwyld Dr N, Saskatoon, Saskatchewan, S7K 3R5",
                 startDate,
                 endDate,
@@ -151,7 +152,7 @@ public class ActivityLoader implements CommandLineRunner {
                 "One-on-one violin lessons are offered in Suzuki method or Traditional method for ages 5 through adult with one of our highly skilled instructors." ,
                 6,
                 12,
-                "Studio One",
+                providerRepository.findById(Long.valueOf(1)).orElse(null),
                 "St John's Hall, 816 Spadina Cres E, Saskatoon, Saskatchewan, S7K3H4",
                 startDate,
                 endDate,

@@ -1,7 +1,7 @@
-package com.kitiya.beaver.controller;
+package com.kitiya.beaver.web.appcontroller;
 
-import com.kitiya.beaver.model.Provider;
-import com.kitiya.beaver.repository.ProviderRepository;
+import com.kitiya.beaver.data.entity.Provider;
+import com.kitiya.beaver.data.repository.ProviderRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

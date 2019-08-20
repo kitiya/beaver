@@ -1,4 +1,4 @@
-package com.kitiya.beaver.model;
+package com.kitiya.beaver.data.entity;
 
 import org.springframework.util.StringUtils;
 

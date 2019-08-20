@@ -1,9 +1,8 @@
-package com.kitiya.beaver.controller;
+package com.kitiya.beaver.web.appcontroller;
 
-import com.kitiya.beaver.model.Activity;
-import com.kitiya.beaver.model.ActivityType;
-import com.kitiya.beaver.repository.ActivityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.kitiya.beaver.data.entity.Activity;
+import com.kitiya.beaver.data.entity.ActivityType;
+import com.kitiya.beaver.data.repository.ActivityRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +44,7 @@ public class ActivityController {
     Collection<Activity> activityByName(@RequestParam(value="name") String name) {
         return activityRepository.findByNameContainingOrderByModifiedDateDesc(name);
     }
-
+    
     @GetMapping("/activities/type/{type}")
     Collection<Activity> activityByType(@PathVariable ActivityType type) {
         return activityRepository.findByType(type);

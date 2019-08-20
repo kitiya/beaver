@@ -1,9 +1,9 @@
 package com.kitiya.beaver.dataloader;
 
-import com.kitiya.beaver.model.City;
-import com.kitiya.beaver.model.Provider;
-import com.kitiya.beaver.model.Province;
-import com.kitiya.beaver.repository.ProviderRepository;
+import com.kitiya.beaver.data.entity.City;
+import com.kitiya.beaver.data.entity.Provider;
+import com.kitiya.beaver.data.entity.Province;
+import com.kitiya.beaver.data.repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

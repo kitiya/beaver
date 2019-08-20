@@ -1,8 +1,9 @@
 package com.kitiya.beaver.controller;
 
-import com.kitiya.beaver.model.Activity;
-import com.kitiya.beaver.model.ActivityType;
-import com.kitiya.beaver.repository.ActivityRepository;
+import com.kitiya.beaver.data.entity.Activity;
+import com.kitiya.beaver.data.entity.ActivityType;
+import com.kitiya.beaver.data.repository.ActivityRepository;
+import com.kitiya.beaver.web.appcontroller.ActivityController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

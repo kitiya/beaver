@@ -1,7 +1,7 @@
-package com.kitiya.beaver.controller;
+package com.kitiya.beaver.web.appcontroller;
 
-import com.kitiya.beaver.model.User;
-import com.kitiya.beaver.repository.UserRepository;
+import com.kitiya.beaver.data.entity.User;
+import com.kitiya.beaver.data.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,9 +1,7 @@
-package com.kitiya.beaver.model;
+package com.kitiya.beaver.data.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -39,8 +37,9 @@ public class Activity {
     @Column(name="to_age")
     private Integer toAge;
 
-    @Column(name = "provider")
-    private String provider;
+    @ManyToOne
+    @JsonProperty("providerName")
+    private Provider provider;
 
     @Column(name = "location")
     private String location;
@@ -84,7 +83,7 @@ public class Activity {
 
     public Activity() {}
 
-    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, String provider, String location, Date startDate, Date endDate, Date startTime, Date endTime, Date createdDate, Date modifiedDate, List<String> imageUrls, DayOfWeek dayOfWeek, BigDecimal cost) {
+    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, Provider provider, String location, Date startDate, Date endDate, Date startTime, Date endTime, Date createdDate, Date modifiedDate, List<String> imageUrls, DayOfWeek dayOfWeek, BigDecimal cost) {
         this.name = name;
         this.type = type;
         this.description = description;
@@ -151,11 +150,11 @@ public class Activity {
         this.toAge = toAge;
     }
 
-    public String getProvider() {
+    public Provider getProvider() {
         return provider;
     }
 
-    public void setProvider(String provider) {
+    public void setProvider(Provider provider) {
         this.provider = provider;
     }
 
