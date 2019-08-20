@@ -44,6 +44,10 @@ public class Activity {
     @Column(name = "location")
     private String location;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="schedule_id", referencedColumnName = "id")
+    private Schedule schedule;
+
     @Temporal(TemporalType.DATE)
     @Column(name = "start_date")
     private Date startDate;
@@ -110,6 +114,28 @@ public class Activity {
         this.modifiedDate = new Date();
     }
 
+    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, Provider provider, Schedule schedule, Date createdDate, Date modifiedDate, List<String> imageUrls, BigDecimal cost) {
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.fromAge = fromAge;
+        this.toAge = toAge;
+        this.provider = provider;
+        this.schedule = schedule;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.imageUrls = imageUrls;
+        this.cost = cost;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -164,6 +190,14 @@ public class Activity {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     public Date getStartDate() {
