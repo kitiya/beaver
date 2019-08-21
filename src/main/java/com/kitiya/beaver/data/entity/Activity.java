@@ -1,6 +1,5 @@
 package com.kitiya.beaver.data.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -8,8 +7,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.math.BigDecimal;
-import java.time.DayOfWeek;
 import java.util.Date;
 import java.util.List;
 
@@ -49,6 +46,11 @@ public class Activity {
     @Column(name = "cost")
     private Long cost;
 
+    @Column
+    @ElementCollection(targetClass = String.class)
+    private List<String> imageUrls;
+    public Activity() {}
+
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -59,13 +61,7 @@ public class Activity {
     @LastModifiedDate
     private Date modifiedDate = new Date();
 
-    @Column
-    @ElementCollection(targetClass = String.class)
-    private List<String> imageUrls;
-
-    public Activity() {}
-
-    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, Provider provider, Schedule schedule, Date createdDate, Date modifiedDate, List<String> imageUrls, Long cost) {
+    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, Provider provider, Schedule schedule, Long cost, List<String> imageUrls, Date createdDate, Date modifiedDate) {
         this.name = name;
         this.type = type;
         this.description = description;
@@ -73,10 +69,25 @@ public class Activity {
         this.toAge = toAge;
         this.provider = provider;
         this.schedule = schedule;
+        this.cost = cost;
+        this.imageUrls = imageUrls;
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
-        this.imageUrls = imageUrls;
+    }
+
+    // for development
+    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, Provider provider, Schedule schedule, Long cost, List<String> imageUrls) {
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.fromAge = fromAge;
+        this.toAge = toAge;
+        this.provider = provider;
+        this.schedule = schedule;
         this.cost = cost;
+        this.imageUrls = imageUrls;
+        this.createdDate = new Date();
+        this.modifiedDate = new Date();
     }
 
     public Long getId() {
@@ -151,12 +162,16 @@ public class Activity {
         this.cost = cost;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public List<String> getImageUrls() {
+        return imageUrls;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
     public Date getModifiedDate() {
@@ -165,13 +180,5 @@ public class Activity {
 
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
-    }
-
-    public List<String> getImageUrls() {
-        return imageUrls;
-    }
-
-    public void setImageUrls(List<String> imageUrls) {
-        this.imageUrls = imageUrls;
     }
 }

@@ -2,10 +2,13 @@ package com.kitiya.beaver.data.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -37,9 +40,25 @@ public class Provider {
     @Column(name = "website")
     private String website;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
+
     @Column
     @ElementCollection(targetClass = String.class)
     private List<String> imageUrls;
+
+    @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date createdDate = new Date();
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Date modifiedDate = new Date();
 
     @OneToMany(fetch=FetchType.EAGER,mappedBy = "provider", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -51,14 +70,18 @@ public class Provider {
         this.name = name;
     }
 
-    public Provider(@NotBlank String name, String description, String streetAddress, City city, Province province, String website, List<String> imageUrls) {
+    public Provider(@NotBlank String name, String description, String streetAddress, City city, Province province, String website, String email, String phone, List<String> imageUrls) {
         this.name = name;
         this.description = description;
         this.streetAddress = streetAddress;
         this.city = city;
         this.province = province;
         this.website = website;
+        this.email = email;
+        this.phone = phone;
         this.imageUrls = imageUrls;
+        this.createdDate = new Date();
+        this.modifiedDate = new Date();
     }
 
     public Long getId() {
@@ -89,8 +112,8 @@ public class Provider {
         return streetAddress;
     }
 
-    public void setStreetAddress(String address) {
-        this.streetAddress = address;
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 
     public City getCity() {
@@ -117,6 +140,22 @@ public class Provider {
         this.website = website;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public List<String> getImageUrls() {
         return imageUrls;
     }
@@ -135,5 +174,17 @@ public class Provider {
 
     public void addActivity(Activity activity) {
         this.activities.add(activity);
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 }

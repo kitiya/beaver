@@ -12,7 +12,8 @@ public enum City {
     SASKATOON ("Saskatoon"),
     TORONTO ("Toronto"),
     VANCOUVER ("Vancouver"),
-    WINNIPEG ("Winnipeg");
+    WINNIPEG ("Winnipeg"),
+    OTHER ("Other");
 
     private final String name;
 

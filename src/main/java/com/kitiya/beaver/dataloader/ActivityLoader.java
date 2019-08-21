@@ -51,8 +51,10 @@ public class ActivityLoader implements CommandLineRunner {
         provider.setStreetAddress("123 Main Street");
         provider.setCity(City.EDMONTON);
         provider.setProvince(Province.AB);
-        provider.setImageUrls(imageUrls);
         provider.setWebsite("https://wemovesk.com/");
+        provider.setEmail("info@wemovesk.com");
+        provider.setPhone("306-123-4555");
+        provider.setImageUrls(imageUrls);
 
         schedule = new Schedule();
         schedule.setStartDate(dateFormatter.parse("01-09-2019"));
@@ -69,10 +71,10 @@ public class ActivityLoader implements CommandLineRunner {
                 3,
                 providerRepository.save(provider),
                 schedule,
-                new Date(),
-                dateFormatter.parse("21-08-2019"),
+                Long.valueOf(200),
                 imageUrls,
-                Long.valueOf(200)
+                new Date(),
+                dateFormatter.parse("21-08-2019")
         ));
 
         // ---- insert an activity#2 ---- //
@@ -89,8 +91,10 @@ public class ActivityLoader implements CommandLineRunner {
         provider.setStreetAddress("1130 Idylwyld Dr N");
         provider.setCity(City.SASKATOON);
         provider.setProvince(Province.SK);
-        provider.setImageUrls(imageUrls);
         provider.setWebsite("https://saskpolytech.ca");
+        provider.setEmail("info@saskpolytech.ca");
+        provider.setPhone("306-123-5677");
+        provider.setImageUrls(imageUrls);
 
         schedule = new Schedule();
         schedule.setStartDate(dateFormatter.parse("18-09-2019"));
@@ -108,10 +112,10 @@ public class ActivityLoader implements CommandLineRunner {
                 //providerRepository.findById(Long.valueOf(1)).orElseThrow(()->new RuntimeException("id not found")),
                 providerRepository.save(provider),
                 schedule,
-                new Date(),
-                dateFormatter.parse("1-08-2019"),
+                Long.valueOf(300),
                 imageUrls,
-                Long.valueOf(300)
+                new Date(),
+                dateFormatter.parse("1-08-2019")
         ));
 
         // ---- insert an activity ---- //
@@ -137,10 +141,10 @@ public class ActivityLoader implements CommandLineRunner {
                 15,
                 providerRepository.findById(Long.valueOf(2)).orElseThrow(()->new RuntimeException("id not found")),
                 schedule,
-                new Date(),
-                dateFormatter.parse("1-08-2019"),
+                Long.valueOf(150),
                 imageUrls,
-                Long.valueOf(150)
+                new Date(),
+                dateFormatter.parse("1-08-2019")
         ));
 
         // ---- insert an activity ---- //
@@ -157,8 +161,10 @@ public class ActivityLoader implements CommandLineRunner {
         provider.setStreetAddress("St John's Hall, 816 Spadina Cres E");
         provider.setCity(City.SASKATOON);
         provider.setProvince(Province.SK);
-        provider.setImageUrls(imageUrls);
         provider.setWebsite("http://www.wiltonmusic.com/");
+        provider.setEmail("cusotmer.service@wiltonmusic.com");
+        provider.setPhone("306-999-8999");
+        provider.setImageUrls(imageUrls);
 
         schedule = new Schedule();
         schedule.setStartDate(dateFormatter.parse("01-09-2019"));
@@ -175,10 +181,10 @@ public class ActivityLoader implements CommandLineRunner {
                 12,
                 providerRepository.save(provider),
                 schedule,
-                new Date(),
-                dateFormatter.parse("1-06-2019"),
+                Long.valueOf(1200),
                 imageUrls,
-                Long.valueOf(1200)
+                new Date(),
+                dateFormatter.parse("1-06-2019")
         ));
 
         // ---- insert an activity ---- //
@@ -195,8 +201,10 @@ public class ActivityLoader implements CommandLineRunner {
         provider.setStreetAddress("1025 Boychuk Drive");
         provider.setCity(City.SASKATOON);
         provider.setProvince(Province.SK);
-        provider.setImageUrls(imageUrls);
         provider.setWebsite("http://www.aspiredanceschool.ca/");
+        provider.setEmail("info@aspiredanceschool.ca");
+        provider.setPhone("306-456-7890");
+        provider.setImageUrls(imageUrls);
 
         schedule = new Schedule();
         schedule.setStartDate(dateFormatter.parse("01-09-2019"));
@@ -213,10 +221,10 @@ public class ActivityLoader implements CommandLineRunner {
                 4,
                 providerRepository.save(provider),
                 schedule,
-                new Date(),
-                dateFormatter.parse("1-07-2019"),
+                Long.valueOf(950),
                 imageUrls,
-                Long.valueOf(950)
+                new Date(),
+                dateFormatter.parse("1-07-2019")
         ));
     }
 }

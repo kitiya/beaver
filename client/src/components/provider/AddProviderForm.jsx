@@ -14,8 +14,12 @@ const TextInput = ({children, ...props}) => {
 const AddProviderForm = (props) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [address, setAddress] = useState('');
+    const [streetAddress, setStreetAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [province, setProvince] = useState('');
     const [website, setWebsite] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [imageUrl2, setImageUrl2] = useState('');
     const [imageUrl3, setImageUrl3] = useState('');
@@ -26,12 +30,16 @@ const AddProviderForm = (props) => {
         let newProvider = {
             name: name,
             description: description,
-            address: address,
+            streetAddress: streetAddress,
+            city: city,
+            province: province,
             website: website,
+            email: email,
+            phone: phone,
             imageUrls: [imageUrl, imageUrl2, imageUrl3],
-
         }
-        console.log(newProvider.imageUrls);
+
+        console.log(newProvider.json);
 
         fetch("http://localhost:8080/api/providers", {
             method: "POST",
@@ -43,7 +51,7 @@ const AddProviderForm = (props) => {
         .then(response => response.json());
 
         let redirectUrl = `/providers`;
-        window.location.reload();
+        //window.location.reload();
         props.history.push(redirectUrl);
     };
 
@@ -74,28 +82,64 @@ const AddProviderForm = (props) => {
                     </div>
 
                     <div className="row">
-                        <label className="col-6">Address:
+                        <label className="col-4">Address:
                             <TextInput required
-                                value={address}
-                                onChange={(e)=> setAddress(e.target.value)}
+                                value={streetAddress}
+                                onChange={(e)=> setStreetAddress(e.target.value)}
                             />
                         </label>
-                        <label className="col-sm-3">City:
-                            <TextInput />
+                        <label className="col-4">City
+                            <select className="form-control"
+                                    value={city}
+                                    onChange={(e)=>setCity(e.target.value)}
+                            >
+                                <option value="OTHER">Select One..</option>
+                                <option value="CALGARY">Calgary</option>
+                                <option value="EDMONTON">Edmonton</option>
+                                <option value="HALIFAX">Halifax</option>
+                                <option value="OTTAWA">Ottawa</option>
+                                <option value="MONTREAL">Montreal</option>
+                                <option value="QUEBEC_CITY">Quebec City</option>
+                                <option value="SASKATOON">Saskatoon</option>
+                                <option value="TORONTO">Toronto</option>
+                                <option value="VANCOUVER">Vancouver</option>
+                                <option value="WINNIPEG">Winnipeg</option>
+                            </select>
                         </label>
-                        <label className="col-sm-3">Province:
-                            <TextInput />
+                        <label className="col-4">Province
+                            <select className="form-control"
+                                    value={province}
+                                    onChange={(e)=>setProvince(e.target.value)}
+                            >
+                                <option value="OTHER">Select One..</option>
+                                <option value="AB">Alberta</option>
+                                <option value="BC">British Columbia</option>
+                                <option value="MB">Manitoba</option>
+                                <option value="NS">Nova Scotia</option>
+                                <option value="ON">Ontario</option>
+                                <option value="QC">Quebec</option>
+                                <option value="SK">Saskatchewan</option>
+                            </select>
                         </label>
                     </div>
 
                     <div className="row">
-                        <label className="col-6">Email:
-                            <TextInput />
-                        </label>
-                        <label className="col-6">Website:
+                        <label className="col-sm-4">Website:
                             <TextInput required
                                 value={website}
                                 onChange={(e)=> setWebsite(e.target.value)}
+                            />
+                        </label>
+                        <label className="col-sm-4">Email:
+                        <TextInput required
+                                value={email}
+                                onChange={(e)=> setEmail(e.target.value)}
+                            />
+                        </label>
+                        <label className="col-sm-4">phone:
+                        <TextInput required
+                                value={phone}
+                                onChange={(e)=> setPhone(e.target.value)}
                             />
                         </label>
                     </div>

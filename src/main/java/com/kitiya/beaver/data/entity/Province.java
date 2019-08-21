@@ -7,7 +7,8 @@ public enum Province {
     NS ("Nova Scotia"),
     ON ("Ontario"),
     QC ("Quebec"),
-    SK ("Saskatchewan");
+    SK ("Saskatchewan"),
+    OTHER ("Other");
 
     private final String name;
 
