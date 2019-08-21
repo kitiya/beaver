@@ -56,20 +56,5 @@ public class ProviderLoader implements CommandLineRunner {
                 imageUrls
         ));
 
-
-        imageUrls = new ArrayList<>(Arrays.asList(
-                "https://media.chatterblock.com/cache/20/6b/206b74523d8d2b425d3a76e7d6c9064d.jpg",
-                "https://media.chatterblock.com/cache/f8/d5/f8d5a44203095f31656d751dff66fb2e.jpg",
-                "https://media.chatterblock.com/cache/a8/eb/a8eb45d19bd24d46bd7221f263f0b9f7.jpg"
-        ));
-        this.providerRepository.save(new Provider(
-                "Saskatchewan Polytechnic",
-                "This summer, try something new and experience hands-on learning at Sask Polytech Summer Camps! Sask Polytech is Saskatchewan's primary public institution for post-secondary technical education and skills training, recognized nationally and internationally for its expertise and innovation. ",
-                "1130 Idylwyld Dr N",
-                City.SASKATOON,
-                Province.SK,
-                "www.saskpolytech.ca/camps",
-                imageUrls
-        ));
     }
 }

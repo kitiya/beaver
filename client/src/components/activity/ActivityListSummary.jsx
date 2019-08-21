@@ -42,7 +42,7 @@ const ActivityListSummary = (props) => {
                         <span className="badge badge-pill badge-danger kty-bg-pinkish px-3 py-1">Cost: ${activity.cost}</span>
                     </div>
                 </div>
-                <p className="text-left">{activity.activityDescription}</p>
+                <p className="text-left">{activity.description}</p>
                 <p className="text-left">Age: {activity.ageRange}</p>
                 <p className="text-left"><span className="lead text-info">{activity.providerName}</span> | {activity.location}</p>
                 <div className="row mb-3">
@@ -64,8 +64,8 @@ const ActivityListSummary = (props) => {
                 <div className="row justify-content-end">
                     <NavLink
                         className="mr-3 text-decoration-none"
-                        to={`/activity/${activity.id}`}
-                        href={`/activity/${activity.id}`}
+                        to={`/activity/${activity.activityId}`}
+                        href={`/activity/${activity.activityId}`}
                     >
                         Read more...
                     </NavLink>

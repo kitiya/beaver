@@ -18,7 +18,7 @@ const ActivityListItem = ({ activity, favorited, onClick, onFavorited }) => (
                             onFavorited(activity.activityId);
                         }}
         ></i>
-        <span>{activity.activityName}</span><br/>
+        <span>{activity.name}</span><br/>
         <span className="font-weight-bold text-info"> {activity.providerName}</span>
     </li>
 )

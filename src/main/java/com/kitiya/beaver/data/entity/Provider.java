@@ -23,8 +23,8 @@ public class Provider {
     @Column(name="description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "streetAddress")
+    private String streetAddress;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "city")
@@ -51,10 +51,10 @@ public class Provider {
         this.name = name;
     }
 
-    public Provider(@NotBlank String name, String description, String address, City city, Province province, String website, List<String> imageUrls) {
+    public Provider(@NotBlank String name, String description, String streetAddress, City city, Province province, String website, List<String> imageUrls) {
         this.name = name;
         this.description = description;
-        this.address = address;
+        this.streetAddress = streetAddress;
         this.city = city;
         this.province = province;
         this.website = website;
@@ -85,12 +85,12 @@ public class Provider {
         this.description = description;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStreetAddress(String address) {
+        this.streetAddress = address;
     }
 
     public City getCity() {
