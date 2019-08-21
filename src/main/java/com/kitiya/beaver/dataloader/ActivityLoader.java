@@ -33,23 +33,11 @@ public class ActivityLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         List<String> imageUrls;
-        Date startDate;
-        Date endDate;
-        Date startTime;
-        Date endTime;
-        Date modifiedDate;
 
-        Schedule schedule;
         Provider provider;
+        Schedule schedule;
 
         // ---- insert an activity ---- //
-
-        schedule = new Schedule();
-        schedule.setStartDate(dateFormatter.parse("01-09-2019"));
-        schedule.setEndDate(dateFormatter.parse("31-12-2019"));
-        schedule.setStartTime(timeFormatter.parse("13:00"));
-        schedule.setEndTime(timeFormatter.parse("14:00"));
-        schedule.setDayOfWeek(DayOfWeek.SUNDAY);
 
         imageUrls = new ArrayList<>(Arrays.asList(
                 "https://wemovesk.com/wp-content/uploads/elementor/thumbs/Winter-Registration-is-open-o0dmpmadt1iekr9nmavzybmc26oxnpo7l9x2tdgsyo.jpg",
@@ -67,6 +55,13 @@ public class ActivityLoader implements CommandLineRunner {
         provider.setImageUrls(imageUrls);
         provider.setWebsite("https://wemovesk.com/");
 
+        schedule = new Schedule();
+        schedule.setStartDate(dateFormatter.parse("01-09-2019"));
+        schedule.setEndDate(dateFormatter.parse("31-12-2019"));
+        schedule.setStartTime(timeFormatter.parse("13:00"));
+        schedule.setEndTime(timeFormatter.parse("14:00"));
+        schedule.setDayOfWeek(DayOfWeek.SUNDAY);
+
         this.activityRepository.save(new Activity(
                 "Toddler Kinder Acro",
                 ActivityType.SPORT,
@@ -78,7 +73,7 @@ public class ActivityLoader implements CommandLineRunner {
                 new Date(),
                 dateFormatter.parse("21-08-2019"),
                 imageUrls,
-                new BigDecimal(250)
+                Long.valueOf(250)
         ));
     }
 }

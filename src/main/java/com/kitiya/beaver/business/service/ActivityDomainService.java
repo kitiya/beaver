@@ -23,30 +23,46 @@ public class ActivityDomainService {
     public List<ActivityDomain> getAllActivitiesWithProviders() {
         Iterable<Activity> activities = this.activityRepository.findAll();
         List<ActivityDomain> activityDomains = new ArrayList<>();
-        activities.forEach(activity -> {
-            ActivityDomain activityDomain = new ActivityDomain();
-            activityDomain.setActivityId(activity.getId());
-            activityDomain.setActivityName(activity.getName());
-            activityDomain.setActivityType(activity.getType());
-            activityDomain.setActivityDescription(activity.getDescription());
-
-            String ageRange = String.join(
-                    " - ",
-                    activity.getFromAge().toString(),
-                    activity.getToAge().toString());
-
-            activityDomain.setAgeRange(ageRange);
-            activityDomain.setProviderId(activity.getProvider().getId());
-            activityDomain.setProviderName(activity.getProvider().getDescription());
-            activityDomain.setLocation(activity.getProvider().getAddress());
-            activityDomain.setStartDate(activity.getSchedule().getStartDate());
-            activityDomain.setEndDate(activity.getSchedule().getEndDate());
-            activityDomain.setStartTime(activity.getSchedule().getStartTime());
-            activityDomain.setEndTime(activity.getSchedule().getEndTime());
-            activityDomain.setDayOfWeek(activity.getSchedule().getDayOfWeek());
-            activityDomains.add(activityDomain);
-        });
+        activities.forEach(activity ->
+            activityDomains.add(getActivityDomain(activity))
+        );
 
         return activityDomains;
+    }
+
+    public ActivityDomain getById(Long id) {
+        Activity activity = this.activityRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("ID " + id + " Not found"));
+
+        return getActivityDomain(activity);
+    }
+
+    private ActivityDomain getActivityDomain(Activity activity) {
+        ActivityDomain activityDomain = new ActivityDomain();
+
+        activityDomain.setActivityId(activity.getId());
+        activityDomain.setName(activity.getName());
+        activityDomain.setType(activity.getType());
+        activityDomain.setDescription(activity.getDescription());
+
+        String ageRange = String.join(
+                " - ",
+                activity.getFromAge().toString(),
+                activity.getToAge().toString());
+
+        activityDomain.setAgeRange(ageRange);
+
+        activityDomain.setCost(activity.getCost());
+        activityDomain.setImageUrls(activity.getImageUrls());
+        activityDomain.setProviderId(activity.getProvider().getId());
+        activityDomain.setProviderName(activity.getProvider().getName());
+        activityDomain.setLocation(activity.getProvider().getAddress());
+        activityDomain.setStartDate(activity.getSchedule().getStartDate());
+        activityDomain.setEndDate(activity.getSchedule().getEndDate());
+        activityDomain.setStartTime(activity.getSchedule().getStartTime());
+        activityDomain.setEndTime(activity.getSchedule().getEndTime());
+        activityDomain.setDayOfWeek(activity.getSchedule().getDayOfWeek());
+
+        return activityDomain;
     }
 }

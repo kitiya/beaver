@@ -1,5 +1,6 @@
 package com.kitiya.beaver.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -41,28 +42,12 @@ public class Activity {
     @JsonProperty("providerName")
     private Provider provider;
 
-    @Column(name = "location")
-    private String location;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="schedule_id", referencedColumnName = "id")
     private Schedule schedule;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "start_date")
-    private Date startDate;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "end_date")
-    private Date endDate;
-
-    @Temporal(TemporalType.TIME)
-    @Column(name = "start_time")
-    private Date startTime;
-
-    @Temporal(TemporalType.TIME)
-    @Column(name = "end_time")
-    private Date endTime;
+    @Column(name = "cost")
+    private Long cost;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -78,43 +63,9 @@ public class Activity {
     @ElementCollection(targetClass = String.class)
     private List<String> imageUrls;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name="day_of_week")
-    private DayOfWeek dayOfWeek;
-
-    @Column(name = "cost")
-    private BigDecimal cost;
-
     public Activity() {}
 
-    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, Provider provider, String location, Date startDate, Date endDate, Date startTime, Date endTime, Date createdDate, Date modifiedDate, List<String> imageUrls, DayOfWeek dayOfWeek, BigDecimal cost) {
-        this.name = name;
-        this.type = type;
-        this.description = description;
-        this.fromAge = fromAge;
-        this.toAge = toAge;
-        this.provider = provider;
-        this.location = location;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.createdDate = new Date();
-        this.modifiedDate = modifiedDate;
-        this.imageUrls = imageUrls;
-        this.dayOfWeek = dayOfWeek;
-        this.cost = cost;
-    }
-
-    public Activity(@NotBlank String name, ActivityType type, String description) {
-        this.name = name;
-        this.type = ActivityType.MUSIC;
-        this.description = description;
-        this.createdDate = new Date();
-        this.modifiedDate = new Date();
-    }
-
-    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, Provider provider, Schedule schedule, Date createdDate, Date modifiedDate, List<String> imageUrls, BigDecimal cost) {
+    public Activity(@NotBlank String name, ActivityType type, String description, Integer fromAge, Integer toAge, Provider provider, Schedule schedule, Date createdDate, Date modifiedDate, List<String> imageUrls, Long cost) {
         this.name = name;
         this.type = type;
         this.description = description;
@@ -184,14 +135,6 @@ public class Activity {
         this.provider = provider;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     public Schedule getSchedule() {
         return schedule;
     }
@@ -200,36 +143,12 @@ public class Activity {
         this.schedule = schedule;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Long getCost() {
+        return cost;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setCost(Long cost) {
+        this.cost = cost;
     }
 
     public Date getCreatedDate() {
@@ -254,21 +173,5 @@ public class Activity {
 
     public void setImageUrls(List<String> imageUrls) {
         this.imageUrls = imageUrls;
-    }
-
-    public DayOfWeek getDayOfWeek() {
-        return dayOfWeek;
-    }
-
-    public void setDayOfWeek(DayOfWeek dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
-
-    public BigDecimal getCost() {
-        return cost;
-    }
-
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
     }
 }

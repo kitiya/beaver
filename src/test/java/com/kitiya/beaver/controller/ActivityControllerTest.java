@@ -45,12 +45,12 @@ public class ActivityControllerTest {
         mockActivity.setName("Test Activity");
         mockActivity.setType(ActivityType.MUSIC);
         mockActivity.setDescription("test description");
-        mockActivity.setStartDate(DATE_FORMAT.parse("2019-08-01"));
-        mockActivity.setEndDate(DATE_FORMAT.parse("2019-08-31"));
+//        mockActivity.setStartDate(DATE_FORMAT.parse("2019-08-01"));
+//        mockActivity.setEndDate(DATE_FORMAT.parse("2019-08-31"));
 
         mockActivityList.add(mockActivity);
 
-        given(activityRepository.findByDate(dateParam)).willReturn(mockActivityList);
+//        given(activityRepository.findByDate(dateParam)).willReturn(mockActivityList);
         this.mockMvc.perform(get("/api/activities/date/2019-08-15")).andExpect(status().isOk()).andExpect(content().string(containsString("Test Activity")));
     }
 }

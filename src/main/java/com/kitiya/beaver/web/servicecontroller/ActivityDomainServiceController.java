@@ -3,10 +3,7 @@ package com.kitiya.beaver.web.servicecontroller;
 import com.kitiya.beaver.business.domain.ActivityDomain;
 import com.kitiya.beaver.business.service.ActivityDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -25,5 +22,10 @@ public class ActivityDomainServiceController {
     @GetMapping(value = "/domain-activities")
     Collection<ActivityDomain> getAllAcivitiesWithProvider() {
         return (Collection<ActivityDomain>) this.activityDomainService.getAllActivitiesWithProviders();
+    }
+
+    @GetMapping(value="/domain-activities/{id}")
+    ActivityDomain activityDomain(@PathVariable Long id) {
+        return activityDomainService.getById(id);
     }
 }
