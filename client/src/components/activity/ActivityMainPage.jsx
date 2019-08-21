@@ -16,20 +16,14 @@ class ActivityMainPage extends React.Component {
         };
     }
 
-    // componentDidMount() {
-    //     fetch('http://localhost:8080/api/activities')
-    //     .then(response => response.json())
-    //     .then(activities => this.setState({activities}));
-    // }
-
     componentDidMount() {
-        fetch('http://localhost:8080/api/activities')
+        fetch('http://localhost:8080/api/domain-activities')
         .then(response => response.json())
         .then(activities => this.setState({activities}));
     }
 
     onActivityClick = (id) => {
-        fetch('http://localhost:8080/api/activities/'+id)
+        fetch('http://localhost:8080/api/domain-activities/'+id)
         .then(response => response.json())
         .then(activity => this.setState({ selectedActivity: activity }));
     }

@@ -16,14 +16,14 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
     List<Activity> findByNameContainingOrderByModifiedDateDesc(String likeName);
 
 
-    List<Activity> findByProviderContaining(String likeProvider);
+    //List<Activity> findByProviderContaining(String likeProvider);
 
     List<Activity> findByType(ActivityType type);
 
-    List<Activity> findByTypeOrProvider(ActivityType type, String Provider);
+    //List<Activity> findByTypeOrProvider(ActivityType type, String Provider);
 
-    @Query("select a from Activity a where a.startDate <= :date and :date <= a.endDate")
-    List<Activity> findByDate(@Param("date") Date date);
+    //@Query("select a from Activity a where a.startDate <= :date and :date <= a.endDate")
+    //List<Activity> findByDate(@Param("date") Date date);
 
     List<Activity> findByFromAge(Integer fromAge);
     List<Activity> findByToAge(Integer toAge);

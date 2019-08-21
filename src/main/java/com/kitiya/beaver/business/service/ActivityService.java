@@ -20,10 +20,10 @@ public class ActivityService {
         this.activityRepository = activityRepository;
         this.providerRepository = providerRepository;
     }
-
-    public Activity createActivity(@NotBlank String name, ActivityType type, String description) {
-        return activityRepository.save(new Activity(name, type,description));
-    }
+//
+//    public Activity createActivity(@NotBlank String name, ActivityType type, String description) {
+//        return activityRepository.save(new Activity(name, type,description));
+//    }
 
     public Iterable<Activity> lookup() {
         return activityRepository.findAll();

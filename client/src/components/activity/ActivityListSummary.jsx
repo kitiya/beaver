@@ -42,9 +42,9 @@ const ActivityListSummary = (props) => {
                         <span className="badge badge-pill badge-danger kty-bg-pinkish px-3 py-1">Cost: ${activity.cost}</span>
                     </div>
                 </div>
-                <p className="text-left">{activity.description}</p>
-                <p className="text-left">Age: {activity.fromAge} - {activity.toAge}</p>
-                <p className="text-left"><span className="lead text-info">{activity.provider}</span> | {activity.location}</p>
+                <p className="text-left">{activity.activityDescription}</p>
+                <p className="text-left">Age: {activity.ageRange}</p>
+                <p className="text-left"><span className="lead text-info">{activity.providerName}</span> | {activity.location}</p>
                 <div className="row mb-3">
                     <span className="col-6">
                         Start Date: {new Date(activity.startDate).toLocaleString('en-US', DATE_OPTIONS)}

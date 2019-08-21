@@ -50,26 +50,26 @@ public class ActivityController {
         return activityRepository.findByType(type);
     }
 
-    @GetMapping(value = "/activities/search", params ="provider")
-    Collection<Activity> activityByProvider(@RequestParam (value="provider") String provider) {
-        return activityRepository.findByProviderContaining(provider);
-    }
+//    @GetMapping(value = "/activities/search", params ="provider")
+//    Collection<Activity> activityByProvider(@RequestParam (value="provider") String provider) {
+//        return activityRepository.findByProviderContaining(provider);
+//    }
 
-    @GetMapping("/activities/date/{dateString}")
-    Collection<Activity> activityByDate(@PathVariable String dateString) {
-        Date date = null;
-        if(dateString != null) {
-            try {
-                date = DATE_FORMAT.parse(dateString);
-            } catch (ParseException e) {
-                date = new Date();
-            }
-        } else {
-            date = new Date();
-        }
-
-        return activityRepository.findByDate(date);
-    }
+//    @GetMapping("/activities/date/{dateString}")
+//    Collection<Activity> activityByDate(@PathVariable String dateString) {
+//        Date date = null;
+//        if(dateString != null) {
+//            try {
+//                date = DATE_FORMAT.parse(dateString);
+//            } catch (ParseException e) {
+//                date = new Date();
+//            }
+//        } else {
+//            date = new Date();
+//        }
+//
+//        return activityRepository.findByDate(date);
+//    }
 
     @GetMapping("/activities/from-age/{fromAge}")
     Collection<Activity> activitybyFromAge(@PathVariable Integer fromAge) {

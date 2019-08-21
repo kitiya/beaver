@@ -26,9 +26,11 @@ public class Provider {
     @Column(name = "address")
     private String address;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "city")
     private City city;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "province")
     private Province province;
 

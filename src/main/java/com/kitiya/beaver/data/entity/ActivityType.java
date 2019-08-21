@@ -11,7 +11,8 @@ public enum ActivityType {
     MUSIC ("Music"),
     SCIENCE_TECH ("ScienceTech"),
     SPORT ("sport"),
-    WATER_SPORT ("WaterSport");
+    WATER_SPORT ("WaterSport"),
+    OTHER("Other");
 
     private final String name;
 

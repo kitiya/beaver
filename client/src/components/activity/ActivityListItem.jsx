@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const ActivityListItem = ({ activity, favorited, onClick, onFavorited }) => (
     <li
-        key={activity.id}
+        key={activity.activityId}
         className="list-group-item text-right px-3 py-1"
-        onClick={() => onClick(activity.id)}
+        onClick={() => onClick(activity.activityId)}
     >
         <i
             className={
@@ -15,11 +15,11 @@ const ActivityListItem = ({ activity, favorited, onClick, onFavorited }) => (
             }
             onClick = {e => {
                             e.stopPropagation();
-                            onFavorited(activity.id);
+                            onFavorited(activity.activityId);
                         }}
         ></i>
-        <span>{activity.name}</span><br/>
-        <span className="font-weight-bold text-info"> {activity.provider}</span>
+        <span>{activity.activityName}</span><br/>
+        <span className="font-weight-bold text-info"> {activity.providerName}</span>
     </li>
 )
 
