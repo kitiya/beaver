@@ -1,9 +1,10 @@
 package com.kitiya.beaver.web.appcontroller;
 
+import com.kitiya.beaver.business.service.ActivityService;
 import com.kitiya.beaver.data.entity.Activity;
 import com.kitiya.beaver.data.entity.ActivityType;
 import com.kitiya.beaver.data.repository.ActivityRepository;
-import org.springframework.data.domain.Sort;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +22,17 @@ public class ActivityController {
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     private ActivityRepository activityRepository;
+    private ActivityService activityService;
 
-    public ActivityController(ActivityRepository activityRepository) {
+    @Autowired
+    public ActivityController(ActivityRepository activityRepository, ActivityService activityService) {
         this.activityRepository = activityRepository;
+        this.activityService = activityService;
     }
 
     @GetMapping("/activities")
-    Collection<Activity> activities() {
-        return (Collection<Activity>) activityRepository.findAll(Sort.by(Sort.Direction.DESC,"modifiedDate"));
+    Iterable<Activity> activities() {
+        return activityService.getAllActivities();
     }
 
     @GetMapping("/activities/{id}")
@@ -84,9 +88,9 @@ public class ActivityController {
         return activityRepository.findByAge(age);
     }
 
-    @PostMapping("/activities")
-    ResponseEntity<Activity> createActivity(@Valid @RequestBody Activity activity) throws URISyntaxException {
-        Activity result = activityRepository.save(activity);
+    @PostMapping("/activity")
+    ResponseEntity<Activity> addActivity(@Valid @RequestBody Activity activity) throws URISyntaxException {
+        Activity result = activityService.addActivity(activity);
         return ResponseEntity.ok().body(result);
     }
 }

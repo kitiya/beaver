@@ -1,22 +1,45 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
+const TextInput = ({children, ...props}) => {
+    return (
+        <input
+            type="text"
+            className="form-control"
+            {...props}
+        />
+    );
+};
+
 const AddActivity = (props) => {
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
+    const [fromAge, setFromAge] = useState('');
+    const [toAge, setToAge] = useState('');
+    const [cost, setCost] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [imageUrl2, setImageUrl2] = useState('');
+    const [imageUrl3, setImageUrl3] = useState('');
 
     const handleSubmit = (event) => {
         //event.preventDefault();  // prevent the form to refresh the pages
 
         let newActivity = {
             name: name,
+            provider: {
+                name: "Kitiya Academy"
+            },
             type: type,
             description: description,
+            fromAge: fromAge,
+            toAge: toAge,
+            cost: cost,
+            imageUrls: [imageUrl, imageUrl2, imageUrl3],
         }
         console.log(newActivity);
 
-        fetch("http://localhost:8080/api/activities", {
+        fetch("http://localhost:8080/api/activity", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -26,8 +49,8 @@ const AddActivity = (props) => {
         .then(response => response.json());
         
         let redirectUrl = `/activities`;
-        //window.location.reload();
         props.history.push(redirectUrl);
+        window.location.reload();
     };
 
     return(
@@ -35,35 +58,97 @@ const AddActivity = (props) => {
             <form onSubmit={handleSubmit} className="mx-auto p-3 border rounded">
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
-                    <input required type="text" className="form-control" placeholder="Activity Name" 
+                    <input required type="text" id="name" className="form-control" placeholder="Activity Name" 
                         value={name}
                         onChange={(e)=>setName(e.target.value)}
                     />
                 </div>
-                {/* <div className="form-group">
-                    <label htmlFor="type">Activity Type:</label>
-                    <input type="text" className="form-control" placeholder="Activity Type" 
-                        value={type}
-                        onChange={(e)=>setType(e.target.value)}
-                    />
-                </div> */}
-                <div className="form-group">
-                    <label for="activityTypeSelect">Activity Type</label>
-                    <select className="form-control" id="activityTypeSelect"
-                            value={type}
-                            onChange={(e)=>setType(e.target.value)}
-                    >
-                        <option value="ACADEMICS">Academics</option>
-                        <option value="ART_CRAFT">Art &amp; Craft</option>
-                        <option value="DANCE">Dance</option>
-                        <option value="GYMNASTICS">Gymnastics</option>
-                        <option value="MARTIAL_ARTS">Martial Arts</option>
-                        <option value="MUSIC">Music</option>
-                        <option value="SCIENCE_TECH">Science &amp; Technology</option>
-                        <option value="SPORT">Sport</option>
-                        <option value="WATER_SPORT">Water Sport</option>
-                    </select>
+                <div className="row">
+                    <div className="col-md-6 form-group">
+                        <label htmlFor="activityTypeSelect">Activity Type:</label>
+                        <select className="form-control" id="activityTypeSelect"
+                                value={type}
+                                onChange={(e)=>setType(e.target.value)}
+                        >
+                            <option value="ALL" selected>Any</option>    
+                            <option value="ACADEMICS">Academics</option>
+                            <option value="ART_CRAFT">Art &amp; Craft</option>
+                            <option value="DANCE">Dance</option>
+                            <option value="GYMNASTICS">Gymnastics</option>
+                            <option value="MARTIAL_ARTS">Martial Arts</option>
+                            <option value="MUSIC">Music</option>
+                            <option value="SCIENCE_TECH">Science &amp; Technology</option>
+                            <option value="SPORT">Sport</option>
+                            <option value="WATER_SPORT">Water Sport</option>
+                        </select>
+                    </div>
+                    <div className="col-md-6 form-group">
+                        <label htmlFor="cost">Cost:</label>
+                        <input required type="text" pattern="[0-9]*" id="cost" className="form-control" placeholder="Cost" 
+                            value={cost}
+                            onChange={(e)=>setCost(e.target.value)}
+                        />
+                    </div>
                 </div>
+                <div className="row">
+                    <div className="col-md-6 form-group">
+                        <label htmlFor="fromAgeSelect">From Age:</label>
+                        <select className="form-control" id="fromAgeSelect"
+                                value={fromAge}
+                                onChange={(e)=>setFromAge(e.target.value)}
+                        >
+                            <option value="0.5">Less than 1 yr</option>
+                            <option value="1">1 yr</option>
+                            <option value="2">2 yrs</option>
+                            <option value="3">3 yrs</option>
+                            <option value="4">4 yrs</option>
+                            <option value="5">5 yrs</option>
+                            <option value="6">6 yrs</option>
+                            <option value="7">7 yrs</option>
+                            <option value="8">8 yrs</option>
+                            <option value="9">9 yrs</option>
+                            <option value="10">10 yrs</option>
+                            <option value="11">11 yrs</option>
+                            <option value="12">12 yrs</option>
+                            <option value="13">13 yrs</option>
+                            <option value="14">14 yrs</option>
+                            <option value="15">15 yrs</option>
+                            <option value="16">16 yrs</option>
+                            <option value="17">17 yrs</option>
+                            <option value="18">18 yrs</option>
+                            <option value="98">More than 18 yrs</option>
+                        </select>
+                    </div>
+                    <div className="col-md-6 form-group">
+                        <label htmlFor="toAgeSelect">To Age:</label>
+                        <select className="form-control" id="toAgeSelect"
+                                value={toAge}
+                                onChange={(e)=>setToAge(e.target.value)}
+                        >
+                            <option value="0.5">Less than 1 yr</option>
+                            <option value="1">1 yr</option>
+                            <option value="2">2 yrs</option>
+                            <option value="3">3 yrs</option>
+                            <option value="4">4 yrs</option>
+                            <option value="5">5 yrs</option>
+                            <option value="6">6 yrs</option>
+                            <option value="7">7 yrs</option>
+                            <option value="8">8 yrs</option>
+                            <option value="9">9 yrs</option>
+                            <option value="10">10 yrs</option>
+                            <option value="11">11 yrs</option>
+                            <option value="12">12 yrs</option>
+                            <option value="13">13 yrs</option>
+                            <option value="14">14 yrs</option>
+                            <option value="15">15 yrs</option>
+                            <option value="16">16 yrs</option>
+                            <option value="17">17 yrs</option>
+                            <option value="18">18 yrs</option>
+                            <option value="98">More than 18 yrs</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div className="form-group">
                     <label htmlFor="description">Description:</label>
                     <textarea type="text" className="form-control" placeholder="Description" rows="4"
@@ -72,7 +157,41 @@ const AddActivity = (props) => {
                     </textarea>
                 </div>
                 <div className="row">
+                        <legend className="mx-3">Image URLs:</legend>
+                        <label className="col-sm-4">
+                            <TextInput required
+                                value={imageUrl}
+                                onChange={(e)=> setImageUrl(e.target.value)}
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                placeholder="image url #1"
+                            />
+                        </label>
+                        <label className="col-sm-4">
+                            <TextInput required
+                                value={imageUrl2}
+                                onChange={(e)=> setImageUrl2(e.target.value)}
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                placeholder="image url #2"
+                            />
+                        </label>
+                        <label className="col-sm-4">
+                            <TextInput required
+                                value={imageUrl3}
+                                onChange={(e)=> setImageUrl3(e.target.value)}
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                placeholder="image url #3"
+                            />
+                        </label>
+                    </div>
+                {/* <div className="row">
                     <button type="submit" className="btn btn-info  mx-auto" name="action">Save</button>
+                </div> */}
+                <div className="row justify-content-center">
+                    <button type="submit" className="btn btn-info  mx-2">Submit</button>
+                    <button className="btn btn-info  mx-2">Cancel</button>
                 </div>
             </form>
         </div>

@@ -60,7 +60,7 @@ public class Provider {
     @LastModifiedDate
     private Date modifiedDate = new Date();
 
-    @OneToMany(fetch=FetchType.EAGER,mappedBy = "provider", cascade = CascadeType.ALL)
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "provider", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Activity> activities = new ArrayList<>();
 
