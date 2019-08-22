@@ -30,11 +30,11 @@ const ActivityListSummary = (props) => {
             <div className="card-body text-center border rounded">
                 <h5 className="card-title bg-info text-light p-2 rounded">{activity.name}</h5>
                 <div className="row mb-2">
-                {props.activity.imageUrls.map( (url, index) => (
-                    <div key={index} className="col-4">
-                        <img className="card-img-top rounded border" src={url} alt={activity.name} />
-                    </div>
-                ))}
+                    {activity.imageUrls.map( (url, index) => (
+                        <div key={index} className="col-4">
+                            <img className="card-img-top rounded border" src={url} alt={activity.name} />
+                        </div>
+                    ))}
                 </div>
                 <div className="row">
                     <span className="col-6 text-left">{activity.type}</span>
@@ -44,17 +44,17 @@ const ActivityListSummary = (props) => {
                 </div>
                 <p className="text-left">{activity.description}</p>
                 <p className="text-left">Age: {activity.ageRange}</p>
-                <p className="text-left"><span className="lead text-info">{activity.providerName}</span> | {activity.location}</p>
+                <p className="text-left"><span className="lead text-info">{activity.provider.name}</span> | {activity.provider.streetAddress}</p>
                 <div className="row mb-3">
                     <span className="col-6">
-                        Start Date: {new Date(activity.startDate).toLocaleString('en-US', DATE_OPTIONS)}
+                        Start Date: {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)}
                         <br/>
-                        End Date: {new Date(activity.endDate).toLocaleString('en-US', DATE_OPTIONS)}
+                        End Date: {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)}
                     </span>
                     <span className="col-6">
-                        Start Time: {new Date('1970-01-01T' + activity.startTime).toLocaleString('en-US', TIME_OPTIONS)}
+                        Start Time: {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)}
                         <br/>
-                        End Time: {new Date('1970-01-01T' + activity.endTime).toLocaleString('en-US', TIME_OPTIONS)}
+                        End Time: {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
                     </span>
                 </div>
                 <div className="mb-3 text-left">

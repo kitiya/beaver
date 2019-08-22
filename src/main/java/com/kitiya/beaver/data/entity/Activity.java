@@ -36,7 +36,6 @@ public class Activity {
     private Integer toAge;
 
     @ManyToOne
-    @JsonProperty("providerName")
     private Provider provider;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -181,4 +180,6 @@ public class Activity {
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
+    public String getAgeRange() {return this.fromAge + " - " + this.getToAge() + " yrs";}
 }
