@@ -56,7 +56,7 @@ public class ActivityDomainService {
         activityDomain.setImageUrls(activity.getImageUrls());
         activityDomain.setProviderId(activity.getProvider().getId());
         activityDomain.setProviderName(activity.getProvider().getName());
-        activityDomain.setLocation(activity.getProvider().getAddress());
+        activityDomain.setLocation(activity.getProvider().getStreetAddress());
         activityDomain.setStartDate(activity.getSchedule().getStartDate());
         activityDomain.setEndDate(activity.getSchedule().getEndDate());
         activityDomain.setStartTime(activity.getSchedule().getStartTime());

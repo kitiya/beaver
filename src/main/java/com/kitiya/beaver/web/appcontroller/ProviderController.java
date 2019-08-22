@@ -2,6 +2,7 @@ package com.kitiya.beaver.web.appcontroller;
 
 import com.kitiya.beaver.data.entity.Provider;
 import com.kitiya.beaver.data.repository.ProviderRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class ProviderController {
 
     @GetMapping("/providers")
     Collection<Provider> providers() {
-        return (Collection<Provider>) providerRepository.findAll();
+        return (Collection<Provider>) providerRepository.findAll(Sort.by(Sort.Direction.DESC, "modifiedDate"));
     }
 
     @GetMapping("/providers/{id}")

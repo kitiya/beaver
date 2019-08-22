@@ -49,8 +49,8 @@ const ProviderList = () => {
                                         ))}
                                     </div>
                                     <p>{provider.description}</p>
-                                    <p>Address: {provider.address}, {provider.city}, {provider.province}</p>
-                                    <p>Website: {provider.website}</p>
+                                    <p>Address: {provider.streetAddress}, {provider.city}, {provider.province}</p>
+                                    <p>Website: <a href={provider.website} target="_blank" rel="noopener noreferrer">{provider.website}</a></p>
                                     <p className="row justify-content-end">
                                         <NavLink
                                             className="mr-3"
