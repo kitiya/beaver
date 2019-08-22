@@ -44,7 +44,12 @@ const ActivityListSummary = (props) => {
                 </div>
                 <p className="text-left">{activity.description}</p>
                 <p className="text-left">Age: {activity.ageRange}</p>
-                <p className="text-left"><span className="lead text-info">{activity.provider.name}</span> | {activity.provider.streetAddress}</p>
+                <p className="text-left"><span className="lead text-info">
+                    {activity.provider.name}</span> | 
+                    {activity.provider.streetAddress}, 
+                    {activity.provider.city}, 
+                    {activity.provider.province}
+                </p>
                 <div className="row mb-3">
                     <span className="col-6">
                         Start Date: {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)}

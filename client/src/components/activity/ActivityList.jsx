@@ -8,9 +8,9 @@ const ActivityList = ({ activities, favorites, ...props }) => (
         <ul className="list-group">
             {activities.map(activity => (
                 <ActivityListItem
-                    key={ activity.activityId }
+                    key={ activity.id }
                     activity = { activity }
-                    favorited = { favorites.includes(activity.activityId) }
+                    favorited = { favorites.includes(activity.id) }
                     {...props}
                 ></ActivityListItem>
             ))}

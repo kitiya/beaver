@@ -177,8 +177,8 @@ const AddProviderForm = (props) => {
                 </fieldset>
 
                 <div className="row justify-content-center">
-                    <button type="submit" className="btn btn-outline-info  mx-2">Submit</button>
-                    <button className="btn btn-outline-info  mx-2">Cancel</button>
+                    <button type="submit" className="btn btn-info  mx-2">Submit</button>
+                    <button className="btn btn-info  mx-2">Cancel</button>
                 </div>
 
             </form>
