@@ -8,6 +8,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.9.0",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
@@ -36,6 +37,10 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^1.6.1"
+    "css-loader": "^3.2.0",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "moment": "^2.24.0",
+    "react-big-calendar": "^0.22.0",
+    "style-loader": "^1.0.0"
   }
 }
