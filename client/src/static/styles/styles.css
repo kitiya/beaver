@@ -108,3 +108,31 @@ h1, h2, h3, h4, h5, h6 {
 h1, h2 {
     font-family: var(--font-family-serif);
 }
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+    border-radius: .25rem;
+    border: 1px solid #ced4da;
+    padding: .2rem .75rem;
+}
+
+.react-datepicker-popper,
+.react-datepicker__time-container,
+.react-datepicker--time-only,
+.react-datepicker__time-box,
+.react-datepicker__time-list{
+    width: 150px !important;
+}
+
+.react-datepicker-wrapper {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+

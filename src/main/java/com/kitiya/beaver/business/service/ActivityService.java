@@ -34,7 +34,8 @@ public class ActivityService {
 
     public Activity addActivity(Activity activity) {
         //Optional<Provider> lookedUpProvider = providerRepository.findById(Long.valueOf(100));
-        Provider lookedUpProvider = providerRepository.findByName("Kitiya Academy");
+        //Provider lookedUpProvider = providerRepository.findByName("Kitiya Academy");
+        Provider lookedUpProvider = providerRepository.findByName(activity.getProvider().getName());
 
         if (lookedUpProvider != null) {
             activity.setProvider(lookedUpProvider);
@@ -67,12 +68,17 @@ public class ActivityService {
 
         Schedule schedule = new Schedule();
         try {
-            schedule.setStartDate(dateFormatter.parse("01-09-2019"));
-            schedule.setEndDate(dateFormatter.parse("31-12-2019"));
-            schedule.setStartTime(timeFormatter.parse("13:00"));
-            schedule.setEndTime(timeFormatter.parse("14:00"));
+//            schedule.setStartDate(dateFormatter.parse("21-08-2019"));
+//            schedule.setEndDate(dateFormatter.parse("31-12-2019"));
+//            schedule.setStartTime(timeFormatter.parse("13:00"));
+//            schedule.setEndTime(timeFormatter.parse("14:00"));
+            schedule.setStartDate(activity.getSchedule().getStartDate());
+            schedule.setEndDate(activity.getSchedule().getEndDate());
+            schedule.setStartTime(activity.getSchedule().getStartTime());
+            schedule.setEndTime(activity.getSchedule().getEndTime());
             schedule.setDayOfWeek(DayOfWeek.THURSDAY);
-        } catch (ParseException e) {
+            //} catch (ParseException e) {
+        } catch(Exception e){
             e.printStackTrace();
         }
         activity.setSchedule(schedule);
