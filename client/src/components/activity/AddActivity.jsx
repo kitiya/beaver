@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import NumberFormat from 'react-number-format';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -90,7 +91,7 @@ const AddActivity = (props) => {
                                 // value={providerName}
                                 onChange={(e)=>setProviderName(e.target.value)}
                         >
-                            <option value="NA" disabled>Select one...</option>    
+                            <option value="NA">Select one...</option>    
                             <option value="Can-Am Gymnastics Club">Can-Am Gymnastics Club</option>
                             <option value="Canlan Ice Sports - Jemini">Canlan Ice Sports - Jemini</option>    
                             <option value="Aspire Dance Studio">Aspire Dance Studio</option>
@@ -109,7 +110,7 @@ const AddActivity = (props) => {
                                 value={type}
                                 onChange={(e)=>setType(e.target.value)}
                         >
-                            <option value="NA" disabled>Select one...</option>    
+                            <option value="NA">Select one...</option>    
                             <option value="ACADEMICS">Academics</option>
                             <option value="ART_CRAFT">Art &amp; Craft</option>
                             <option value="DANCE">Dance</option>
@@ -122,11 +123,29 @@ const AddActivity = (props) => {
                             <option value="OTHER">Other</option>
                         </select>
                     </div>
-                    <div className="col-md-6 form-group">
+                    <div className="col-md-3 form-group">
                         <label htmlFor="cost">Cost:</label>
-                        <input required type="text" pattern="[0-9]*" id="cost" className="form-control" placeholder="Cost" 
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">$</span>
+                            </div>
+                            <input required type="text" pattern="[0-9]*" id="cost" className="form-control" placeholder="" 
+                                value={cost}
+                                onChange={(e)=>setCost(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div className="col-md-3 form-group">
+                        <label htmlFor="cost">Cost:</label>
+                        <NumberFormat 
+                            required
+                            className="form-control" id="cost"
+                            thousandSeparator={true} prefix={'$'} 
                             value={cost}
-                            onChange={(e)=>setCost(e.target.value)}
+                            onValueChange={(values)=> {
+                                const {formattedValue, value} = values;
+                                setCost(value);
+                            }}                        
                         />
                     </div>
                 </div>
@@ -138,6 +157,7 @@ const AddActivity = (props) => {
                                 value={fromAge}
                                 onChange={(e)=>setFromAge(e.target.value)}
                         >
+                            <option value="NA">Select one...</option>
                             <option value="0.5">Less than 1 yr</option>
                             <option value="1">1 yr</option>
                             <option value="2">2 yrs</option>
@@ -166,6 +186,7 @@ const AddActivity = (props) => {
                                 value={toAge}
                                 onChange={(e)=>setToAge(e.target.value)}
                         >
+                            <option value="NA">Select one...</option>
                             <option value="0.5">Less than 1 yr</option>
                             <option value="1">1 yr</option>
                             <option value="2">2 yrs</option>
@@ -234,18 +255,21 @@ const AddActivity = (props) => {
                     <div className="row">
                         <div className="col-lg-3 col-sm-6">
                             <DatePicker
+                                className="form-control"
                                 selected={scheduledStartDate}
                                 onChange={(e)=>setScheduledStartDate(e)}
                             />
                         </div>
                         <div className="col-lg-3 col-sm-6">
                             <DatePicker 
+                                className="form-control"
                                 selected={scheduledEndDate}
                                 onChange={(e)=>setScheduledEndDate(e)} 
                             />
                         </div>
                         <div className="col-lg-3 col-sm-6">
                             <DatePicker
+                                className="form-control"
                                 selected={scheduledStartTime}
                                 onChange={(e)=>setScheduledStartTime(e)}
                                 showTimeSelect
@@ -256,6 +280,7 @@ const AddActivity = (props) => {
                         </div>
                         <div className="col-lg-3 col-sm-6">
                             <DatePicker 
+                                className="form-control"
                                 selected={ scheduledEndTime }
                                 onChange={(e)=>setScheduledEndTime(e)}
                                 showTimeSelect
