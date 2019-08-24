@@ -5,7 +5,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 class SearchForm extends React.Component {
     render() {
         return (
-            <form className="my-2 mx-auto">
+            <form className="mt-3 mb-2 mx-auto">
                 <div className="form-group row mb-0 justify-content-center">
                     <div className="mx-2">
                         <input type="text" className="form-control" ref="date" placeholder="What date?" />

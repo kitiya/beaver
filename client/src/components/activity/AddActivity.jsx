@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import NumberFormat from 'react-number-format';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -14,6 +13,12 @@ const TextInput = ({children, ...props}) => {
         />
     );
 };
+
+// const addDays = (date, days) => {
+//     let result = new Date(date);
+//     result.setDate(result.getDate() + days);
+//     return result;
+// };
 
 const AddActivity = (props) => {
     const [name, setName] = useState('');
@@ -30,6 +35,7 @@ const AddActivity = (props) => {
     const [scheduledEndDate, setScheduledEndDate] = useState('');
     const [scheduledStartTime, setScheduledStartTime] = useState('');
     const [scheduledEndTime, setScheduledEndTime] = useState('');
+    const [scheduledDayOfWeek, setScheduledDayOfWeek] = useState('');
 
     const handleSubmit = (event) => {
         //event.preventDefault();  // prevent the form to refresh the pages
@@ -43,6 +49,7 @@ const AddActivity = (props) => {
             endDate: scheduledEndDate,
             startTime: scheduledStartTime,
             endTime: scheduledEndTime,
+            dayOfWeek: scheduledDayOfWeek,
         }
 
         let newActivity = {
@@ -72,20 +79,21 @@ const AddActivity = (props) => {
         //window.location.reload();
     };
 
+
     return(
         <div className="container pt-3">
             <h2 className="text-info">Add New Activity</h2>
             <form className="mx-auto p-3 border rounded">
                 <div className="row">
                     <div className="col-md-6 form-group">
-                        <label htmlFor="name">Name:</label>
+                        <label htmlFor="name">Name</label>
                         <input required type="text" id="name" className="form-control" placeholder="Activity Name" 
                             value={name}
                             onChange={(e)=>setName(e.target.value)}
                         />
                     </div>
                     <div className="col-md-6 form-group">
-                        <label htmlFor="providerSelect">Provider:</label>
+                        <label htmlFor="providerSelect">Provider</label>
                         <select className="form-control" id="providerSelect"
                                 defaultValue={'OTHER'}
                                 // value={providerName}
@@ -105,7 +113,7 @@ const AddActivity = (props) => {
 
                 <div className="row">
                     <div className="col-md-6 form-group">
-                        <label htmlFor="activityTypeSelect">Activity Type:</label>
+                        <label htmlFor="activityTypeSelect">Activity Type</label>
                         <select className="form-control" id="activityTypeSelect"
                                 value={type}
                                 onChange={(e)=>setType(e.target.value)}
@@ -123,8 +131,8 @@ const AddActivity = (props) => {
                             <option value="OTHER">Other</option>
                         </select>
                     </div>
-                    <div className="col-md-3 form-group">
-                        <label htmlFor="cost">Cost:</label>
+                    <div className="col-md-6 form-group">
+                        <label htmlFor="cost">Cost</label>
                         <div className="input-group">
                             <div className="input-group-prepend">
                                 <span className="input-group-text">$</span>
@@ -135,24 +143,11 @@ const AddActivity = (props) => {
                             />
                         </div>
                     </div>
-                    <div className="col-md-3 form-group">
-                        <label htmlFor="cost">Cost:</label>
-                        <NumberFormat 
-                            required
-                            className="form-control" id="cost"
-                            thousandSeparator={true} prefix={'$'} 
-                            value={cost}
-                            onValueChange={(values)=> {
-                                const {formattedValue, value} = values;
-                                setCost(value);
-                            }}                        
-                        />
-                    </div>
                 </div>
 
                 <div className="row">
                     <div className="col-md-6 form-group">
-                        <label htmlFor="fromAgeSelect">From Age:</label>
+                        <label htmlFor="fromAgeSelect">From Age</label>
                         <select className="form-control" id="fromAgeSelect"
                                 value={fromAge}
                                 onChange={(e)=>setFromAge(e.target.value)}
@@ -181,7 +176,7 @@ const AddActivity = (props) => {
                         </select>
                     </div>
                     <div className="col-md-6 form-group">
-                        <label htmlFor="toAgeSelect">To Age:</label>
+                        <label htmlFor="toAgeSelect">To Age</label>
                         <select className="form-control" id="toAgeSelect"
                                 value={toAge}
                                 onChange={(e)=>setToAge(e.target.value)}
@@ -213,7 +208,7 @@ const AddActivity = (props) => {
 
                 <div className="row">
                     <div className="form-group col-12">
-                        <label htmlFor="description">Description:</label>
+                        <label htmlFor="description">Description</label>
                         <textarea type="text" className="form-control" placeholder="Description" rows="4"
                             value={description}
                             onChange={(e)=>setDescription(e.target.value)}>                
@@ -222,7 +217,70 @@ const AddActivity = (props) => {
                 </div>
 
                 <div className="row">
-                        <legend className="mx-3">Image URLs:</legend>
+                    <div className="col-lg-2 col-sm-6">
+                    <label>Start Date</label>
+                        <DatePicker
+                            placeholderText="Start Date"
+                            className="form-control"
+                            selected={scheduledStartDate}
+                            onChange={(e)=>setScheduledStartDate(e)}
+                            // minDate={new Date()}
+                            // maxDate={addDays(new Date(),5)} // 750 days (~2 years)
+                            
+                        />
+                    </div>
+                    <div className="col-lg-2 col-sm-6">
+                    <label>End Date</label>
+                        <DatePicker 
+                            className="form-control"
+                            selected={scheduledEndDate}
+                            onChange={(e)=>setScheduledEndDate(e)} 
+                        />
+                    </div>
+                    <div className="col-lg-2 col-sm-6">
+                        <label>Start Time</label>
+                        <DatePicker
+                            className="form-control"
+                            selected={scheduledStartTime}
+                            onChange={(e)=>setScheduledStartTime(e)}
+                            showTimeSelect
+                            showTimeSelectOnly
+                            dateFormat="hh:mm a"
+                            timeCaption="Start Time"
+                        />
+                    </div>
+                    <div className="col-lg-2 col-sm-6">
+                        <label>End Time</label>
+                        <DatePicker 
+                            className="form-control"
+                            selected={ scheduledEndTime }
+                            onChange={(e)=>setScheduledEndTime(e)}
+                            showTimeSelect
+                            showTimeSelectOnly
+                            dateFormat="hh:mm a"
+                            timeCaption="End Time"
+                        />
+                    </div>       
+                    <div className="col-md-4 form-group">
+                        <label htmlFor="dayOfWeekSelect">Day of Week</label>
+                        <select className="form-control" id="dayOfWeekSelect"
+                                value={scheduledDayOfWeek}
+                                onChange={(e)=>setScheduledDayOfWeek(e.target.value)}
+                        >
+                            <option value="NA">Select one...</option>
+                            <option value="MONDAY">Monday</option>
+                            <option value="TUESDAY">Tuesday</option>
+                            <option value="WEDNESDAY">Wednesday</option>
+                            <option value="THURSDAY">Thursday</option>
+                            <option value="FRIDAY">Friday</option>
+                            <option value="SATURDAY">Saturday</option>
+                            <option value="SUNDAY">Sunday</option>
+                        </select>
+                    </div>                                     
+                </div>
+
+                <div className="row">
+                        <legend className="mx-3">Image URLs</legend>
                         <label className="col-sm-4">
                             <TextInput required
                                 value={imageUrl}
@@ -250,46 +308,6 @@ const AddActivity = (props) => {
                                 placeholder="image url #3"
                             />
                         </label>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-lg-3 col-sm-6">
-                            <DatePicker
-                                className="form-control"
-                                selected={scheduledStartDate}
-                                onChange={(e)=>setScheduledStartDate(e)}
-                            />
-                        </div>
-                        <div className="col-lg-3 col-sm-6">
-                            <DatePicker 
-                                className="form-control"
-                                selected={scheduledEndDate}
-                                onChange={(e)=>setScheduledEndDate(e)} 
-                            />
-                        </div>
-                        <div className="col-lg-3 col-sm-6">
-                            <DatePicker
-                                className="form-control"
-                                selected={scheduledStartTime}
-                                onChange={(e)=>setScheduledStartTime(e)}
-                                showTimeSelect
-                                showTimeSelectOnly
-                                dateFormat="hh:mm a"
-                                timeCaption="Start Time"
-                            />
-                        </div>
-                        <div className="col-lg-3 col-sm-6">
-                            <DatePicker 
-                                className="form-control"
-                                selected={ scheduledEndTime }
-                                onChange={(e)=>setScheduledEndTime(e)}
-                                showTimeSelect
-                                showTimeSelectOnly
-                                dateFormat="hh:mm a"
-                                timeCaption="End Time"
-                            />
-                        </div>                        
-                        
                     </div>
 
                 <div className="row justify-content-center">

@@ -50,8 +50,8 @@ class ActivityMainPage extends React.Component {
         return (
             <div className="container">
                 <SearchForm></SearchForm>
-                <section className="row mt-3 justify-content-around">
-                    <div className="col-3">
+                <section className="row mt-2 justify-content-around">
+                    <div className="col-md-3" >
                             <ActivityList
                                 activities = { activities }
                                 favorites = { favorites }
@@ -60,12 +60,12 @@ class ActivityMainPage extends React.Component {
                             />
                     </div>
 
-                    <div className="col-9">
+                    <div className="col-md-9">
                             <ActivityListSummary activity={ selectedActivity } />
                     </div>
                 </section>
-                <section className="row justify-content-end pt-3">
-                    <NavLink to={`activities/new`} className="btn bg-success text-white mb-2 px-3 py-1 rounded-pill">Add new activity...</NavLink>
+                <section className="row justify-content-end pt-3 px-3">
+                    <NavLink to={`activities/new`} className="btn bg-info text-white mb-2 px-3 py-1 rounded-pill">Add new activity...</NavLink>
                 </section>
             </div>
         );

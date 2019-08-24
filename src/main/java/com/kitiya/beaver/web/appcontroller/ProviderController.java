@@ -30,6 +30,9 @@ public class ProviderController {
         return providerRepository.findById(id).orElse(null);
     }
 
+    //@GetMapping("/providers/names") //TODO
+
+
     @PostMapping("/providers")
     ResponseEntity<Provider> crateProvider(@Valid @RequestBody Provider provider) {
         Provider result = providerRepository.save(provider);

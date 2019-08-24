@@ -125,12 +125,6 @@ h1, h2 {
 }
 
 .react-datepicker-wrapper {
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
     margin-bottom: 0.75rem;
 }
-
-.react-number-format {
-    display: block;
-    width: 100%;
-}
-

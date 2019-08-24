@@ -8,10 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.util.*;
 
 @Service
@@ -71,7 +67,7 @@ public class ActivityService {
         schedule.setEndDate(activity.getSchedule().getEndDate());
         schedule.setStartTime(activity.getSchedule().getStartTime());
         schedule.setEndTime(activity.getSchedule().getEndTime());
-        schedule.setDayOfWeek(DayOfWeek.THURSDAY);
+        schedule.setDayOfWeek(activity.getSchedule().getDayOfWeek());
         activity.setSchedule(schedule);
 
         return activityRepository.save(activity);
