@@ -70,7 +70,7 @@ public class ProviderLoader implements CommandLineRunner {
         this.providerRepository.save(new Provider(
                 "Canlan Ice Sports - Jemini",
                 "The Canlan Ice Sports Skating Academy offers a wide selection of skating development programs to meet the needs of any child or adult who wishes to skate. Each level of the Canlan Ice Sports Skating Academy.",
-                "2301 Grasswood East Road,",
+                "2301 Grasswood East Road",
                 City.SASKATOON,
                 Province.SK,
                 "https://www.icesports.com/jemini/",

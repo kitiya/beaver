@@ -1,5 +1,6 @@
 package com.kitiya.beaver.web.appcontroller;
 
+import com.kitiya.beaver.business.service.ProviderService;
 import com.kitiya.beaver.data.entity.Provider;
 import com.kitiya.beaver.data.repository.ProviderRepository;
 import org.springframework.data.domain.Sort;
@@ -14,24 +15,27 @@ import java.util.Collection;
 @CrossOrigin(origins = "http://localhost:3000")
 public class ProviderController {
     private ProviderRepository providerRepository;
+    private ProviderService providerService;
 
-    public ProviderController(ProviderRepository providerRepository) {
+    public ProviderController(ProviderService providerService, ProviderRepository providerRepository) {
+        this.providerService = providerService;
         this.providerRepository = providerRepository;
     }
 
     @GetMapping("/providers")
-    Collection<Provider> providers() {
-        return (Collection<Provider>) providerRepository.findAll(Sort.by(Sort.Direction.DESC, "modifiedDate"));
+    Iterable<Provider> getAllProviders() {
+        return providerService.getAllProviders();
     }
 
     @GetMapping("/providers/{id}")
-    Provider provider(@PathVariable Long id) {
-        // returns null if id is invalid. is this okay??
-        return providerRepository.findById(id).orElse(null);
+    Provider getProviderById(@PathVariable Long id) {
+        return providerService.getById(id);
     }
 
-    //@GetMapping("/providers/names") //TODO
-
+    @GetMapping("/providers/names")
+    Iterable<Provider> getAllProviderNames() {
+        return providerService.getAllProviderNames();
+    }
 
     @PostMapping("/providers")
     ResponseEntity<Provider> crateProvider(@Valid @RequestBody Provider provider) {

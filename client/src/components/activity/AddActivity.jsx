@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import DatePicker from "react-datepicker";
@@ -13,12 +13,6 @@ const TextInput = ({children, ...props}) => {
         />
     );
 };
-
-// const addDays = (date, days) => {
-//     let result = new Date(date);
-//     result.setDate(result.getDate() + days);
-//     return result;
-// };
 
 const AddActivity = (props) => {
     const [name, setName] = useState('');
@@ -36,6 +30,29 @@ const AddActivity = (props) => {
     const [scheduledStartTime, setScheduledStartTime] = useState('');
     const [scheduledEndTime, setScheduledEndTime] = useState('');
     const [scheduledDayOfWeek, setScheduledDayOfWeek] = useState('');
+
+    const [providerNameList, setProviderNameList] = useState('');
+
+    const FetchProviderNameList = (initialState, url) => {
+        const [data, setData] = useState(initialState);
+        
+        useEffect(() => {
+            const fetchData = async () => {
+                try {
+                    const response = await fetch(url);
+                    const result = await response.json();
+                    setData({nameList: result});
+                    //console.log(result);
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+            fetchData();
+        }, [url]);
+
+        console.log(data);
+        return {data}
+    }
 
     const handleSubmit = (event) => {
         //event.preventDefault();  // prevent the form to refresh the pages
@@ -79,6 +96,7 @@ const AddActivity = (props) => {
         //window.location.reload();
     };
 
+    const {data} = FetchProviderNameList({nameList: []}, 'http://localhost:8080/api/providers/names');
 
     return(
         <div className="container pt-3">
@@ -99,7 +117,7 @@ const AddActivity = (props) => {
                                 // value={providerName}
                                 onChange={(e)=>setProviderName(e.target.value)}
                         >
-                            <option value="NA">Select one...</option>    
+                            <option value="OTHER">Select one...</option>    
                             <option value="Can-Am Gymnastics Club">Can-Am Gymnastics Club</option>
                             <option value="Canlan Ice Sports - Jemini">Canlan Ice Sports - Jemini</option>    
                             <option value="Aspire Dance Studio">Aspire Dance Studio</option>
@@ -220,13 +238,13 @@ const AddActivity = (props) => {
                     <div className="col-lg-2 col-sm-6">
                     <label>Start Date</label>
                         <DatePicker
-                            placeholderText="Start Date"
                             className="form-control"
                             selected={scheduledStartDate}
                             onChange={(e)=>setScheduledStartDate(e)}
-                            // minDate={new Date()}
-                            // maxDate={addDays(new Date(),5)} // 750 days (~2 years)
-                            
+                            placeholderText="Start Date"
+                            showYearDropdown
+                            minDate={new Date()}
+                            maxDate={new Date().setDate(new Date().getDate() + 750)} // 750 days (~2 years)
                         />
                     </div>
                     <div className="col-lg-2 col-sm-6">
@@ -235,6 +253,9 @@ const AddActivity = (props) => {
                             className="form-control"
                             selected={scheduledEndDate}
                             onChange={(e)=>setScheduledEndDate(e)} 
+                            placeholderText="End Date"
+                            showYearDropdown
+                            minDate={new Date(scheduledStartDate)}
                         />
                     </div>
                     <div className="col-lg-2 col-sm-6">
@@ -246,7 +267,7 @@ const AddActivity = (props) => {
                             showTimeSelect
                             showTimeSelectOnly
                             dateFormat="hh:mm a"
-                            timeCaption="Start Time"
+                            placeholderText="Start Time"
                         />
                     </div>
                     <div className="col-lg-2 col-sm-6">
@@ -258,7 +279,7 @@ const AddActivity = (props) => {
                             showTimeSelect
                             showTimeSelectOnly
                             dateFormat="hh:mm a"
-                            timeCaption="End Time"
+                            placeholderText="End Time"
                         />
                     </div>       
                     <div className="col-md-4 form-group">
@@ -310,6 +331,21 @@ const AddActivity = (props) => {
                         </label>
                     </div>
 
+                    <div className="row">
+                        <div className="col-12">
+                            <label htmlFor="allProviderNames">Provider</label>
+                            <select className="form-control" id="allProviderNames"
+                                    defaultValue={'OTHER'}
+                                    // value={providerName}
+                                    onChange={(e)=>setProviderName(e.target.value)}
+                            >
+                                <option value="NA">Select one...</option>    
+                                {data.nameList.map((pName) => (
+                                    <option key={pName} value={pName}>{pName}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
                 <div className="row justify-content-center">
                     <button type="button" onClick={handleSubmit} className="btn btn-info  mx-2">Submit</button>
                     <button className="btn btn-info  mx-2">Cancel</button>
