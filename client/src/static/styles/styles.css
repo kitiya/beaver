@@ -116,12 +116,6 @@ h1, h2 {
   width: 100%;
 }
 
-.react-datepicker__input-container input {
-    border-radius: .25rem;
-    border: 1px solid #ced4da;
-    padding: .2rem .75rem;
-}
-
 .react-datepicker-popper,
 .react-datepicker__time-container,
 .react-datepicker--time-only,
@@ -131,8 +125,6 @@ h1, h2 {
 }
 
 .react-datepicker-wrapper {
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
     margin-bottom: 0.75rem;
 }
-
-
