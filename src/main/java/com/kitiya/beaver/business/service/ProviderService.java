@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class ProviderService {
@@ -22,7 +23,11 @@ public class ProviderService {
 
     }
 
-    public Iterable<Provider> getAllProviderName() {
-        return providerRepository.getAllProviderNames();
+    public Iterable<Provider> getAllProviderNames() {
+        return (Iterable<Provider>) providerRepository.getAllProviderNames();
+    }
+
+    public Provider getById(Long id) {
+        return providerRepository.findById(id).orElse(null);
     }
 }
