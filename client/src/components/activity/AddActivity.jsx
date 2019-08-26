@@ -31,7 +31,7 @@ const AddActivity = (props) => {
     const [scheduledEndTime, setScheduledEndTime] = useState('');
     const [scheduledDayOfWeek, setScheduledDayOfWeek] = useState('');
 
-    const [providerNameList, setProviderNameList] = useState('');
+    //const [providerNameList, setProviderNameList] = useState('');
 
     const FetchProviderNameList = (initialState, url) => {
         const [data, setData] = useState(initialState);
@@ -42,7 +42,7 @@ const AddActivity = (props) => {
                     const response = await fetch(url);
                     const result = await response.json();
                     setData({nameList: result});
-                    //console.log(result);
+                    console.log(result);
                 } catch (error) {
                     console.log(error);
                 }
@@ -96,7 +96,15 @@ const AddActivity = (props) => {
         //window.location.reload();
     };
 
-    const {data} = FetchProviderNameList({nameList: []}, 'http://localhost:8080/api/providers/names');
+    const {data} = FetchProviderNameList({providerNameList: []}, 'http://localhost:8080/api/providers/names');
+
+    console.log(data.nameList);
+    data.nameList.map((d) => {
+        const [i, n] = d;
+        //console.log(i);
+        //console.log(n);
+        return null;
+    });
 
     return(
         <div className="container pt-3">
@@ -114,7 +122,7 @@ const AddActivity = (props) => {
                         <label htmlFor="providerSelect">Provider</label>
                         <select className="form-control" id="providerSelect"
                                 defaultValue={'OTHER'}
-                                // value={providerName}
+                                value={providerName}
                                 onChange={(e)=>setProviderName(e.target.value)}
                         >
                             <option value="OTHER">Select one...</option>    
@@ -336,12 +344,12 @@ const AddActivity = (props) => {
                             <label htmlFor="allProviderNames">Provider</label>
                             <select className="form-control" id="allProviderNames"
                                     defaultValue={'OTHER'}
-                                    // value={providerName}
+                                    //value={providerName}
                                     onChange={(e)=>setProviderName(e.target.value)}
                             >
                                 <option value="NA">Select one...</option>    
-                                {data.nameList.map((pName) => (
-                                    <option key={pName} value={pName}>{pName}</option>
+                                {data.providerNameList.map((d) => (
+                                    <option key={d[0]} value={d[1]}>{d[1]}</option>
                                 ))}
                             </select>
                         </div>
