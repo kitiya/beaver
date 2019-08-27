@@ -7,17 +7,6 @@ const ActivityListItem = ({ activity, favorited, onClick, onFavorited }) => (
         className="list-group-item text-right px-3 py-1"
         onClick={() => onClick(activity.id)}
     >
-        <i
-            className={
-                favorited ?
-                "fa fa-heart fa-lg kty-text-pinkish mr-2" :
-                "fa fa-heart-o fa-lg kty-text-pinkish mr-2"
-            }
-            onClick = {e => {
-                            e.stopPropagation();
-                            onFavorited(activity.id);
-                        }}
-        ></i>
         <span>{activity.name}</span><br/>
         <span className="font-weight-bold text-info"> {activity.provider.name}</span>
     </li>
@@ -25,9 +14,7 @@ const ActivityListItem = ({ activity, favorited, onClick, onFavorited }) => (
 
 ActivityListItem.propTypes = {
     activity: PropTypes.object,
-    favorited: PropTypes.bool,
     onClick: PropTypes.func,
-    onFavorited: PropTypes.func,
 };
 
 ActivityListItem.defaultProps = {

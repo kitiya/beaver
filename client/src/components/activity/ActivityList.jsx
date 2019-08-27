@@ -5,7 +5,7 @@ import ActivityListItem from './ActivityListItem'
 
 const ActivityList = ({ activities, favorites, ...props }) => (
     <div className="row">
-        <ul className="list-group">
+        <ul className="list-group w-100">
             {activities.map(activity => (
                 <ActivityListItem
                     key={ activity.id }

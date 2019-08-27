@@ -20,7 +20,7 @@ class ActivityMainPage extends React.Component {
         fetch('http://localhost:8080/api/activities')
         .then(response => response.json())
         .then(activities => {
-            console.log(activities);
+            //console.log(activities);
             this.setState({activities});
         });
     }

@@ -34,6 +34,8 @@ const AddActivity = (props) => {
 
     let url = 'http://localhost:8080/api/providers/names';
     const { data } = useFetch({result: []}, url);
+
+    // convert array [[id, name], [id, name], ...] to object [{key, value}, ...]
     const providerNameList = data.result.map((p) => {
         let m = {};
         m.id = p[0];
