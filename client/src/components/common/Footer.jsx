@@ -1,20 +1,8 @@
 import React from 'react';
 
-let iconStyle = {
-    fontSize: '2rem',
-    marginLeft: '10px',
-    marginRight: '10px',
-}
-
-let siteFooterStyle = {
-    background: 'url(http://www.elsa-belgium.org/wp-content/uploads/2014/12/footer-background-011-1.jpg)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center center',
-    backgroundRepeat: 'no-repeat',
-}
-
-const Footer = () => (
-    <footer className="site-footer bg-dark mt-5" style={siteFooterStyle}>
+export default function Footer() {
+    return (
+        <footer className="site-footer bg-dark mt-5" style={siteFooterStyle}>
         <div className="py-4">
             <h5 className="text-center text-light mb-3">Get connected with us on social networks!</h5>
 
@@ -43,7 +31,18 @@ const Footer = () => (
             <p className="text-light m-0">Copyright © 2019 | Little Beaver Inc.</p>
         </div>
     </footer>
+    );
+}
 
-)
+let iconStyle = {
+    fontSize: '2rem',
+    marginLeft: '10px',
+    marginRight: '10px',
+}
 
-export default Footer;
+let siteFooterStyle = {
+    background: 'url(http://www.elsa-belgium.org/wp-content/uploads/2014/12/footer-background-011-1.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+}

@@ -1,26 +1,41 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
+export default function useFetch(initialState, url) {
+    const [data, setData] = useState(initialState);
+    //const [loading, setLoading] = useState(true);
 
-export const useFetch = (url) => {
     useEffect(() => {
-        fetch(url)
-        .then(response => response.json)
-        .then(result => {
-            console.log(result);
-        });
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url);
+                const result = await response.json();
+                setData({result: result});
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+        //setLoading(false);
     }, [url]);
+    //return { data, loading };
+    return { data };
+}
 
-    return result;
-};
-
-export const useFetchOrg = (url) => {
-    useEffect(() => {
-        fetch(url)
-        .then(response => response.json)
-        .then(result => {
-            console.log(result);
-        });
-    }, [url]);
-
-    return result;
-};
+//export default function useFetch(url) {
+//    const [response, setResponse] = useState(null);
+//    const [error, setError] = useState(null);
+//
+//    useEffect(() => {
+//        const fetchData = async () => {
+//             try {
+//                const res = await fetch(url);
+//                const json = await res.json();
+//                setResponse(json);
+//             } catch (error) {
+//                setError(error);
+//             }
+//        };
+//        fetchData();
+//    }, [url]);
+//    return { response, error };
+//}

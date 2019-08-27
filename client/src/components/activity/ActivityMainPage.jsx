@@ -17,7 +17,6 @@ class ActivityMainPage extends React.Component {
     }
 
     componentDidMount() {
-        // fetch('http://localhost:8080/api/domain-activities')
         fetch('http://localhost:8080/api/activities')
         .then(response => response.json())
         .then(activities => {
@@ -27,7 +26,6 @@ class ActivityMainPage extends React.Component {
     }
 
     onActivityClick = (id) => {
-        //fetch('http://localhost:8080/api/domain-activities/'+id)
         fetch('http://localhost:8080/api/activities/'+id)
         .then(response => response.json())
         .then(activity => this.setState({ selectedActivity: activity }));

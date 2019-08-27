@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import useFetch from '../util/useFetch';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -31,28 +32,15 @@ const AddActivity = (props) => {
     const [scheduledEndTime, setScheduledEndTime] = useState('');
     const [scheduledDayOfWeek, setScheduledDayOfWeek] = useState('');
 
-    //const [providerNameList, setProviderNameList] = useState('');
-
-    const FetchProviderNameList = (initialState, url) => {
-        const [data, setData] = useState(initialState);
-        
-        useEffect(() => {
-            const fetchData = async () => {
-                try {
-                    const response = await fetch(url);
-                    const result = await response.json();
-                    setData({nameList: result});
-                    console.log(result);
-                } catch (error) {
-                    console.log(error);
-                }
-            };
-            fetchData();
-        }, [url]);
-
-        console.log(data);
-        return {data}
-    }
+    let url = 'http://localhost:8080/api/providers/names';
+    const { data } = useFetch({result: []}, url);
+    const providerNameList = data.result.map((p) => {
+        let m = {};
+        m.id = p[0];
+        m.name = p[1];
+        return m;
+     });
+    console.log(providerNameList);
 
     const handleSubmit = (event) => {
         //event.preventDefault();  // prevent the form to refresh the pages
@@ -96,16 +84,6 @@ const AddActivity = (props) => {
         //window.location.reload();
     };
 
-    const {data} = FetchProviderNameList({providerNameList: []}, 'http://localhost:8080/api/providers/names');
-
-    console.log(data.nameList);
-    data.nameList.map((d) => {
-        const [i, n] = d;
-        //console.log(i);
-        //console.log(n);
-        return null;
-    });
-
     return(
         <div className="container pt-3">
             <h2 className="text-info">Add New Activity</h2>
@@ -121,18 +99,13 @@ const AddActivity = (props) => {
                     <div className="col-md-6 form-group">
                         <label htmlFor="providerSelect">Provider</label>
                         <select className="form-control" id="providerSelect"
-                                defaultValue={'OTHER'}
                                 value={providerName}
                                 onChange={(e)=>setProviderName(e.target.value)}
                         >
-                            <option value="OTHER">Select one...</option>    
-                            <option value="Can-Am Gymnastics Club">Can-Am Gymnastics Club</option>
-                            <option value="Canlan Ice Sports - Jemini">Canlan Ice Sports - Jemini</option>    
-                            <option value="Aspire Dance Studio">Aspire Dance Studio</option>
-                            <option value="Saskatchewan Polytechnic">Saskatchewan Polytechnic</option>
-                            <option value="We Move">We Move</option>
-                            <option value="Wet Paint Pottery">Wet Paint Pottery</option>
-                            <option value="Wilton Academy of Music">Wilton Academy of Music</option>
+                            <option value="NA">Select one...</option>
+                            {providerNameList.map((provider) => (
+                                <option key={provider.id} value={provider.name}>{provider.name}</option>
+                            ))}
                         </select>
                     </div>
                 </div>
@@ -337,22 +310,6 @@ const AddActivity = (props) => {
                                 placeholder="image url #3"
                             />
                         </label>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-12">
-                            <label htmlFor="allProviderNames">Provider</label>
-                            <select className="form-control" id="allProviderNames"
-                                    defaultValue={'OTHER'}
-                                    //value={providerName}
-                                    onChange={(e)=>setProviderName(e.target.value)}
-                            >
-                                <option value="NA">Select one...</option>    
-                                {data.providerNameList.map((d) => (
-                                    <option key={d[0]} value={d[1]}>{d[1]}</option>
-                                ))}
-                            </select>
-                        </div>
                     </div>
                 <div className="row justify-content-center">
                     <button type="button" onClick={handleSubmit} className="btn btn-info  mx-2">Submit</button>

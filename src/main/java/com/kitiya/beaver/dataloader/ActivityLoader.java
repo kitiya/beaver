@@ -6,6 +6,7 @@ import com.kitiya.beaver.data.repository.ProviderRepository;
 import com.kitiya.beaver.data.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
@@ -14,6 +15,7 @@ import java.time.DayOfWeek;
 import java.util.*;
 
 @Component
+@Order(1)
 public class ActivityLoader implements CommandLineRunner {
     private final ActivityRepository activityRepository;
     private final ProviderRepository providerRepository;
