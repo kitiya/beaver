@@ -4,11 +4,10 @@ import useFetch from '../util/useFetch';
 
 export default function Users() {
     const url = "http://localhost:8080/api/users";
-    const { data } = useFetch({ result: [] }, url);
+    const { data, loading } = useFetch({ result: [] }, url);
     const users = data.result;
-    console.log(users);
     
-    if (!users) {
+    if (loading) {
         return <div>Loading...</div>
     }
 

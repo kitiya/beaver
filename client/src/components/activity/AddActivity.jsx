@@ -33,7 +33,7 @@ const AddActivity = (props) => {
     const [scheduledDayOfWeek, setScheduledDayOfWeek] = useState('');
 
     let url = 'http://localhost:8080/api/providers/names';
-    const { data } = useFetch({result: []}, url);
+    const { data, loading } = useFetch({result: []}, url);
 
     // convert array [[id, name], [id, name], ...] to object [{key, value}, ...]
     const providerNameList = data.result.map((p) => {
@@ -42,7 +42,7 @@ const AddActivity = (props) => {
         m.name = p[1];
         return m;
      });
-    console.log(providerNameList);
+    //console.log(providerNameList);
 
     const handleSubmit = (event) => {
         //event.preventDefault();  // prevent the form to refresh the pages
@@ -86,6 +86,11 @@ const AddActivity = (props) => {
         //window.location.reload();
     };
 
+    if ( loading ) {
+        return (
+            <div>Loading ...</div>
+        );
+    }
     return(
         <div className="container pt-3">
             <h2 className="text-info">Add New Activity</h2>

@@ -60,7 +60,7 @@ const ActivitySummary = (props) => {
                     <NavLink
                         className="mr-3 text-decoration-none"
                         to={`/activity/${activity.id}`}
-                        href={`/activity/${activity.id}`}
+                        // href={`/activity/${activity.id}`}
                     >
                         Read more...
                     </NavLink>
