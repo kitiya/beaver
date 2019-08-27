@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const ActivityListSummary = (props) => {
+const ActivitySummary = (props) => {
     if (!props.activity) {
         return (
             <div>
@@ -70,4 +70,4 @@ const ActivityListSummary = (props) => {
     )
 }
 
-export default ActivityListSummary;
+export default ActivitySummary;
