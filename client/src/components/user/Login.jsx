@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
-const Login = () => {
+export default function Login() {
     const {toggleAuth} = useContext(AuthContext);
 
     return (
@@ -28,5 +28,3 @@ const Login = () => {
         </div>
     );
 };
-
-export default Login;

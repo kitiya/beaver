@@ -6,6 +6,7 @@ import com.kitiya.beaver.data.repository.ProviderRepository;
 import com.kitiya.beaver.data.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
@@ -14,6 +15,7 @@ import java.time.DayOfWeek;
 import java.util.*;
 
 @Component
+@Order(1)
 public class ActivityLoader implements CommandLineRunner {
     private final ActivityRepository activityRepository;
     private final ProviderRepository providerRepository;
@@ -36,6 +38,9 @@ public class ActivityLoader implements CommandLineRunner {
         Provider provider;
         Schedule schedule;
 
+        Provider lookedUpProvider;
+        String providerName;
+
         // ---- insert an activity#1---- //
 
         imageUrls = new ArrayList<>(Arrays.asList(
@@ -45,16 +50,22 @@ public class ActivityLoader implements CommandLineRunner {
 
         ));
 
-        provider = new Provider();
-        provider.setName("We Move");
-        provider.setDescription("Join our team of Personal Trainers, Physiotherapists, Nurses, Educated Professionals in Dance, Music, and Fitness as we move you safely through each class. We will aid you with your fitness goals, big or small, while you join our fitness community.");
-        provider.setStreetAddress("123 Main Street");
-        provider.setCity(City.EDMONTON);
-        provider.setProvince(Province.AB);
-        provider.setWebsite("https://wemovesk.com/");
-        provider.setEmail("info@wemovesk.com");
-        provider.setPhone("306-123-4555");
-        provider.setImageUrls(imageUrls);
+        providerName = "We Move";
+        lookedUpProvider = providerRepository.findByName(providerName);
+        if (lookedUpProvider == null) {
+            provider = new Provider();
+            provider.setName(providerName);
+            provider.setDescription("Join our team of Personal Trainers, Physiotherapists, Nurses, Educated Professionals in Dance, Music, and Fitness as we move you safely through each class. We will aid you with your fitness goals, big or small, while you join our fitness community.");
+            provider.setStreetAddress("123 Main Street");
+            provider.setCity(City.EDMONTON);
+            provider.setProvince(Province.AB);
+            provider.setWebsite("https://wemovesk.com/");
+            provider.setEmail("info@wemovesk.com");
+            provider.setPhone("306-123-4555");
+            provider.setImageUrls(imageUrls);
+        } else {
+            provider = lookedUpProvider;
+        }
 
         schedule = new Schedule();
         schedule.setStartDate(dateFormatter.parse("01-09-2019"));
@@ -85,16 +96,22 @@ public class ActivityLoader implements CommandLineRunner {
                 "https://uc.uxpin.com/files/1002565/982286/cooking-03-6e4e4a.jpeg"
         ));
 
-        provider = new Provider();
-        provider.setName("Saskatchewan Polytechnic");
-        provider.setDescription("Sask Polytech is Saskatchewan's primary public institution for post-secondary technical education and skills training, recognized nationally and internationally for its expertise and innovation. Led by faculty, students and alumni, Sask Polytech camps provide a safe and fun environment for kids to explore new interests, discover new talents and make new friends.");
-        provider.setStreetAddress("1130 Idylwyld Dr N");
-        provider.setCity(City.SASKATOON);
-        provider.setProvince(Province.SK);
-        provider.setWebsite("https://saskpolytech.ca");
-        provider.setEmail("info@saskpolytech.ca");
-        provider.setPhone("306-123-5677");
-        provider.setImageUrls(imageUrls);
+        providerName = "Saskatchewan Polytechnic";
+        lookedUpProvider = providerRepository.findByName(providerName);
+        if (lookedUpProvider == null) {
+            provider = new Provider();
+            provider.setName(providerName);
+            provider.setDescription("Sask Polytech is Saskatchewan's primary public institution for post-secondary technical education and skills training, recognized nationally and internationally for its expertise and innovation. Led by faculty, students and alumni, Sask Polytech camps provide a safe and fun environment for kids to explore new interests, discover new talents and make new friends.");
+            provider.setStreetAddress("1130 Idylwyld Dr N");
+            provider.setCity(City.SASKATOON);
+            provider.setProvince(Province.SK);
+            provider.setWebsite("https://saskpolytech.ca");
+            provider.setEmail("info@saskpolytech.ca");
+            provider.setPhone("306-123-5677");
+            provider.setImageUrls(imageUrls);
+        } else {
+            provider = lookedUpProvider;
+        }
 
         schedule = new Schedule();
         schedule.setStartDate(dateFormatter.parse("18-09-2019"));
@@ -155,16 +172,22 @@ public class ActivityLoader implements CommandLineRunner {
                 "https://ofmvc40dolyrl7u9xigg5kyy-wpengine.netdna-ssl.com/wp-content/uploads/2012/09/Kids-Violin-Lesson-at-Sage-Music-School-11.jpg"
         ));
 
-        provider = new Provider();
-        provider.setName("Wilton Academy of Music");
-        provider.setDescription("Wilton Academy of Music offers early childhood music education for ages birth to 6 years old. Our curriculum offers age-appropriate classes which target the special ways children learn at various stages in their development.");
-        provider.setStreetAddress("St John's Hall, 816 Spadina Cres E");
-        provider.setCity(City.SASKATOON);
-        provider.setProvince(Province.SK);
-        provider.setWebsite("http://www.wiltonmusic.com/");
-        provider.setEmail("cusotmer.service@wiltonmusic.com");
-        provider.setPhone("306-999-8999");
-        provider.setImageUrls(imageUrls);
+        providerName = "Wilton Academy of Music";
+        lookedUpProvider = providerRepository.findByName(providerName);
+        if (lookedUpProvider == null) {
+            provider = new Provider();
+            provider.setName(providerName);
+            provider.setDescription("Wilton Academy of Music offers early childhood music education for ages birth to 6 years old. Our curriculum offers age-appropriate classes which target the special ways children learn at various stages in their development.");
+            provider.setStreetAddress("St John's Hall, 816 Spadina Cres E");
+            provider.setCity(City.SASKATOON);
+            provider.setProvince(Province.SK);
+            provider.setWebsite("http://www.wiltonmusic.com/");
+            provider.setEmail("cusotmer.service@wiltonmusic.com");
+            provider.setPhone("306-999-8999");
+            provider.setImageUrls(imageUrls);
+        } else {
+            provider = lookedUpProvider;
+        }
 
         schedule = new Schedule();
         schedule.setStartDate(dateFormatter.parse("01-09-2019"));
@@ -194,17 +217,22 @@ public class ActivityLoader implements CommandLineRunner {
                 "https://s3.amazonaws.com/osmd-wp/wp-content/uploads/2015/05/21170139/leap-n-learn-photo.jpg",
                 "http://inmotiondc.com/wp-content/uploads/2018/06/160816twinklestars-069-e1529434735473.jpg?quality=100.3015071716250"
         ));
-
-        provider = new Provider();
-        provider.setName("Aspire Dance Studio");
-        provider.setDescription("Live performance, health, and child care. Our goal as a school is to focus on these important values when training our families. For our performers, we invite our classes to perform in competitions and recitals as soon as their instructors feel they are ready. For health and fitness, we believe an active life promotes a healthy life and our instructors want to see you succeed in your personal goals.");
-        provider.setStreetAddress("1025 Boychuk Drive");
-        provider.setCity(City.SASKATOON);
-        provider.setProvince(Province.SK);
-        provider.setWebsite("http://www.aspiredanceschool.ca/");
-        provider.setEmail("info@aspiredanceschool.ca");
-        provider.setPhone("306-456-7890");
-        provider.setImageUrls(imageUrls);
+        providerName = "Aspire Dance Studio";
+        lookedUpProvider = providerRepository.findByName(providerName);
+        if (lookedUpProvider == null) {
+            provider = new Provider();
+            provider.setName(providerName);
+            provider.setDescription("Live performance, health, and child care. Our goal as a school is to focus on these important values when training our families. For our performers, we invite our classes to perform in competitions and recitals as soon as their instructors feel they are ready. For health and fitness, we believe an active life promotes a healthy life and our instructors want to see you succeed in your personal goals.");
+            provider.setStreetAddress("1025 Boychuk Drive");
+            provider.setCity(City.SASKATOON);
+            provider.setProvince(Province.SK);
+            provider.setWebsite("http://www.aspiredanceschool.ca/");
+            provider.setEmail("info@aspiredanceschool.ca");
+            provider.setPhone("306-456-7890");
+            provider.setImageUrls(imageUrls);
+        } else {
+            provider = lookedUpProvider;
+        }
 
         schedule = new Schedule();
         schedule.setStartDate(dateFormatter.parse("01-09-2019"));

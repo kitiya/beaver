@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const ActivityListSummary = (props) => {
+const ActivitySummary = (props) => {
     if (!props.activity) {
         return (
             <div>
@@ -43,7 +43,7 @@ const ActivityListSummary = (props) => {
                 <p className="text-left">{activity.description}</p>
                 <p className="text-left">Age: {activity.ageRange}</p>
                 <p className="text-left"><span className="lead text-info">
-                    {activity.provider.name}</span> | 
+                    {activity.provider.name}</span> |&nbsp;
                     {activity.provider.streetAddress}, 
                     {activity.provider.city}, 
                     {activity.provider.province}
@@ -56,18 +56,6 @@ const ActivityListSummary = (props) => {
                         {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
                     </span>
                 </div>
-                {/* <div className="row mb-3">
-                    <span className="col-6">
-                        Start Date: {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)}
-                        <br/>
-                        End Date: {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)}
-                    </span>
-                    <span className="col-6">
-                        Start Time: {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)}
-                        <br/>
-                        End Time: {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
-                    </span>
-                </div> */}
                 <div className="row justify-content-end">
                     <NavLink
                         className="mr-3 text-decoration-none"
@@ -82,4 +70,4 @@ const ActivityListSummary = (props) => {
     )
 }
 
-export default ActivityListSummary;
+export default ActivitySummary;
