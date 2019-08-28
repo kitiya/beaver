@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import React, { useContext } from 'react';
 //import { AuthContext } from '../../contexts/AuthContext';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import Login from '../user/Login';
 
 const useFetch = (initialState, url) => {
@@ -24,7 +24,7 @@ const useFetch = (initialState, url) => {
     return { data, loading };
 };
 
-const ProviderList = () => {
+const ProviderMainPage = () => {
     //const {isAuthenticated} = useContext(AuthContext);
     const { data, loading } = useFetch({providers: []}, "http://localhost:8080/api/providers");
 
@@ -33,7 +33,7 @@ const ProviderList = () => {
         return(
             <div className="container mt-3">
                 <div className="row justify-content-end">
-                    <NavLink to={`providers/new`} className="btn bg-success text-white mb-2 px-3 py-1 rounded-pill">Add new provider...</NavLink>
+                    <Link to={`providers/new`} className="btn bg-success text-white mb-2 px-3 py-1 rounded-pill">Add new provider...</Link>
                 </div>
                 {   loading ?
                     <p>...loading</p> :
@@ -53,12 +53,12 @@ const ProviderList = () => {
                                     <p>Address: {provider.streetAddress}, {provider.city}, {provider.province}</p>
                                     <p>Website: <a href={provider.website} target="_blank" rel="noopener noreferrer">{provider.website}</a></p>
                                     <p className="row justify-content-end">
-                                        <NavLink
+                                        <Link
                                             className="mr-3"
                                             to={`/provider/${provider.id}`}
                                         >
                                             Read more...
-                                        </NavLink>
+                                        </Link>
                                     </p>
                                 </section>
                             </div>
@@ -83,4 +83,4 @@ const ProviderList = () => {
     );
 };
 
-export default ProviderList
+export default ProviderMainPage;
