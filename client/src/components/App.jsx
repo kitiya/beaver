@@ -9,15 +9,16 @@ import Footer from './common/Footer';
 import Home from './home/Home';
 
 import ActivityMainPage from './activity/ActivityMainPage';
-import ActivityDetails from './activity/ActivityDetails';
+import ActivityDetail from './activity/ActivityDetail';
 import AddActivity from './activity/AddActivity';
 import ProviderMainPage from './provider/ProviderMainPage';
-import ProviderDetails from './provider/ProviderDetails';
+import ProviderDetail from './provider/ProviderDetail';
 import AddProvider from './provider/AddProvider';
 import EventMainPage from './event/EventMainPage';
 import ThingsToDoMainPage from './things-to-do/ThingsToDoMainPage';
 import Users from './user/Users';
 import Tutorials from './tutorial/Tutorials';
+import MapContainer from './util/MapContainer';
 
 import NotFound from './shared/NotFound'
 
@@ -34,15 +35,16 @@ const App = () => (
                         <Redirect from="/home" to="/" />
                         <Route exact path="/" component={Home} />
                         <Route exact path="/activities" component={ActivityMainPage} />
-                        <Route path="/activity/:id" component={ActivityDetails} />
+                        <Route path="/activity/:id" component={ActivityDetail} />
                         <Route path="/activities/new" component={AddActivity} />
                         <Route exact path="/providers" component={ProviderMainPage} />
-                        <Route path="/provider/:id" component={ProviderDetails} />
+                        <Route path="/provider/:id" component={ProviderDetail} />
                         <Route path="/providers/new" component={AddProvider} />
                         <Route exact path="/events" component={EventMainPage} />
                         <Route exact path="/things-to-do" component={ThingsToDoMainPage} />
                         <Route path="/users" component={Users} />
-                        <Route exact path="/tutorials" component={Tutorials} />
+                        {/* <Route exact path="/tutorials" component={Tutorials} /> */}
+                        <Route exact path="/tutorials" component={MapContainer} />
                         <Route component={NotFound} />
                     </Switch>
                     <Footer />

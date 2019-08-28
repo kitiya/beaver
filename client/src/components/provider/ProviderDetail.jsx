@@ -19,7 +19,7 @@ const useFetchProvider = (initialState, activityUrl) => {
     return  { value };
 }
 
-const ProviderDetails = ({ match }) => {
+const ProviderDetail = ({ match }) => {
     console.log(match);
     const id = match.params.id;
     const providerUrl = `http://localhost:8080/api/providers/${id}`;
@@ -50,4 +50,4 @@ const ProviderDetails = ({ match }) => {
     );
 }
 
-export default ProviderDetails;
+export default ProviderDetail;

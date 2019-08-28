@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { MapContainer } from '../util/MapContainer';
+// import { MapContainer } from '../util/MapContainer';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const useFetchActivity = (initialState, activityUrl) => {
     const [value, setValue] = useState(initialState);
@@ -21,7 +22,7 @@ const useFetchActivity = (initialState, activityUrl) => {
     return  { value };
 }
 
-const ActivityDetails = ({ match }) => {
+const ActivityDetail = ({ match }) => {
     const id = match.params.id;
     const activityUrl = `http://localhost:8080/api/activities/${id}`;
     const initialState = {
@@ -72,10 +73,8 @@ const ActivityDetails = ({ match }) => {
                     {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
                 </span>
             </div>
-            <div className="row mb-3">
-                <p className="col">Loading map...</p>
-            </div>
         </div>
     );
 }
-export default withRouter(ActivityDetails);
+export default withRouter(ActivityDetail);
+
