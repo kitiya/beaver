@@ -7,6 +7,8 @@ const mapStyles = {
   height: '50vh',
 };
 
+const test = 'git push to the same branch after merging';
+
 export class MapContainer extends Component {
   render() {
     return (
