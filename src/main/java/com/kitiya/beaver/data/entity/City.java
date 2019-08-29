@@ -1,27 +1,42 @@
 package com.kitiya.beaver.data.entity;
 
-import org.springframework.util.StringUtils;
-
 public enum City {
-    CALGARY ("Calgary"),
-    EDMONTON ("Edmonton"),
-    HALIFAX ("Halifax"),
-    OTTAWA ("Ottawa"),
-    MONTREAL ("Montreal"),
-    QUEBEC_CITY ("Quebec City"),
-    SASKATOON ("Saskatoon"),
-    TORONTO ("Toronto"),
-    VANCOUVER ("Vancouver"),
-    WINNIPEG ("Winnipeg"),
-    OTHER ("Other");
+    CALGARY ("CGR"),
+    SASKATOON ("STN"),
+    TORONTO ("TRT"),
+    VANCOUVER ("VCV"),
+    OTHER ("OTH");
+    //EDMONTON ("EMT"),
+    //HALIFAX ("HLF"),
+    //MONTREAL ("MTR"),
+    //OTTAWA ("OTW"),
+    //QUEBEC_CITY ("QBC"),
+    //WINNIPEG ("WNP"),
 
-    private final String name;
+    private final String code;
 
-    City(String name) {
-        this.name = name;
+    City(String code) {
+        this.code = code;
     }
 
-    public String getName() {
-        return StringUtils.capitalize(name);
+    public String getCode() {
+        return code;
+    }
+
+    public static City fromCode(String code) {
+        switch (code) {
+            case "CGR":
+                return City.CALGARY;
+            case "STN":
+                return City.SASKATOON;
+            case "TRT":
+                return City.TORONTO;
+            case "VCV":
+                return City.VANCOUVER;
+            case "OTH":
+                return City.OTHER;
+            default:
+                throw new IllegalArgumentException("Code [" + code + "] not supported");
+        }
     }
 }

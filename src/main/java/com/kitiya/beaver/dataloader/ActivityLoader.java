@@ -57,7 +57,7 @@ public class ActivityLoader implements CommandLineRunner {
             provider.setName(providerName);
             provider.setDescription("Join our team of Personal Trainers, Physiotherapists, Nurses, Educated Professionals in Dance, Music, and Fitness as we move you safely through each class. We will aid you with your fitness goals, big or small, while you join our fitness community.");
             provider.setStreetAddress("123 Main Street");
-            provider.setCity(City.EDMONTON);
+            provider.setCity(City.CALGARY);
             provider.setProvince(Province.AB);
             provider.setWebsite("https://wemovesk.com/");
             provider.setEmail("info@wemovesk.com");

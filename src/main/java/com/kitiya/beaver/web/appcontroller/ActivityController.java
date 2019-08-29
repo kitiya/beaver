@@ -122,9 +122,9 @@ public class ActivityController {
         return api.searchActivity(params);
     }
 
-    @InitBinder
-    public void initBinder(final WebDataBinder webdataBinder) {
-        webdataBinder.registerCustomEditor(ActivityType.class, new ActivityTypeConverter());
-    }
+//    @InitBinder
+//    public void initBinder(final WebDataBinder webdataBinder) {
+//        webdataBinder.registerCustomEditor(ActivityType.class, new ActivityTypeConverter());
+//    }
 
 }
