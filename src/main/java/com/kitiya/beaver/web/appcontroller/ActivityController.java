@@ -108,7 +108,7 @@ public class ActivityController {
 
     @RequestMapping(method=RequestMethod.GET, value= "/activities/search")
     @ResponseBody
-    public List<Activity> searchAll(@RequestParam(value="search", required = false) String search) {
+    public List<Activity> searchAll(@RequestParam(value="q", required = false) String search) {
         List<SearchCriteria> params = new ArrayList<SearchCriteria>();
         if (search != null) {
             Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
@@ -121,10 +121,4 @@ public class ActivityController {
 
         return api.searchActivity(params);
     }
-
-    @InitBinder
-    public void initBinder(final WebDataBinder webdataBinder) {
-        webdataBinder.registerCustomEditor(ActivityType.class, new ActivityTypeConverter());
-    }
-
 }

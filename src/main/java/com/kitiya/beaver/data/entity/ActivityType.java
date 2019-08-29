@@ -1,50 +1,59 @@
 package com.kitiya.beaver.data.entity;
 
-import org.springframework.util.StringUtils;
-
 import java.util.Arrays;
 
 public enum ActivityType {
-    ACADEMICS ("Academics"),
-    ART_CRAFT ("Art and Craft"),
-    DANCE ("Dance"),
-    FITNESS ("Fitness"),
-    GYMNASTICS ("Gymnastics"),
-    MARTIAL_ARTS ("Martial Art"),
-    MUSIC ("Music"),
-    SCIENCE_TECH ("Science Tech"),
-    SPORT ("sport"),
-    WATER_SPORT ("Water Sport"),
-    WINTER_SPORT ("Winter Sport"),
-    OTHER("Other");
+    ACADEMICS ("ACADEMICS"),
+    ART_CRAFT ("ART_CRAFT"),
+    DANCE ("DANCE"),
+    FITNESS ("FITNESS"),
+    GYMNASTICS ("GYMNASTICS"),
+    MARTIAL_ARTS ("MARTIAL_ARTS"),
+    MUSIC ("MUSIC"),
+    SCIENCE_TECH ("SCIENCE_TECH"),
+    SPORT ("SPORT"),
+    WATER_SPORT ("WATER_SPORT"),
+    WINTER_SPORT ("WINTER_SPORT"),
+    OTHER("OTHER");
 
-    private final String name;
+    private final String code;
 
-    ActivityType(String name) {
-        this.name = name;
+    ActivityType(String code) {
+        this.code = code;
     }
 
-    public static ActivityType fromValues(String value) {
-        for (ActivityType type: values()) {
-            if (type.name.equalsIgnoreCase(value)) {
-                return type;
-            }
+    public String getCode() {
+        return code;
+    }
+
+    public static ActivityType fromCode(String code) {
+        switch (code) {
+            case "ACADEMICS":
+                return ActivityType.ACADEMICS;
+            case "ART_CRAFT":
+                return ActivityType.ART_CRAFT;
+            case "DANCE":
+                return ActivityType.DANCE;
+            case "FITNESS":
+                return ActivityType.FITNESS;
+            case "GYMNASTICS":
+                return ActivityType.GYMNASTICS;
+            case "MARTIAL_ARTS":
+                return ActivityType.MARTIAL_ARTS;
+            case "MUSIC":
+                return ActivityType.MUSIC;
+            case "SCIENCE_TECH":
+                return ActivityType.SCIENCE_TECH;
+            case "SPORT":
+                return ActivityType.SPORT;
+            case "WATER_SPORT":
+                return ActivityType.WATER_SPORT;
+            case "WINTER_SPORT":
+                return ActivityType.WINTER_SPORT;
+            case "OTHER":
+                return ActivityType.OTHER;
+            default:
+                throw new IllegalArgumentException("Unknown enum type [" + code + "], Allowed values are" + Arrays.toString(values()));
         }
-        throw new IllegalArgumentException(
-                "Unknown enum type " + value + ", Allowed values are " + Arrays.toString(values()));
     }
-
-//    public static ActivityType findbyName(String byName) {
-//        for (ActivityType a: ActivityType.values() ) {
-//            if (a.name.equalsIgnoreCase(byName))
-//                return a;
-//        }
-//        return null;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return StringUtils.capitalize(name);
-//    }
-
 }

@@ -22,7 +22,7 @@ public class Activity {
     @Column(name = "name")
     private String name;
 
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     @Column(name = "type")
     private ActivityType type;
 
