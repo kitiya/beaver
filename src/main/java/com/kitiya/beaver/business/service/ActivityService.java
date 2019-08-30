@@ -15,15 +15,14 @@ public class ActivityService {
 
     private ActivityRepository activityRepository;
     private ProviderRepository providerRepository;
-    private ScheduleRepository scheduleRepository;
 
     @Autowired
-    public ActivityService(ActivityRepository activityRepository, ProviderRepository providerRepository, ScheduleRepository scheduleRepository) {
+    public ActivityService(ActivityRepository activityRepository, ProviderRepository providerRepository) {
         this.activityRepository = activityRepository;
         this.providerRepository = providerRepository;
-        this.scheduleRepository = scheduleRepository;
     }
 
+    // not used
     public Iterable<Activity> getAllActivities() {
         return activityRepository.findAll(Sort.by(Sort.Direction.DESC, "modifiedDate"));
     }
@@ -71,13 +70,5 @@ public class ActivityService {
         activity.setSchedule(schedule);
 
         return activityRepository.save(activity);
-    }
-
-    public Iterable<Activity> lookup() {
-        return activityRepository.findAll();
-    }
-
-    public long total() {
-        return activityRepository.count();
     }
 }

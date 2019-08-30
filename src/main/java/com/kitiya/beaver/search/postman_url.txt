@@ -1,0 +1,9 @@
+http://localhost:8080/api/activities/search/?name=vr
+
+http://localhost:8080/api/activities/search?q=type:dance
+
+http://localhost:8080/api/activities/dao-search?q=name:creative b
+
+http://localhost:8080/api/activities/age/14
+
+http://localhost:8080/api/providers/search?q=name:wet

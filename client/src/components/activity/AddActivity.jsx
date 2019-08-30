@@ -72,7 +72,7 @@ const AddActivity = (props) => {
         }
         console.log(newActivity);
 
-        fetch("http://localhost:8080/api/activity", {
+        fetch("http://localhost:8080/api/activities", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
