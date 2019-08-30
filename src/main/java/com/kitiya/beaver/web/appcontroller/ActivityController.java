@@ -1,7 +1,6 @@
 package com.kitiya.beaver.web.appcontroller;
 
 import com.kitiya.beaver.business.service.ActivityService;
-import com.kitiya.beaver.data.converter.ActivityTypeConverter;
 import com.kitiya.beaver.data.entity.Activity;
 import com.kitiya.beaver.data.entity.ActivityType;
 import com.kitiya.beaver.data.repository.ActivityRepository;
@@ -9,7 +8,6 @@ import com.kitiya.beaver.search.IActivityDAO;
 import com.kitiya.beaver.search.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -106,7 +104,7 @@ public class ActivityController {
     @Autowired
     private IActivityDAO api;
 
-    @RequestMapping(method=RequestMethod.GET, value= "/activities/search")
+    @RequestMapping(method=RequestMethod.GET, value= "/activities/dao-search")
     @ResponseBody
     public List<Activity> searchAll(@RequestParam(value="q", required = false) String search) {
         List<SearchCriteria> params = new ArrayList<SearchCriteria>();

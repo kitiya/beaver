@@ -29,7 +29,7 @@ public class Provider {
     @Column(name = "streetAddress")
     private String streetAddress;
 
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     @Column(name = "city")
     private City city;
 
