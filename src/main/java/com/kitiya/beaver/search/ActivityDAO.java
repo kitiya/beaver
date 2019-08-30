@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
-public class ActivityDAO  implements IActivityDAO{
+public class ActivityDAO implements IActivityDAO{
 
     @PersistenceContext
     private EntityManager entityManager;
