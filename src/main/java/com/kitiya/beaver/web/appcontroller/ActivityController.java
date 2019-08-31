@@ -9,7 +9,6 @@ import com.kitiya.beaver.search.IActivityDAO;
 import com.kitiya.beaver.search.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -101,7 +100,6 @@ public class ActivityController {
         Activity result = activityService.addActivity(activity);
         return ResponseEntity.ok().body(result);
     }
-
 
     @Autowired
     private IActivityDAO api;

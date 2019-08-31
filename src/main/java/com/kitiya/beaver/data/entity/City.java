@@ -1,11 +1,11 @@
 package com.kitiya.beaver.data.entity;
 
 public enum City {
-    CALGARY ("CGR"),
-    SASKATOON ("STN"),
-    TORONTO ("TRT"),
-    VANCOUVER ("VCV"),
-    OTHER ("OTH");
+    CALGARY ("CALGARY"),
+    SASKATOON ("SASKATOON"),
+    TORONTO ("TORONTO"),
+    VANCOUVER ("VANCOUVER"),
+    OTHER ("OTHER");
     //EDMONTON ("EMT"),
     //HALIFAX ("HLF"),
     //MONTREAL ("MTR"),

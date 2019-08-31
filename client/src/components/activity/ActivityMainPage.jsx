@@ -5,10 +5,11 @@ import SearchForm from '../shared/SearchForm';
 import useFetch from '../util/useFetch';
 
 const ActivityMainPage = () => {
-    //const [ activities, setActivities ] = useState([]);
+   
     const activitiesUrl = 'http://localhost:8080/api/activities';
     const { data } = useFetch({ result: [] }, activitiesUrl);
     const activities = data.result;
+   // const [ _activities, setActivities ] = useState([]);
     
     const [ selectedActivity, setSelectedActivity ] = useState(null);
     const handleClick = (id) => {
