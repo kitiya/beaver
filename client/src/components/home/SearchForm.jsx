@@ -24,7 +24,7 @@ const SearchForm =(({ props }) => {
         props.setCity(e.target.value);
     }
     
-    const [ProviderListData, setProviderListData] = useState([]);
+    const [providerListData, setProviderListData] = useState([]);
     useEffect( () => {
         const fetchProviderList = async () => {
             const url = 'http://localhost:8080/api/providers/names';
@@ -39,7 +39,7 @@ const SearchForm =(({ props }) => {
         fetchProviderList();
     }, []);
 
-    const providerList = ProviderListData.map((p) => {
+    const providerList = providerListData.map((p) => {
         const [ id, provider ] = p;
         return { id, provider };
     });
