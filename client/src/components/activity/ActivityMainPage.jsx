@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ActivitySummary from './ActivitySummary';
-import SearchForm from '../shared/SearchForm';
 import useFetch from '../util/useFetch';
 
 const ActivityMainPage = () => {
@@ -20,7 +19,6 @@ const ActivityMainPage = () => {
 
     return (
         <div className="container">
-            <SearchForm></SearchForm>
             <section className="row mt-2 justify-content-around">
                 <div className="col-md-3" >
                     <ul className="list-group w-100">
