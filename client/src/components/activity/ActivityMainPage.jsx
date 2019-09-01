@@ -8,7 +8,6 @@ const ActivityMainPage = () => {
     const activitiesUrl = 'http://localhost:8080/api/activities';
     const { data } = useFetch({ result: [] }, activitiesUrl);
     const activities = data.result;
-   // const [ _activities, setActivities ] = useState([]);
     
     const [ selectedActivity, setSelectedActivity ] = useState(null);
     const handleClick = (id) => {
@@ -19,6 +18,15 @@ const ActivityMainPage = () => {
 
     return (
         <div className="container">
+            <div>
+                <section className="row justify-content-center">
+                    <h2 className="text-center text-info mt-3">Discover Amazing Kids' Activities</h2>
+                    <p className="text-center ">
+                        Get inspired and browse through the businesses offering programs for kids in & around Saskatoon.
+                    </p>
+                </section>
+                
+            </div>
             <section className="row mt-2 justify-content-around">
                 <div className="col-md-3" >
                     <ul className="list-group w-100">

@@ -21,14 +21,21 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
 
     List<Activity> findByDescriptionContainingOrderByModifiedDateDesc(String description);
 
-    List<Activity> findByType(ActivityType type);
-
-    @Query("select a from Activity a where a.fromAge <= :age and :age <= a.toAge")
-    List<Activity> findByAge(@Param("age") Integer age);
+    List<Activity> findByTypeOrderByModifiedDateDesc(ActivityType type);
 
     @Query("select a,p from Activity a left join Provider p on a.provider = p.id where p.name like concat('%',:likeProvider,'%')")
-    List<Activity> findByProviderContaining(String likeProvider);
+    List<Activity> findByProviderContainingOrderByModifiedDateDesc(String likeProvider);
+
+    @Query("select a from Activity a where a.fromAge <= :age and :age <= a.toAge")
+    List<Activity> findByAgeOrderByModifiedDateDesc(@Param("age") Integer age);
 
     @Query("select a,p from Activity a left join Provider p on a.provider = p.id where p.city = :city")
-    List<Activity> findByCity(City city);
+    List<Activity> findByCityOrderByModifiedDateDesc(City city);
+
+    // not used
+
+    @Query("SELECT MIN(id) AS id, type AS type FROM Activity GROUP BY type ORDER BY type")
+    List<Object> getAllActivityTypes();
+
+    List<Activity> findByNameOrDescriptionContainingOrderByModifiedDateDesc(String nameKeyword, String descKeyword);
 }

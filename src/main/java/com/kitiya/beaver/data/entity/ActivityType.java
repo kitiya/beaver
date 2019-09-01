@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 public enum ActivityType {
     ACADEMICS ("ACADEMICS"),
+    AFTER_SCHOOL ("AFTER_SCHOOL"),
     ART_CRAFT ("ART_CRAFT"),
+    CAMP("CAMP"),
     DANCE ("DANCE"),
     FITNESS ("FITNESS"),
     GYMNASTICS ("GYMNASTICS"),
@@ -30,8 +32,12 @@ public enum ActivityType {
         switch (code) {
             case "ACADEMICS":
                 return ActivityType.ACADEMICS;
+            case "AFTER_SCHOOL":
+                return ActivityType.AFTER_SCHOOL;
             case "ART_CRAFT":
                 return ActivityType.ART_CRAFT;
+            case "CAMP":
+                return ActivityType.CAMP;
             case "DANCE":
                 return ActivityType.DANCE;
             case "FITNESS":

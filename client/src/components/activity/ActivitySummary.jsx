@@ -1,19 +1,36 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+const bannerStyle = {
+    background: 'linear-gradient(rgba(0, 45, 92, 0.2), rgba(0, 45, 92, 0.2)), url(http://www.yellowballoon.org/YellowBalloonProject/media/Images/YellowBanner.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    height: '20vh',
+}
+
 const ActivitySummary = (props) => {
     if (!props.activity) {
         return (
             <div>
-                <h2 className="text-center text-info">Discover Amazing Kids' Activities</h2>
-                <p className="text-center ">
-                    Get inspired and browse through the businesses offering programs for kids in & around Saskatoon.
-                </p>
-                <img
-                    className="img-fluid rounded"
-                    src="http://speakenglishcenter.com/wp-content/uploads/2015/06/kid-summer-itcu-dot-org.jpg"
-                    alt="activity"
-                />
+                <section className="row justify-content-center align-items-center p-3 rounded" style={bannerStyle}>
+                    <h2 className="text-center text-white font-weight-bold">It's That Time! Easily Find After School Programs</h2>
+                </section>
+                <section className="row justify-content-center align-items-center mt-3">
+                    <div className="col-md-6 p-0">
+                        <h4 className="text-pinkish">Find Awesome Afterschool Activities</h4>
+                        <p>Beaver compiles all after school options around the Saskatoon area. Use our filters to find exact matches that fit with your child's interest.</p>
+                        <p>Discover programs for your child that work with your schedule. Whether sports, arts, or academic enrichment.</p>
+                        {/* <NavLink to={`/providers`} className="btn bg-secondary text-white mb-2 px-3 py-1 rounded">See Progrmas (TODO)</NavLink> */}
+                    </div>
+                    <div className="col-md-6 p-0">
+                        <img
+                            className="img-fluid rounded"
+                            src="https://d1hcau8biln41r.cloudfront.net/general/_seoimage/GoSnowNiseko50.jpg?mtime=20170330153645O"
+                            alt="activity"
+                        />
+                    </div>
+                </section>
             </div>
         );
     }
@@ -60,7 +77,6 @@ const ActivitySummary = (props) => {
                     <NavLink
                         className="mr-3 text-decoration-none"
                         to={`/activity/${activity.id}`}
-                        // href={`/activity/${activity.id}`}
                     >
                         Read more...
                     </NavLink>
