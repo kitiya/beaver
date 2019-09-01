@@ -14,11 +14,11 @@ const ActivitySummary = (props) => {
         return (
             <div>
                 <section className="row justify-content-center align-items-center p-3 rounded" style={bannerStyle}>
-                    <h2 className="text-center text-white font-weight-bold">It's That Time! Easily Find After School Programs</h2>
+                    <h2 className="text-center text-white font-weight-bold">Find Awesome Afterschool Activities</h2>
                 </section>
-                <section className="row justify-content-center align-items-center mt-3">
-                    <div className="col-md-6 p-0">
-                        <h4 className="text-pinkish">Find Awesome Afterschool Activities</h4>
+                <section className="row justify-content-center align-items-top mt-3">
+                    <h4 className="text-pinkish">It's That Time! Easily Find After School Programs</h4>
+                    <div className="col-md-6 p-0 pr-3 text-right">
                         <p>Beaver compiles all after school options around the Saskatoon area. Use our filters to find exact matches that fit with your child's interest.</p>
                         <p>Discover programs for your child that work with your schedule. Whether sports, arts, or academic enrichment.</p>
                         {/* <NavLink to={`/providers`} className="btn bg-secondary text-white mb-2 px-3 py-1 rounded">See Progrmas (TODO)</NavLink> */}
@@ -54,7 +54,7 @@ const ActivitySummary = (props) => {
                 <div className="row">
                     <span className="col-6 text-left">{activity.type}</span>
                     <div className="col-6 text-right">
-                        <span className="badge badge-pill badge-danger kty-bg-pinkish px-3 py-1">Cost: ${activity.cost}</span>
+                        <span className="badge badge-pill badge-danger kty-bg-pinkish px-2 py-1">Cost: ${activity.cost}</span>
                     </div>
                 </div>
                 <p className="text-left">{activity.description}</p>
@@ -69,7 +69,7 @@ const ActivitySummary = (props) => {
                     <span className="col-md-8 text-left">
                         {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)} - {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)} (On {activity.schedule.dayOfWeek})
                     </span>
-                    <span className="col-md-4 text-left">
+                    <span className="col-md-4 text-right">
                         {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
                     </span>
                 </div>

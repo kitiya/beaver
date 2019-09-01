@@ -53,13 +53,13 @@ const ActivityDetail = ({ match }) => {
             <div className="row">
                 <span className="col-6 text-left">{activity.type}</span>
                 <div className="col-6 text-right">
-                    <span className="badge badge-pill badge-danger kty-bg-pinkish px-3 py-1">Cost: ${activity.cost}</span>
+                    <span className="badge badge-pill badge-danger kty-bg-pinkish px-2 py-1">Cost: ${activity.cost}</span>
                 </div>
             </div>
             <p className="text-left">{activity.description}</p>
             <p className="text-left">Age: {activity.ageRange}</p>
-            <p className="text-left"><span className="lead text-info">
-                {activity.provider.name}</span> |&nbsp;
+            <p className="text-left">
+                <span className="lead text-info">{activity.provider.name}</span> |&nbsp;
                 {activity.provider.streetAddress}, 
                 {activity.provider.city}, 
                 {activity.provider.province}
@@ -68,7 +68,7 @@ const ActivityDetail = ({ match }) => {
                 <span className="col-md-8 text-left">
                     {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)} - {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)} (On {activity.schedule.dayOfWeek})
                 </span>
-                <span className="col-md-4 text-left">
+                <span className="col-md-4 text-right">
                     {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
                 </span>
             </div>
