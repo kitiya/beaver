@@ -1,9 +1,9 @@
 package com.kitiya.beaver.web.appcontroller;
 
 import com.kitiya.beaver.business.service.ActivityService;
-import com.kitiya.beaver.data.converter.ActivityTypeConverter;
 import com.kitiya.beaver.data.entity.Activity;
 import com.kitiya.beaver.data.entity.ActivityType;
+import com.kitiya.beaver.data.entity.City;
 import com.kitiya.beaver.data.repository.ActivityRepository;
 import com.kitiya.beaver.search.IActivityDAO;
 import com.kitiya.beaver.search.SearchCriteria;
@@ -37,34 +37,64 @@ public class ActivityController {
         this.activityService = activityService;
     }
 
+    // implemented in the client side
     @GetMapping("/activities")
     Iterable<Activity> activities() {
-        return activityService.getAllActivities();
+        return activityRepository.findAllByOrderByModifiedDateDesc();
     }
 
     @GetMapping("/activities/{id}")
     Activity activity(@PathVariable Long id) {
-        // returns null if id is invalid. is this okay??
         return activityRepository.findById(id).orElse(null);
     }
 
-    @GetMapping(value="/activities/search", params="name")
+    @PostMapping("/activities")
+    ResponseEntity<Activity> addActivity(@Valid @RequestBody Activity activity) throws URISyntaxException {
+        Activity result = activityService.addActivity(activity);
+        return ResponseEntity.ok().body(result);
+    }
+
+    // working functions but haven't been used on the client side
+
+    @RequestMapping(value="/activities/search", params = "name")
     @ResponseBody
-    Collection<Activity> activityByName(@RequestParam(value="name") String name) {
+    Collection<Activity> searchByName(@RequestParam(value="name") String name) {
         return activityRepository.findByNameContainingOrderByModifiedDateDesc(name);
     }
-    
-    @GetMapping("/activities/type/{type}")
-    Collection<Activity> activityByType(@PathVariable ActivityType type) {
-        return activityRepository.findByType(type);
+
+    @RequestMapping(value = "/activities/search", params = "description")
+    @ResponseBody
+    Collection<Activity> searchByDescription(@RequestParam(value="description") String description) {
+        return activityRepository.findByDescriptionContainingOrderByModifiedDateDesc(description);
     }
 
-//    @GetMapping(value = "/activities/search", params ="provider")
-//    Collection<Activity> activityByProvider(@RequestParam (value="provider") String provider) {
-//        return activityRepository.findByProviderContaining(provider);
-//    }
+    @RequestMapping(value = "/activities/search", params = "type")
+    @ResponseBody
+    Collection<Activity> searchByType(@RequestParam(value="type") String type) {
+        return activityRepository.findByType(ActivityType.fromCode(type.toUpperCase()));
+    }
 
-//    @GetMapping("/activities/date/{dateString}")
+    @RequestMapping(value = "/activities/search", params = "age")
+    @ResponseBody
+    Collection<Activity> searchByAge(@RequestParam(value="age") Integer age) {
+        return activityRepository.findByAge(age);
+    }
+
+    @RequestMapping(value = "/activities/search", params = "provider")
+    @ResponseBody
+    Collection<Activity> searchByProvider(@RequestParam(value="provider") String provider) {
+        return activityRepository.findByProviderContaining(provider);
+    }
+
+    @RequestMapping(value = "/activities/search", params = "city")
+    @ResponseBody
+    Collection<Activity> searchByCity(@RequestParam(value="city") String city) {
+        return activityRepository.findByCity(City.fromCode(city.toUpperCase()));
+    }
+
+    // =================== //
+
+//    @GetMapping("/date/{dateString}")
 //    Collection<Activity> activityByDate(@PathVariable String dateString) {
 //        Date date = null;
 //        if(dateString != null) {
@@ -80,31 +110,10 @@ public class ActivityController {
 //        return activityRepository.findByDate(date);
 //    }
 
-    @GetMapping("/activities/from-age/{fromAge}")
-    Collection<Activity> activitybyFromAge(@PathVariable Integer fromAge) {
-        return activityRepository.findByFromAge(fromAge);
-    }
-
-    @GetMapping("/activities/to-age/{toAge}")
-    Collection<Activity> activityByToAge(@PathVariable Integer toAge) {
-        return activityRepository.findByToAge(toAge);
-    }
-
-    @GetMapping("/activities/age/{age}")
-    Collection<Activity> activityByAge(@PathVariable Integer age) {
-        return activityRepository.findByAge(age);
-    }
-
-    @PostMapping("/activity")
-    ResponseEntity<Activity> addActivity(@Valid @RequestBody Activity activity) throws URISyntaxException {
-        Activity result = activityService.addActivity(activity);
-        return ResponseEntity.ok().body(result);
-    }
-
     @Autowired
     private IActivityDAO api;
 
-    @RequestMapping(method=RequestMethod.GET, value= "/activities/search")
+    @RequestMapping(method=RequestMethod.GET, value= "/activities/search/{name}")
     @ResponseBody
     public List<Activity> searchAll(@RequestParam(value="q", required = false) String search) {
         List<SearchCriteria> params = new ArrayList<SearchCriteria>();

@@ -1,12 +1,11 @@
 import React from 'react';
-import SearchForm from '../shared/SearchForm';
 
 let headerImageStyle = {
     background: 'linear-gradient(rgba(0, 45, 92, 0.2), rgba(0, 45, 92, 0.2)), url(https://images.unsplash.com/photo-1500995617113-cf789362a3e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)',
     backgroundSize: 'cover',
     backgroundPosition: 'center bottom',
     backgroundRepeat: 'no-repeat',
-    height: '25vh',
+    height: '20vh',
 }
 
 const ThingsToDoMainPage = () => {
@@ -15,7 +14,6 @@ const ThingsToDoMainPage = () => {
             <article className="m-0">
                 <header className="m-0 p-0" style={headerImageStyle}>
                     <h1 className="text-center text-white mb-4 pt-5">Fun Things to Do with Kids In & Around Saskatoon</h1>
-                    <SearchForm></SearchForm>
                 </header>
                 <section className="container row mt-4 mx-auto">
                     <div className="col-sm-6 col-md-8">

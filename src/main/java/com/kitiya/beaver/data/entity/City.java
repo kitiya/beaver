@@ -25,15 +25,15 @@ public enum City {
 
     public static City fromCode(String code) {
         switch (code) {
-            case "CGR":
+            case "CALGARY":
                 return City.CALGARY;
-            case "STN":
+            case "SASKATOON":
                 return City.SASKATOON;
-            case "TRT":
+            case "TORONTO":
                 return City.TORONTO;
-            case "VCV":
+            case "VANCOUVER":
                 return City.VANCOUVER;
-            case "OTH":
+            case "OTHER":
                 return City.OTHER;
             default:
                 throw new IllegalArgumentException("Code [" + code + "] not supported");

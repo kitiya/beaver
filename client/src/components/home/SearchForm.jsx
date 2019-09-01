@@ -1,34 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-const SearchForm =(({ onSearch }) => {
-    const [ name, setName ] = useState('vr');
-    const [ type, setType ] = useState();
-    const [ provider, setProvider ] = useState();
-    const [ age, setAge ] = useState();
-    const [ city, setCity ] = useState();
-    const [ activities, setActivities ] = useState([]);
+const SearchForm =(({ props }) => {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch('http://localhost:8080/api/activities/search?name='+name)
-        .then(response => response.json())
-        .then(onSearch);
-        //.then(activities => setActivities(activities));
-        console.log(onSearch);
+    const handleNameChange = (e) => {
+        props.setName(e.target.value);
     }
 
+    const handleTypeChange = (e) => {
+        props.setType(e.target.value);
+    }
+
+    const handleProviderChange = (e) => {
+        props.setProvider(e.target.value);
+    }
+
+    const handleAgeChange = (e) => {
+        props.setAge(e.target.value);
+    }
+
+    const handleCityChange = (e) => {
+        props.setCity(e.target.value);
+    }
+    
     return (
         <div>       
-            <form className="mt-3 mb-2 mx-auto" onSubmit={ handleSubmit }>
+            <form className="mt-3 mb-2 mx-auto" onSubmit={ props.handleSearch }>
                 <div className="form-group row mb-0 justify-content-center">
                     <div className="mx-2">
-                        <input type="text" className="form-control" value={name}  onChange={(e)=> setName(e.target.value)} placeholder="Name" />
+                        <input type="text" className="form-control" value={props.name} onChange={handleNameChange} placeholder="Name" />
                     </div>
                     <div className="mx-2">
                         <div className="form-group">
-                            <select className="form-control" value={type} placeholder="All Categories" >
+                            <select className="form-control" value={props.type} onChange={ handleTypeChange }>
                                 <option value="DEFAULT">All Categories</option>
                                 <option value="art">Arts & Crafts</option>
                                 <option value="dance">Dance</option>
@@ -39,7 +44,7 @@ const SearchForm =(({ onSearch }) => {
                     </div>
                     <div className="mx-2">
                         <div className="form-group">
-                            <select className="form-control" value={provider} placeholder="All Providers" >
+                            <select className="form-control" value={props.provider} onChange={handleProviderChange} >
                                 <option value="DEFAULT">All Providers</option>
                                 <option value="1">Can-Am Gymnastics Club</option>
                                 <option value="2">Wilton Academy of Music</option>
@@ -50,7 +55,7 @@ const SearchForm =(({ onSearch }) => {
                     </div>
                     <div className="mx-2">
                         <div className="form-group">
-                            <select className="form-control" value={age} placeholder="Age" >
+                            <select className="form-control" value={props.age} onChange={handleAgeChange} >
                                 <option value="DEFAULT">All Ages</option>
                                 <option value="one">0-1</option>
                                 <option value="three">1-3</option>
@@ -62,7 +67,7 @@ const SearchForm =(({ onSearch }) => {
                     </div>
                     <div className="mx-2">
                         <div className="form-group">
-                            <select className="form-control" value={city} placeholder="City" >
+                            <select className="form-control" value={props.city} onChange={handleCityChange} >
                                 <option value="DEFAULT">All Cities</option>
                                 <option value="saskatoon">Saskatoon</option>
                                 <option value="calgary">Calgary</option>
@@ -85,14 +90,6 @@ const SearchForm =(({ onSearch }) => {
                     </div>
                 </div>
             </form>
-            <section>
-                <p>Name: {name}</p>
-                <div>
-                {activities.map(activity => (
-                    <p>{activity.name}</p>)
-                )}
-                </div>
-            </section>
         </div>
     );
 });

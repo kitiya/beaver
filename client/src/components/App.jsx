@@ -18,7 +18,7 @@ import EventMainPage from './event/EventMainPage';
 import ThingsToDoMainPage from './things-to-do/ThingsToDoMainPage';
 import Users from './user/Users';
 import Tutorials from './tutorial/Tutorials';
-import MapContainer from './util/MapContainer';
+//import MapContainer from './util/MapContainer';
 
 import NotFound from './shared/NotFound'
 
@@ -43,8 +43,7 @@ const App = () => (
                         <Route exact path="/events" component={EventMainPage} />
                         <Route exact path="/things-to-do" component={ThingsToDoMainPage} />
                         <Route path="/users" component={Users} />
-                        {/* <Route exact path="/tutorials" component={Tutorials} /> */}
-                        <Route exact path="/tutorials" component={MapContainer} />
+                        <Route exact path="/tutorials" component={Tutorials} />
                         <Route component={NotFound} />
                     </Switch>
                     <Footer />

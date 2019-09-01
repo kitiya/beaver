@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-// import { MapContainer } from '../util/MapContainer';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+// import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const useFetchActivity = (initialState, activityUrl) => {
     const [value, setValue] = useState(initialState);
