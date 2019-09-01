@@ -13,16 +13,16 @@ const TextInput = ({children, ...props}) => {
 
 const AddProvider = (props) => {
     const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [streetAddress, setStreetAddress] = useState('');
+    const [description, setDescription] = useState('Lollipop lemon drops jelly-o marzipan brownie apple pie sugar plum gingerbread sesame snaps. Oat cake I love tootsie roll candy. Pie halvah bonbon tiramisu muffin muffin. Gingerbread bonbon oat cake halvah sweet cotton candy I love. Chocolate cake biscuit apple pie fruitcake oat cake carrot cake icing. Macaroon jelly beans topping muffin I love I love sweet chocolate cake powder. Chocolate cake donut sugar plum topping. Candy gummies chupa chups fruitcake. Sugar plum marzipan wafer pudding sweet chocolate bar marzipan toffee.');
+    const [streetAddress, setStreetAddress] = useState('123 Main Street');
     const [city, setCity] = useState('');
     const [province, setProvince] = useState('');
-    const [website, setWebsite] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [imageUrl2, setImageUrl2] = useState('');
-    const [imageUrl3, setImageUrl3] = useState('');
+    const [website, setWebsite] = useState('www.beaver.ca');
+    const [email, setEmail] = useState('info@beaver.ca');
+    const [phone, setPhone] = useState('3061234555');
+    const [imageUrl, setImageUrl] = useState('https://lakelandhillsymca.com/dev/wp-content/uploads/for-kids.jpg');
+    const [imageUrl2, setImageUrl2] = useState('https://lakelandhillsymca.com/dev/wp-content/uploads/for-kids.jpg');
+    const [imageUrl3, setImageUrl3] = useState('https://lakelandhillsymca.com/dev/wp-content/uploads/for-kids.jpg');
 
     const handleSubmit = (e) => {
         //e.preventDefault(); // prevent the form to refresh the pages
@@ -95,15 +95,9 @@ const AddProvider = (props) => {
                             >
                                 <option value="OTHER">Select One..</option>
                                 <option value="CALGARY">Calgary</option>
-                                <option value="EDMONTON">Edmonton</option>
-                                <option value="HALIFAX">Halifax</option>
-                                <option value="OTTAWA">Ottawa</option>
-                                <option value="MONTREAL">Montreal</option>
-                                <option value="QUEBEC_CITY">Quebec City</option>
                                 <option value="SASKATOON">Saskatoon</option>
                                 <option value="TORONTO">Toronto</option>
                                 <option value="VANCOUVER">Vancouver</option>
-                                <option value="WINNIPEG">Winnipeg</option>
                             </select>
                         </label>
                         <label className="col-4">Province
@@ -114,10 +108,7 @@ const AddProvider = (props) => {
                                 <option value="OTHER">Select One..</option>
                                 <option value="AB">Alberta</option>
                                 <option value="BC">British Columbia</option>
-                                <option value="MB">Manitoba</option>
-                                <option value="NS">Nova Scotia</option>
                                 <option value="ON">Ontario</option>
-                                <option value="QC">Quebec</option>
                                 <option value="SK">Saskatchewan</option>
                             </select>
                         </label>

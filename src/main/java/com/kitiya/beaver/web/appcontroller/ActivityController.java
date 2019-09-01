@@ -16,7 +16,6 @@ import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,48 +47,53 @@ public class ActivityController {
         return activityRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/activities/types")
+    Iterable<Object> getAllActivityTypes() {
+        return activityRepository.getAllActivityTypes();
+    }
+
     @PostMapping("/activities")
     ResponseEntity<Activity> addActivity(@Valid @RequestBody Activity activity) throws URISyntaxException {
         Activity result = activityService.addActivity(activity);
         return ResponseEntity.ok().body(result);
     }
 
-    // working functions but haven't been used on the client side
-
     @RequestMapping(value="/activities/search", params = "name")
     @ResponseBody
-    Collection<Activity> searchByName(@RequestParam(value="name") String name) {
+    Iterable<Activity> searchByName(@RequestParam(value="name") String name) {
         return activityRepository.findByNameContainingOrderByModifiedDateDesc(name);
-    }
-
-    @RequestMapping(value = "/activities/search", params = "description")
-    @ResponseBody
-    Collection<Activity> searchByDescription(@RequestParam(value="description") String description) {
-        return activityRepository.findByDescriptionContainingOrderByModifiedDateDesc(description);
     }
 
     @RequestMapping(value = "/activities/search", params = "type")
     @ResponseBody
-    Collection<Activity> searchByType(@RequestParam(value="type") String type) {
-        return activityRepository.findByType(ActivityType.fromCode(type.toUpperCase()));
-    }
-
-    @RequestMapping(value = "/activities/search", params = "age")
-    @ResponseBody
-    Collection<Activity> searchByAge(@RequestParam(value="age") Integer age) {
-        return activityRepository.findByAge(age);
+    Iterable<Activity> searchByType(@RequestParam(value="type") String type) {
+        return activityRepository.findByTypeOrderByModifiedDateDesc(ActivityType.fromCode(type.toUpperCase()));
     }
 
     @RequestMapping(value = "/activities/search", params = "provider")
     @ResponseBody
-    Collection<Activity> searchByProvider(@RequestParam(value="provider") String provider) {
-        return activityRepository.findByProviderContaining(provider);
+    Iterable<Activity> searchByProvider(@RequestParam(value="provider") String provider) {
+        return activityRepository.findByProviderContainingOrderByModifiedDateDesc(provider);
+    }
+
+    @RequestMapping(value = "/activities/search", params = "age")
+    @ResponseBody
+    Iterable<Activity> searchByAge(@RequestParam(value="age") Integer age) {
+        return activityRepository.findByAgeOrderByModifiedDateDesc(age);
     }
 
     @RequestMapping(value = "/activities/search", params = "city")
     @ResponseBody
-    Collection<Activity> searchByCity(@RequestParam(value="city") String city) {
-        return activityRepository.findByCity(City.fromCode(city.toUpperCase()));
+    Iterable<Activity> searchByCity(@RequestParam(value="city") String city) {
+        return activityRepository.findByCityOrderByModifiedDateDesc(City.fromCode(city.toUpperCase()));
+    }
+
+    // working functions but haven't been used on the client side
+
+    @RequestMapping(value = "/activities/search", params = "description")
+    @ResponseBody
+    Iterable<Activity> searchByDescription(@RequestParam(value="description") String description) {
+        return activityRepository.findByDescriptionContainingOrderByModifiedDateDesc(description);
     }
 
     // =================== //

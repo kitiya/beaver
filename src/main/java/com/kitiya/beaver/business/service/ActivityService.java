@@ -22,11 +22,6 @@ public class ActivityService {
         this.providerRepository = providerRepository;
     }
 
-    // not used
-    public Iterable<Activity> getAllActivities() {
-        return activityRepository.findAll(Sort.by(Sort.Direction.DESC, "modifiedDate"));
-    }
-
     public Activity addActivity(Activity activity) {
         //Optional<Provider> lookedUpProvider = providerRepository.findById(Long.valueOf(100));
         Provider lookedUpProvider = providerRepository.findByName(activity.getProvider().getName());

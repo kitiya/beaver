@@ -28,7 +28,6 @@ const ProviderMainPage = () => {
     //const {isAuthenticated} = useContext(AuthContext);
     const { data, loading } = useFetch({providers: []}, "http://localhost:8080/api/providers");
 
-    console.log(data);
     const Providers = () => {
         return(
             <div className="container mt-3">

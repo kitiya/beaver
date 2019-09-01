@@ -17,14 +17,14 @@ const TextInput = ({children, ...props}) => {
 
 const AddActivity = (props) => {
     const [name, setName] = useState('');
-    const [type, setType] = useState('');
-    const [description, setDescription] = useState('');
-    const [fromAge, setFromAge] = useState('');
-    const [toAge, setToAge] = useState('');
-    const [cost, setCost] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [imageUrl2, setImageUrl2] = useState('');
-    const [imageUrl3, setImageUrl3] = useState('');
+    const [type, setType] = useState('MUSIC');
+    const [description, setDescription] = useState('Candy donut cotton candy I love pudding I love muffin ice cream donut. Lollipop pudding toffee muffin I love dragée danish brownie jelly-o. Gummi bears croissant powder lemon drops I love chocolate bar cake. I love marshmallow cake brownie bear claw. I love I love liquorice cake pudding fruitcake bear claw sesame snaps. Cookie cupcake halvah jelly chocolate cake toffee. Chocolate bar dragée tootsie roll tart dessert halvah ice cream liquorice.');
+    const [fromAge, setFromAge] = useState('3');
+    const [toAge, setToAge] = useState('6');
+    const [cost, setCost] = useState('200');
+    const [imageUrl, setImageUrl] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
+    const [imageUrl2, setImageUrl2] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
+    const [imageUrl3, setImageUrl3] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
     const [providerName, setProviderName] = useState('');
     const [scheduledStartDate, setScheduledStartDate] = useState('');
     const [scheduledEndDate, setScheduledEndDate] = useState('');
@@ -37,10 +37,12 @@ const AddActivity = (props) => {
 
     // convert array [[id, name], [id, name], ...] to object [{key, value}, ...]
     const providerNameList = data.result.map((p) => {
-        let m = {};
-        m.id = p[0];
-        m.name = p[1];
-        return m;
+        // let m = {};
+        // m.id = p[0];
+        // m.name = p[1];
+        // return m;
+        const [id, name] = p;
+        return {id, name};
      });
     //console.log(providerNameList);
 
@@ -72,7 +74,7 @@ const AddActivity = (props) => {
         }
         console.log(newActivity);
 
-        fetch("http://localhost:8080/api/activity", {
+        fetch("http://localhost:8080/api/activities", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -126,14 +128,15 @@ const AddActivity = (props) => {
                         >
                             <option value="NA">Select one...</option>    
                             <option value="ACADEMICS">Academics</option>
+                            <option value="AFTER_SCHOOL">After School</option>
                             <option value="ART_CRAFT">Art &amp; Craft</option>
+                            <option value="CAMP">Camp</option>
                             <option value="DANCE">Dance</option>
                             <option value="GYMNASTICS">Gymnastics</option>
                             <option value="MARTIAL_ARTS">Martial Arts</option>
                             <option value="MUSIC">Music</option>
                             <option value="SCIENCE_TECH">Science &amp; Technology</option>
                             <option value="SPORT">Sport</option>
-                            <option value="WATER_SPORT">Water Sport</option>
                             <option value="OTHER">Other</option>
                         </select>
                     </div>
@@ -159,7 +162,7 @@ const AddActivity = (props) => {
                                 onChange={(e)=>setFromAge(e.target.value)}
                         >
                             <option value="NA">Select one...</option>
-                            <option value="0.5">Less than 1 yr</option>
+                            <option value="0">Less than 1 yr</option>
                             <option value="1">1 yr</option>
                             <option value="2">2 yrs</option>
                             <option value="3">3 yrs</option>
@@ -188,7 +191,7 @@ const AddActivity = (props) => {
                                 onChange={(e)=>setToAge(e.target.value)}
                         >
                             <option value="NA">Select one...</option>
-                            <option value="0.5">Less than 1 yr</option>
+                            <option value="0">Less than 1 yr</option>
                             <option value="1">1 yr</option>
                             <option value="2">2 yrs</option>
                             <option value="3">3 yrs</option>

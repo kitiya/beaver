@@ -20,6 +20,10 @@ const Home = (() => {
             searchUrl = searchUrl.concat('/search?name=', name);
         } else if (type!== 'DEFAULT') {
             searchUrl = searchUrl.concat('/search?type=', type);
+        } else if (provider!== 'DEFAULT') {
+            searchUrl = searchUrl.concat('/search?provider=', provider);
+        } else if (age!== 'DEFAULT') {
+            searchUrl = searchUrl.concat('/search?age=', age);
         } else if (city!== 'DEFAULT') {
             searchUrl = searchUrl.concat('/search?city=', city);
         }
@@ -51,16 +55,17 @@ const Home = (() => {
     const Greeting = () => {
         return (
             <div>
-                <h1 className="text-center text-info mb-3">Find Things To Do For Kids in Saskatoon</h1>
-                <h3 className="text-center text-info mt-3">Discover Amazing Kids Activities</h3>
+                <h3 className="text-center text-secondary mb-3">Discover Amazing Kids Activities</h3>
                 <HomeCarousel></HomeCarousel>
-                <p className="text-center mt-1">Get inspired and browse through the businesses offering programs for kids in & around Saskatoon.</p>
+                <p className="text-center mt-3">Get inspired and browse through the businesses offering programs for kids in & around Saskatoon.</p>
             </div>
         );
     };
 
     return (
         <div className="container mt-3">
+            <h1 className="text-center text-info mb-3">Find Things To Do For Kids in Saskatoon</h1>
+
             <SearchForm  props={homeProps}></SearchForm>
             { activities.length > 0 ? 
                     <SearchResult activities={activities} />   
