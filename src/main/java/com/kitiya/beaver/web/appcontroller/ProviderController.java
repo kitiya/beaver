@@ -3,12 +3,16 @@ package com.kitiya.beaver.web.appcontroller;
 import com.kitiya.beaver.business.service.ProviderService;
 import com.kitiya.beaver.data.entity.Provider;
 import com.kitiya.beaver.data.repository.ProviderRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -23,8 +27,20 @@ public class ProviderController {
     }
 
     @GetMapping("/providers")
-    Iterable<Provider> getAllProviders() {
-        return providerService.getAllProviders();
+    Page<Provider> getAllProviders(@RequestParam Optional<Integer> page,
+                                   @RequestParam Optional<Integer> size,
+                                   @RequestParam Optional<String> sortBy) {
+        Pageable pageable = PageRequest.of(
+          page.orElse(0),
+          size.orElse(3),
+          Sort.by(sortBy.orElse("name")).ascending());
+        return providerService.getAllProviders(pageable);
+    }
+
+    // not used
+    @GetMapping("/providers_org")
+    Iterable<Provider> getAllProviders_org() {
+        return providerService.getAllProviders_org();
     }
 
     @GetMapping("/providers/{id}")

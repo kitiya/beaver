@@ -10,7 +10,7 @@ export default function useFetch(initialState, url) {
             try {
                 const response = await fetch(url);
                 const result = await response.json();
-                //console.log(result);
+                // console.log(result);
                 setData({result: result});
             } catch (error) {
                 console.log(error);

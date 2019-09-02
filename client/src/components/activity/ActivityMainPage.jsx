@@ -5,9 +5,9 @@ import useFetch from '../util/useFetch';
 
 const ActivityMainPage = () => {
    
-    const activitiesUrl = 'http://localhost:8080/api/activities';
+    const activitiesUrl = 'http://localhost:8080/api/activities?page=0&size=3';
     const { data } = useFetch({ result: [] }, activitiesUrl);
-    const activities = data.result;
+    const activities = data.result.content;
     
     const [ selectedActivity, setSelectedActivity ] = useState(null);
     const handleClick = (id) => {
@@ -16,6 +16,9 @@ const ActivityMainPage = () => {
         .then(activity => setSelectedActivity(activity));
     }
 
+    if (!activities) {
+        return ('');
+    }
     return (
         <div className="container">
             <div>
