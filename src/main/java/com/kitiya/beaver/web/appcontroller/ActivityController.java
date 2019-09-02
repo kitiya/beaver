@@ -8,6 +8,9 @@ import com.kitiya.beaver.data.repository.ActivityRepository;
 import com.kitiya.beaver.search.IActivityDAO;
 import com.kitiya.beaver.search.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +20,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,8 +42,14 @@ public class ActivityController {
 
     // implemented in the client side
     @GetMapping("/activities")
-    Iterable<Activity> activities() {
-        return activityRepository.findAllByOrderByModifiedDateDesc();
+    Iterable<Activity> activities(@RequestParam Optional<Integer> page,
+                                  @RequestParam Optional<Integer> size,
+                                  @RequestParam Optional<String> sortBy) {
+        Pageable pageable = PageRequest.of(
+                page.orElse(0),
+                size.orElse(3),
+                Sort.by(sortBy.orElse("id")).descending());
+        return activityRepository.findAll(pageable);
     }
 
     @GetMapping("/activities/{id}")

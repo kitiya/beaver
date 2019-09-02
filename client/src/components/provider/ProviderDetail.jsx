@@ -90,7 +90,7 @@ const ProviderDetail = ({ match }) => {
                 {activityList.map((activity) => (
                     <section className="my-1">
                         <div className="row">
-                            <img className="col-md-3 my-1 rounded" src={activity.imageUrls[1]}></img>
+                            <img className="col-md-3 my-1 rounded" src={activity.imageUrls[1]} alt={activity.name}></img>
                             <div className="col-md-9">
                                 <h5><span className="bg-info text-light p-1 rounded">{activity.name}</span></h5>
                                 <div className="row">

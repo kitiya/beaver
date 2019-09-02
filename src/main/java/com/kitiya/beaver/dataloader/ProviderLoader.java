@@ -95,5 +95,97 @@ public class ProviderLoader implements CommandLineRunner {
                     imageUrls
             ));
         }
+
+        // ----- a new provider ----- //
+        imageUrls = new ArrayList<>(Arrays.asList(
+                "https://cdn.pixabay.com/photo/2019/08/19/07/45/pets-4415649__340.jpg",
+                "https://cdn.pixabay.com/photo/2019/08/19/07/45/pets-4415649__340.jpg",
+                "https://cdn.pixabay.com/photo/2019/08/19/07/45/pets-4415649__340.jpg"
+        ));
+
+        providerName = "Sweet Donut Inc";
+        lookedUpProvider = providerRepository.findByName(providerName);
+        if (lookedUpProvider == null) {
+            this.providerRepository.save(new Provider(
+                    providerName,
+                    "Pie bonbon gingerbread I love chocolate. Tart pastry tootsie roll. Apple pie I love dessert icing donut ice cream gummies bear claw pastry. Bonbon bear claw danish. Soufflé fruitcake donut powder donut chupa chups. Fruitcake croissant soufflé pie chocolate bar. I love carrot cake donut danish jelly-o I love. Chupa chups jelly I love.",
+                    "2301 Grasswood East Road",
+                    City.SASKATOON,
+                    Province.SK,
+                    "https://www.beaver.com/",
+                    "connect@beaver.com",
+                    "306-123-4555",
+                    imageUrls
+            ));
+        }
+
+        // ----- a new provider ----- //
+        imageUrls = new ArrayList<>(Arrays.asList(
+                "https://cdn.pixabay.com/photo/2019/08/25/16/57/purple-4429887__340.jpg",
+                "https://cdn.pixabay.com/photo/2019/08/25/16/57/purple-4429887__340.jpg",
+                "https://cdn.pixabay.com/photo/2019/08/25/16/57/purple-4429887__340.jpg"
+        ));
+
+        providerName = "Bee Hive Inc";
+        lookedUpProvider = providerRepository.findByName(providerName);
+        if (lookedUpProvider == null) {
+            this.providerRepository.save(new Provider(
+                    providerName,
+                    "Pie bonbon gingerbread I love chocolate. Tart pastry tootsie roll. Apple pie I love dessert icing donut ice cream gummies bear claw pastry. Bonbon bear claw danish. Soufflé fruitcake donut powder donut chupa chups. Fruitcake croissant soufflé pie chocolate bar. I love carrot cake donut danish jelly-o I love. Chupa chups jelly I love.",
+                    "2301 Grasswood East Road",
+                    City.SASKATOON,
+                    Province.SK,
+                    "https://www.beaver.com/",
+                    "connect@beaver.com",
+                    "306-123-4555",
+                    imageUrls
+            ));
+        }
+
+        // ----- a new provider ----- //
+        imageUrls = new ArrayList<>(Arrays.asList(
+                "https://cdn.pixabay.com/photo/2019/08/26/12/26/landscape-4431582__340.jpg",
+                "https://cdn.pixabay.com/photo/2019/08/26/12/26/landscape-4431582__340.jpg",
+                "https://cdn.pixabay.com/photo/2019/08/26/12/26/landscape-4431582__340.jpg"
+        ));
+
+        providerName = "Blue Ocean Inc";
+        lookedUpProvider = providerRepository.findByName(providerName);
+        if (lookedUpProvider == null) {
+            this.providerRepository.save(new Provider(
+                    providerName,
+                    "Pie bonbon gingerbread I love chocolate. Tart pastry tootsie roll. Apple pie I love dessert icing donut ice cream gummies bear claw pastry. Bonbon bear claw danish. Soufflé fruitcake donut powder donut chupa chups. Fruitcake croissant soufflé pie chocolate bar. I love carrot cake donut danish jelly-o I love. Chupa chups jelly I love.",
+                    "2301 Grasswood East Road",
+                    City.SASKATOON,
+                    Province.SK,
+                    "https://www.beaver.com/",
+                    "connect@beaver.com",
+                    "306-123-4555",
+                    imageUrls
+            ));
+        }
+
+        // ----- a new provider ----- //
+        imageUrls = new ArrayList<>(Arrays.asList(
+                "https://cdn.pixabay.com/photo/2019/08/28/00/23/drop-of-water-4435587__340.jpg",
+                "https://cdn.pixabay.com/photo/2019/08/28/00/23/drop-of-water-4435587__340.jpg",
+                "https://cdn.pixabay.com/photo/2019/08/28/00/23/drop-of-water-4435587__340.jpg"
+        ));
+
+        providerName = "Rain Dropped Company";
+        lookedUpProvider = providerRepository.findByName(providerName);
+        if (lookedUpProvider == null) {
+            this.providerRepository.save(new Provider(
+                    providerName,
+                    "Pie bonbon gingerbread I love chocolate. Tart pastry tootsie roll. Apple pie I love dessert icing donut ice cream gummies bear claw pastry. Bonbon bear claw danish. Soufflé fruitcake donut powder donut chupa chups. Fruitcake croissant soufflé pie chocolate bar. I love carrot cake donut danish jelly-o I love. Chupa chups jelly I love.",
+                    "2301 Grasswood East Road",
+                    City.SASKATOON,
+                    Province.SK,
+                    "https://www.beaver.com/",
+                    "connect@beaver.com",
+                    "306-123-4555",
+                    imageUrls
+            ));
+        }
     }
 }

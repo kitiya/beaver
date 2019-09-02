@@ -3,6 +3,8 @@ package com.kitiya.beaver.business.service;
 import com.kitiya.beaver.data.entity.Provider;
 import com.kitiya.beaver.data.repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +20,13 @@ public class ProviderService {
         this.providerRepository = providerRepository;
     }
 
-    public Iterable<Provider> getAllProviders() {
-        return providerRepository.findAll(Sort.by(Sort.Direction.DESC, "modifiedDate"));
+    public Page<Provider> getAllProviders(Pageable pageable) {
+        return providerRepository.findAll(pageable);
+    }
 
+    // not used anymore
+    public Iterable<Provider> getAllProviders_org() {
+        return providerRepository.findAll(Sort.by(Sort.Direction.DESC, "modifiedDate"));
     }
 
     public Iterable<Provider> getAllProviderNames() {
