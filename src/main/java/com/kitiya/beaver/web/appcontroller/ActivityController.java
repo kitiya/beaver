@@ -47,7 +47,7 @@ public class ActivityController {
                                   @RequestParam Optional<String> sortBy) {
         Pageable pageable = PageRequest.of(
                 page.orElse(0),
-                size.orElse(3),
+                size.orElse(5),
                 Sort.by(sortBy.orElse("id")).descending());
         return activityRepository.findAll(pageable);
     }

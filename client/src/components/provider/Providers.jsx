@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Providers = ({ providers, loading }) => {
     if (loading) {
-        return <h3>Loading...</h3>;
+        return (<div className="row h75"></div>);
     }
 
     return (

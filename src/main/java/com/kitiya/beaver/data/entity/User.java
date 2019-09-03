@@ -8,7 +8,8 @@ import javax.persistence.*;
 @Entity
 @Table(name="user")
 public class User {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column (name="first_name")
@@ -20,6 +21,7 @@ public class User {
     @Column(name="email")
     private String email;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="role")
     private Role role;
 

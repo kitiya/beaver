@@ -58,7 +58,7 @@ const ProviderMainPage = () => {
     },[currentPage]);
 
     // change page
-    const paginate = (pageNumber) => setCurrentPage(pageNumber-1);
+    const paginate = (pageNumber => setCurrentPage(pageNumber-1));
 
     return(
         <div className="container mt-3">
