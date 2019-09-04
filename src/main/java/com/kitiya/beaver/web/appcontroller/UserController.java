@@ -20,8 +20,8 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    Collection<User> users() {
-        return (Collection<User>) userRepository.findAll();
+    Iterable<User> users() {
+        return userRepository.findAll();
     }
 
     @PostMapping("/users")

@@ -16,6 +16,7 @@ import ProviderDetail from './provider/ProviderDetail';
 import AddProvider from './provider/AddProvider';
 import EventMainPage from './event/EventMainPage';
 import ThingsToDoMainPage from './things-to-do/ThingsToDoMainPage';
+import ThingsToDoDetail from './things-to-do/ThingsToDoDetail';
 import Users from './user/Users';
 import Tutorials from './tutorial/Tutorials';
 //import MapContainer from './util/MapContainer';
@@ -40,8 +41,9 @@ const App = () => (
                         <Route exact path="/providers" component={ProviderMainPage} />
                         <Route path="/provider/:id" component={ProviderDetail} />
                         <Route path="/providers/new" component={AddProvider} />
-                        <Route exact path="/events" component={EventMainPage} />
                         <Route exact path="/things-to-do" component={ThingsToDoMainPage} />
+                        <Route path="/things-to-do/:id" component={ThingsToDoDetail} />
+                        <Route exact path="/events" component={EventMainPage} />
                         <Route path="/users" component={Users} />
                         <Route exact path="/tutorials" component={Tutorials} />
                         <Route component={NotFound} />

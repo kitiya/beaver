@@ -1,63 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 let headerImageStyle = {
-    background: 'linear-gradient(rgba(0, 45, 92, 0.2), rgba(0, 45, 92, 0.2)), url(https://images.unsplash.com/photo-1500995617113-cf789362a3e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)',
+    background: 'linear-gradient(rgba(0, 45, 92, 0.2), rgba(0, 45, 92, 0.2)), url(https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F67240295%2F140350290676%2F1%2Foriginal.20190801-135704?w=800&auto=compress&rect=0%2C0%2C1440%2C720&s=ad2fcdc988c2b8b1d6f26dd277b233eb)',
     backgroundSize: 'cover',
-    backgroundPosition: 'center bottom',
+    backgroundPosition: 'center top',
     backgroundRepeat: 'no-repeat',
-    height: '20vh',
+    height: '13vh',
 }
 
 const ThingsToDoMainPage = () => {
+    const [thingsTodo, setThingsTodo] = useState([]);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        const fetchThingsTodo = async() => {
+            setLoading(true);
+            const response =  await fetch('http://localhost:8080/api/things_to_do');
+            const result = await response.json();
+            setThingsTodo(result);
+            setLoading(false);
+        }
+        fetchThingsTodo();
+    },[]);
+
+    console.log(thingsTodo);
+
+    if (loading) {
+        return ('');
+    }
     return (
-        <div className="container-fluid m-0 p-0">
-            <article className="m-0">
-                <header className="m-0 p-0" style={headerImageStyle}>
-                    <h1 className="text-center text-white mb-4 pt-5">Fun Things to Do with Kids In & Around Saskatoon</h1>
-                </header>
-                <section className="container row mt-4 mx-auto">
-                    <div className="col-sm-6 col-md-8">
-                        <img
-                            className="w-100 rounded"
-                            src="https://www.lloydminster.ca/en/living-in-lloydminster/resources/kids-in-park-banner.jpg"
-                            alt="camp" />
-                    </div>
-                    <div className="col-sm-6 col-md-4 align-self-center">
-                        <h5 className="text-info">Discover the Perfect Summer Camp</h5>
-                        <p>Use our powerful search tool to find and book a camp for your child, it's never been easier!</p>
-                        <button className="btn text-white border-warning rounded bg-yellowish">See Camp Listing</button>
-                    </div>
-                </section>
-            </article>
-            <article className="container mt-4">
-                <section className="row justify-content-center">
-                    <h4 className="text-pinkish">Discover the Kid Friendly Side of the City</h4>
-                    <h5 className="text-purple">Search through all listings by category and learn more about great places to take the family</h5>
-                    <p className="px-3">
-                        Cupcake ipsum dolor sit. Amet cheesecake powder muffin. Soufflé ice cream sweet chocolate gingerbread powder fruitcake. Donut sweet roll icing gingerbread dessert.
-                        Gummi bears croissant sesame snaps. Tart powder croissant topping. Topping danish croissant sweet pudding. Chocolate cake fruitcake dessert sweet roll sesame snaps sweet roll tiramisu.
-                    </p>
-                </section>
-                <section>
-                    <div className="row justify-content-center">
-                        <div className="col-sm-4 align-self-center">
-                            <p className="text-right">Sesame snaps cake dragée muffin marzipan. Chocolate bar cheesecake cotton candy gummi bears sweet sugar plum oat cake.</p>
+        <div>
+            <header className="m-0 p-0" style={headerImageStyle}>
+                <h1 className="text-center text-white mb-4 pt-4">Fun Things to Do with Kids In & Around Saskatoon</h1>
+            </header>
+            <div className="container mt-3">
+                <div className="row">
+                    {thingsTodo.map(t => (
+                        <div key={t.id} className="col-md-4">
+                            <div className="card mt-2">
+                                <Link to={`things-to-do/${t.id}`}>
+                                    <img src={t.imageUrl} alt="t.name" className="card-img-top rounded"/>
+                                </Link>
+                                <section className="card-body bg-light p-0">
+                                    <Link to={`things-to-do/${t.id}`}>
+                                        <h5 className="card-title p-2 bg-info text-white">{t.name}</h5>
+                                    </Link>
+                                    <div className="px-3 pb-3">
+                                        <p className="card-text text-truncate">{t.description}</p>
+                                        <p className="card-text">Date: {t.dateInfo}</p>
+                                        <p className="card-text">Time: {t.timeInfo}</p>
+                                        <Link to={`things-to-do/${t.id}`}>
+                                            <p className="text-right text-primary">More details...</p>
+                                        </Link>
+                                    </div>
+                                </section>
+                            </div>
                         </div>
-                        <div className="col-sm-4">
-                            <img
-                            className="w-100 rounded"
-                            src="https://i.imgur.com/7eqf58J.jpg"
-                            alt="camp" />
-                        </div>
-                        <div className="col-sm-4">
-                            <img
-                            className="w-100 rounded"
-                            src="https://i.imgur.com/9zRygP6.jpg"
-                            alt="camp" />
-                        </div>
-                    </div>
-                </section>
-            </article>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
