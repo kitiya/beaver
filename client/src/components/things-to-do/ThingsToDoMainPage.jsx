@@ -15,7 +15,7 @@ const ThingsToDoMainPage = () => {
     useEffect(() => {
         const fetchThingsTodo = async() => {
             setLoading(true);
-            const response =  await fetch('http://localhost:8080/api/things_to_do');
+            const response =  await fetch('http://localhost:8080/api/things-to-do');
             const result = await response.json();
             setThingsTodo(result);
             setLoading(false);
