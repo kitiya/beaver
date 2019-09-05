@@ -11,6 +11,7 @@ import Home from './home/Home';
 import ActivityMainPage from './activity/ActivityMainPage';
 import ActivityDetail from './activity/ActivityDetail';
 import AddActivity from './activity/AddActivity';
+import EditActivity from './activity/EditActivity';
 import ProviderMainPage from './provider/ProviderMainPage';
 import ProviderDetail from './provider/ProviderDetail';
 import AddProvider from './provider/AddProvider';
@@ -36,8 +37,9 @@ const App = () => (
                         <Redirect from="/home" to="/" />
                         <Route exact path="/" component={Home} />
                         <Route exact path="/activities" component={ActivityMainPage} />
-                        <Route path="/activity/:id" component={ActivityDetail} />
+                        <Route exact path="/activity/:id" component={ActivityDetail} />
                         <Route path="/activities/new" component={AddActivity} />
+                        <Route path="/activity/:id/edit" component={EditActivity} />
                         <Route exact path="/providers" component={ProviderMainPage} />
                         <Route path="/provider/:id" component={ProviderDetail} />
                         <Route path="/providers/new" component={AddProvider} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 // import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const useFetchActivity = (initialState, activityUrl) => {
@@ -71,6 +71,9 @@ const ActivityDetail = ({ match }) => {
                 <span className="col-md-4 text-right">
                     {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
                 </span>
+            </div>
+            <div className="row justify-content-center">
+                <Link to={`/activity/${activity.id}/edit`} className="btn btn-outline-info mb-2 px-3 py-1 rounded">Edit</Link>
             </div>
         </div>
     );

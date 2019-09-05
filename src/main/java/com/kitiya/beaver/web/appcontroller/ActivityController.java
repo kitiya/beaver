@@ -68,6 +68,14 @@ public class ActivityController {
         return ResponseEntity.ok().body(result);
     }
 
+    @PostMapping("/acitvities/update/{id}")
+    Activity updateActivity(@PathVariable("id") long id, @Valid Activity activity) {
+        activityRepository.save(activity);
+        System.out.println(id);
+        System.out.println(activity.getName());
+        return activityRepository.findById(id).orElse(null);
+    }
+
     @RequestMapping(value="/activities/search", params = "name")
     @ResponseBody
     Iterable<Activity> searchByName(@RequestParam(value="name") String name) {

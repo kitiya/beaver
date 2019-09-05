@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const bannerStyle = {
     background: 'linear-gradient(rgba(0, 45, 92, 0.2), rgba(0, 45, 92, 0.2)), url(http://www.yellowballoon.org/YellowBalloonProject/media/Images/YellowBanner.png)',
@@ -73,13 +73,11 @@ const ActivitySummary = (props) => {
                         {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
                     </span>
                 </div>
-                <div className="row justify-content-end">
-                    <NavLink
-                        className="mr-3 text-decoration-none"
-                        to={`/activity/${activity.id}`}
-                    >
-                        Read more...
-                    </NavLink>
+                <div className="row justify-content-center">
+                    <Link to={`/activity/${activity.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Read More...</Link>
+                    <Link to={`/activity/${activity.id}/edit`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
+                    <Link to={`/activity/${activity.id}/delete`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link>
+                    {/* <Link to={`/activity/${activity.id}`} className="mr-3 text-decoration-none">Read more...</Link> */}
                 </div>
             </div>
         </div>

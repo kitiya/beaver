@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ActivitySummary from './ActivitySummary';
 import useFetch from '../util/useFetch';
 
 const ActivityMainPage = () => {
    
-    const activitiesUrl = 'http://localhost:8080/api/activities?page=0&size=3';
+    const activitiesUrl = 'http://localhost:8080/api/activities?page=0&size=5';
     const { data } = useFetch({ result: [] }, activitiesUrl);
     const activities = data.result.content;
     
@@ -49,8 +49,8 @@ const ActivityMainPage = () => {
                         <ActivitySummary activity={ selectedActivity } />
                 </div>
             </section>
-            <section className="row justify-content-end pt-3 px-3">
-                <NavLink to={`activities/new`} className="btn bg-info text-white mb-2 px-3 py-1 rounded-pill">Add new activity...</NavLink>
+            <section className="row justify-content-end pt-3 px-0">
+                <Link to={`activities/new`} className="btn btn-outline-info mb-2 px-3 py-1 rounded">Add new activity...</Link>
             </section>
         </div>
     );
