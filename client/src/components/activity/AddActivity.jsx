@@ -37,14 +37,9 @@ const AddActivity = (props) => {
 
     // convert array [[id, name], [id, name], ...] to object [{key, value}, ...]
     const providerNameList = data.result.map((p) => {
-        // let m = {};
-        // m.id = p[0];
-        // m.name = p[1];
-        // return m;
         const [id, name] = p;
         return {id, name};
      });
-    //console.log(providerNameList);
 
     const handleSubmit = (event) => {
         //event.preventDefault();  // prevent the form to refresh the pages
