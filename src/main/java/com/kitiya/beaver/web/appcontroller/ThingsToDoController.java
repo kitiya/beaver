@@ -16,12 +16,12 @@ public class ThingsToDoController {
         this.thingsToDoRepository = thingsToDoRepository;
     }
 
-    @GetMapping("/things_to_do")
+    @GetMapping("/things-to-do")
     List<ThingsToDo> getAllThingsToDos() {
         return thingsToDoRepository.findAll();
     }
 
-    @GetMapping("/things_to_do/{id}")
+    @GetMapping("/things-to-do/{id}")
     ThingsToDo getThingsToDoById(@PathVariable Long id) {
         return thingsToDoRepository.findById(id).orElse(null);
     }
