@@ -100,6 +100,7 @@ const EditActivity = (props) => {
         }
 
         let updatedActivity = {
+            id: id,
             name: name,
             provider: provider,
             schedule: schedule,
