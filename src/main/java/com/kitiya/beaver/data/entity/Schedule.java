@@ -1,5 +1,6 @@
 package com.kitiya.beaver.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -30,10 +31,12 @@ public class Schedule {
 
     @Temporal(TemporalType.TIME)
     @Column(name = "start_time")
+    @JsonFormat(pattern = "HH:mm:ss")
     private Date startTime;
 
     @Temporal(TemporalType.TIME)
     @Column(name = "end_time")
+    @JsonFormat(pattern = "HH:mm:ss")
     private Date endTime;
 
     @Enumerated(EnumType.STRING)

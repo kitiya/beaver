@@ -68,12 +68,13 @@ public class ActivityController {
         return ResponseEntity.ok().body(result);
     }
 
-    @PostMapping("/acitvities/update/{id}")
-    Activity updateActivity(@PathVariable("id") long id, @Valid Activity activity) {
-        activityRepository.save(activity);
-        System.out.println(id);
-        System.out.println(activity.getName());
-        return activityRepository.findById(id).orElse(null);
+    @RequestMapping(value="/activities",
+            produces = "application/json",
+            method=RequestMethod.POST,
+            params="id")
+    ResponseEntity<Activity>  updateActivity(@RequestParam(value="id") Long id, @Valid @RequestBody Activity activity) throws URISyntaxException {
+        Activity result = activityService.updateActivity(id, activity);
+        return ResponseEntity.ok().body(result);
     }
 
     @RequestMapping(value="/activities/search", params = "name")

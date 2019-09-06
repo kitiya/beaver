@@ -15,11 +15,13 @@ public class ActivityService {
 
     private ActivityRepository activityRepository;
     private ProviderRepository providerRepository;
+    private ScheduleRepository scheduleRepository;
 
     @Autowired
-    public ActivityService(ActivityRepository activityRepository, ProviderRepository providerRepository) {
+    public ActivityService(ActivityRepository activityRepository, ProviderRepository providerRepository, ScheduleRepository scheduleRepository) {
         this.activityRepository = activityRepository;
         this.providerRepository = providerRepository;
+        this.scheduleRepository = scheduleRepository;
     }
 
     public Activity addActivity(Activity activity) {
@@ -66,4 +68,24 @@ public class ActivityService {
 
         return activityRepository.save(activity);
     }
+
+    public Activity updateActivity(Long id, Activity activity) {
+        Activity lookedUpActivity = activityRepository.findById(id).orElse(null);
+        Provider lookedUpProvider = providerRepository.findById(activity.getProvider().getId()).orElse(null);
+
+        lookedUpActivity.setProvider(lookedUpProvider);
+
+        Schedule schedule = scheduleRepository.findById(activity.getSchedule().getId()).orElse(null);
+        if (schedule != null) {
+            schedule.setStartDate(activity.getSchedule().getStartDate());
+            schedule.setEndDate(activity.getSchedule().getEndDate());
+            schedule.setStartTime(activity.getSchedule().getStartTime());
+            schedule.setEndTime(activity.getSchedule().getEndTime());
+            schedule.setDayOfWeek(activity.getSchedule().getDayOfWeek());
+            lookedUpActivity.setSchedule(schedule);
+        }
+
+        return activityRepository.save(lookedUpActivity);
+    }
+
 }

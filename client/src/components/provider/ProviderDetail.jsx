@@ -19,41 +19,7 @@ const useFetchProvider = (initialState, providerUrl) => {
     return  { value };
 }
 
-// const ActivityList = ( providerName ) => {
-//     console.log(providerName);
-//     const [activityList, setActivityList] = useState([]);
-//     useEffect( () => {
-//         const fetchActivityList = async () => {
-//             const url = `http://localhost:8080/api/activities/search?provider=${providerName}`;
-//             console.log(url);
-//             try {
-//                 const response = await fetch(url);
-//                 const result = await response.json();
-//                 setActivityList(result);
-//             } catch (error) {
-//                 console.log(error);
-//             }
-//         };
-//         fetchActivityList();
-//     }, [providerName]);
-
-//     console.log(activityList);
-
-//     if (!activityList) {
-//         return ('');
-//     }
-
-//     return (
-//         <div>
-//             {activityList.map((a) => (
-//                 <h1>{a.name}</h1>
-//             ))}
-//         </div>
-//     );
-// }
-
 const ProviderDetail = ({ match }) => {
-    // console.log(match);
     const id = match.params.id;
     const providerUrl = `http://localhost:8080/api/providers/${id}`;
     const provider = useFetchProvider({value: []}, providerUrl).value;
@@ -88,7 +54,7 @@ const ProviderDetail = ({ match }) => {
                     <h4 className="text-light px-3 py-1 text-center">Classes currently offered by {provider.name}</h4>
                 </header>
                 {activityList.map((activity) => (
-                    <section className="my-1">
+                    <section className="my-1" key={activity.id}>
                         <div className="row">
                             <img className="col-md-3 my-1 rounded" src={activity.imageUrls[1]} alt={activity.name}></img>
                             <div className="col-md-9">
@@ -123,7 +89,7 @@ const ProviderDetail = ({ match }) => {
         provider.imageUrls = [];
     }
     return (
-        <div className="container mt-3">
+        <div className="container mt-3" key={provider.id}>
             <h3 className="bg-light text-info text-center rounded py-1 border border-right-0 border-left-0">{provider.name}</h3>
             <div className="row mb-3">
                 {provider.imageUrls.map((url, index) => (

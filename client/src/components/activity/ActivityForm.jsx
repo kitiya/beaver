@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import useFetch from '../util/useFetch';
-import * as moment from 'moment';
+import React from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -15,80 +12,11 @@ const TextInput = ({children, ...props}) => {
     );
 };
 
-const AddActivity = (props) => {
-    const [name, setName] = useState('');
-    const [type, setType] = useState('MUSIC');
-    const [description, setDescription] = useState('Candy donut cotton candy I love pudding I love muffin ice cream donut. Lollipop pudding toffee muffin I love dragée danish brownie jelly-o. Gummi bears croissant powder lemon drops I love chocolate bar cake. I love marshmallow cake brownie bear claw. I love I love liquorice cake pudding fruitcake bear claw sesame snaps. Cookie cupcake halvah jelly chocolate cake toffee. Chocolate bar dragée tootsie roll tart dessert halvah ice cream liquorice.');
-    const [fromAge, setFromAge] = useState('3');
-    const [toAge, setToAge] = useState('6');
-    const [cost, setCost] = useState('200');
-    const [imageUrl, setImageUrl] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
-    const [imageUrl2, setImageUrl2] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
-    const [imageUrl3, setImageUrl3] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
-    const [providerName, setProviderName] = useState('');
-    const [scheduledStartDate, setScheduledStartDate] = useState('');
-    const [scheduledEndDate, setScheduledEndDate] = useState('');
-    const [scheduledStartTime, setScheduledStartTime] = useState('');
-    const [scheduledEndTime, setScheduledEndTime] = useState('');
-    const [scheduledDayOfWeek, setScheduledDayOfWeek] = useState('');
-
-    let url = 'http://localhost:8080/api/providers/names';
-    const { data, loading } = useFetch({result: []}, url);
-
-    // convert array [[id, name], [id, name], ...] to object [{key, value}, ...]
-    const providerNameList = data.result.map((p) => {
-        const [id, name] = p;
-        return {id, name};
-     });
-
-    const handleSubmit = (event) => {
-        //event.preventDefault();  // prevent the form to refresh the pages
-
-        let provider = {
-            name: providerName,
-        }
-
-        let schedule = {
-            startDate: scheduledStartDate,
-            endDate: scheduledEndDate,
-            startTime: moment(new Date(scheduledStartTime)).format('HH:mm:ss'),
-            endTime: moment(new Date(scheduledEndTime)).format('HH:mm:ss'),
-            dayOfWeek: scheduledDayOfWeek,
-        }
-
-        let newActivity = {
-            name: name,
-            provider: provider,
-            schedule: schedule,
-            type: type,
-            description: description,
-            fromAge: fromAge,
-            toAge: toAge,
-            cost: cost,
-            imageUrls: [imageUrl, imageUrl2, imageUrl3],
-        }
-        console.log(newActivity);
-
-        fetch("http://localhost:8080/api/activities", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(newActivity),
-        })
-        .then(response => response.json());
-        
-        let redirectUrl = `/activities`;
-        props.history.push(redirectUrl);
-        //window.location.reload();
-    };
-
-    if ( loading ) {
-        return (
-            <div>Loading ...</div>
-        );
+const ActivityForm = ({ activity, loading, providerNameList, handleSubmit}) => {
+    if (loading) {
+        return ('');
     }
-    return(
+    return (
         <div className="container pt-3">
             <h2 className="text-info">Add New Activity</h2>
             <form className="mx-auto p-3 border rounded">
@@ -96,15 +24,15 @@ const AddActivity = (props) => {
                     <div className="col-md-6 form-group">
                         <label htmlFor="name">Name</label>
                         <input required type="text" id="name" className="form-control" placeholder="Activity Name" 
-                            value={name}
-                            onChange={(e)=>setName(e.target.value)}
+                            value={activity.name}
+                            onChange={(e)=>activity.setName(e.target.value)}
                         />
                     </div>
                     <div className="col-md-6 form-group">
                         <label htmlFor="providerSelect">Provider</label>
                         <select className="form-control" id="providerSelect"
-                                value={providerName}
-                                onChange={(e)=>setProviderName(e.target.value)}
+                                value={activity.provider.name}
+                                onChange={(e)=>activity.setProviderName(e.target.value)}
                         >
                             <option value="NA">Select one...</option>
                             {providerNameList.map((provider) => (
@@ -118,8 +46,8 @@ const AddActivity = (props) => {
                     <div className="col-md-6 form-group">
                         <label htmlFor="activityTypeSelect">Activity Type</label>
                         <select className="form-control" id="activityTypeSelect"
-                                value={type}
-                                onChange={(e)=>setType(e.target.value)}
+                                value={activity.type}
+                                onChange={(e)=>activity.setType(e.target.value)}
                         >
                             <option value="NA">Select one...</option>    
                             <option value="ACADEMICS">Academics</option>
@@ -142,8 +70,8 @@ const AddActivity = (props) => {
                                 <span className="input-group-text">$</span>
                             </div>
                             <input required type="text" pattern="[0-9]*" id="cost" className="form-control" placeholder="" 
-                                value={cost}
-                                onChange={(e)=>setCost(e.target.value)}
+                                value={activity.cost}
+                                onChange={(e)=>activity.setCost(e.target.value)}
                             />
                         </div>
                     </div>
@@ -153,8 +81,8 @@ const AddActivity = (props) => {
                     <div className="col-md-6 form-group">
                         <label htmlFor="fromAgeSelect">From Age</label>
                         <select className="form-control" id="fromAgeSelect"
-                                value={fromAge}
-                                onChange={(e)=>setFromAge(e.target.value)}
+                                value={activity.fromAge}
+                                onChange={(e)=>activity.setFromAge(e.target.value)}
                         >
                             <option value="NA">Select one...</option>
                             <option value="0">Less than 1 yr</option>
@@ -182,8 +110,8 @@ const AddActivity = (props) => {
                     <div className="col-md-6 form-group">
                         <label htmlFor="toAgeSelect">To Age</label>
                         <select className="form-control" id="toAgeSelect"
-                                value={toAge}
-                                onChange={(e)=>setToAge(e.target.value)}
+                                value={activity.toAge}
+                                onChange={(e)=>activity.setToAge(e.target.value)}
                         >
                             <option value="NA">Select one...</option>
                             <option value="0">Less than 1 yr</option>
@@ -214,8 +142,8 @@ const AddActivity = (props) => {
                     <div className="form-group col-12">
                         <label htmlFor="description">Description</label>
                         <textarea type="text" className="form-control" placeholder="Description" rows="4"
-                            value={description}
-                            onChange={(e)=>setDescription(e.target.value)}>                
+                            value={activity.description}
+                            onChange={(e)=>activity.setDescription(e.target.value)}>                
                         </textarea>
                     </div>
                 </div>
@@ -225,8 +153,8 @@ const AddActivity = (props) => {
                     <label>Start Date</label>
                         <DatePicker
                             className="form-control"
-                            selected={scheduledStartDate}
-                            onChange={(e)=>setScheduledStartDate(e)}
+                            selected={activity.scheduledStartDate}
+                            onChange={(e)=>activity.setScheduledStartDate(e)}
                             placeholderText="Start Date"
                             showYearDropdown
                             minDate={new Date()}
@@ -237,19 +165,19 @@ const AddActivity = (props) => {
                     <label>End Date</label>
                         <DatePicker 
                             className="form-control"
-                            selected={scheduledEndDate}
-                            onChange={(e)=>setScheduledEndDate(e)} 
+                            selected={activity.scheduledEndDate}
+                            onChange={(e)=>activity.setScheduledEndDate(e)} 
                             placeholderText="End Date"
                             showYearDropdown
-                            minDate={new Date(scheduledStartDate)}
+                            minDate={new Date(activity.scheduledStartDate)}
                         />
                     </div>
                     <div className="col-lg-2 col-sm-6">
                         <label>Start Time</label>
                         <DatePicker
                             className="form-control"
-                            selected={scheduledStartTime}
-                            onChange={(e)=>setScheduledStartTime(e)}
+                            selected={activity.scheduledStartTime}
+                            onChange={(e)=>activity.setScheduledStartTime(e)}
                             showTimeSelect
                             showTimeSelectOnly
                             dateFormat="hh:mm a"
@@ -260,8 +188,8 @@ const AddActivity = (props) => {
                         <label>End Time</label>
                         <DatePicker 
                             className="form-control"
-                            selected={ scheduledEndTime }
-                            onChange={(e)=>setScheduledEndTime(e)}
+                            selected={ activity.scheduledEndTime }
+                            onChange={(e)=>activity.setScheduledEndTime(e)}
                             showTimeSelect
                             showTimeSelectOnly
                             dateFormat="hh:mm a"
@@ -271,8 +199,8 @@ const AddActivity = (props) => {
                     <div className="col-md-4 form-group">
                         <label htmlFor="dayOfWeekSelect">Day of Week</label>
                         <select className="form-control" id="dayOfWeekSelect"
-                                value={scheduledDayOfWeek}
-                                onChange={(e)=>setScheduledDayOfWeek(e.target.value)}
+                                value={activity.scheduledDayOfWeek}
+                                onChange={(e)=>activity.setScheduledDayOfWeek(e.target.value)}
                         >
                             <option value="NA">Select one...</option>
                             <option value="MONDAY">Monday</option>
@@ -290,8 +218,8 @@ const AddActivity = (props) => {
                         <legend className="mx-3">Image URLs</legend>
                         <label className="col-sm-4">
                             <TextInput required
-                                value={imageUrl}
-                                onChange={(e)=> setImageUrl(e.target.value)}
+                                value={activity.imageUrl}
+                                onChange={(e)=> activity.setImageUrl(e.target.value)}
                                 data-toggle="tooltip"
                                 data-placement="bottom"
                                 placeholder="image url #1"
@@ -299,8 +227,8 @@ const AddActivity = (props) => {
                         </label>
                         <label className="col-sm-4">
                             <TextInput required
-                                value={imageUrl2}
-                                onChange={(e)=> setImageUrl2(e.target.value)}
+                                value={activity.imageUrl2}
+                                onChange={(e)=> activity.setImageUrl2(e.target.value)}
                                 data-toggle="tooltip"
                                 data-placement="bottom"
                                 placeholder="image url #2"
@@ -308,8 +236,8 @@ const AddActivity = (props) => {
                         </label>
                         <label className="col-sm-4">
                             <TextInput required
-                                value={imageUrl3}
-                                onChange={(e)=> setImageUrl3(e.target.value)}
+                                value={activity.imageUrl3}
+                                onChange={(e)=> activity.setImageUrl3(e.target.value)}
                                 data-toggle="tooltip"
                                 data-placement="bottom"
                                 placeholder="image url #3"
@@ -323,5 +251,6 @@ const AddActivity = (props) => {
             </form>
         </div>
     );
-}
-export default withRouter(AddActivity);
+};
+
+export default ActivityForm;
