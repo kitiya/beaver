@@ -29,6 +29,7 @@ const EditActivity = (props) => {
     const [imageUrl2, setImageUrl2] = useState('');
     const [imageUrl3, setImageUrl3] = useState('');
     const [providerName, setProviderName] = useState('');
+    const [scheduleId, setScheduleId] = useState('');
     const [scheduledStartDate, setScheduledStartDate] = useState('');
     const [scheduledEndDate, setScheduledEndDate] = useState('');
     const [scheduledStartTime, setScheduledStartTime] = useState('');
@@ -55,14 +56,25 @@ const EditActivity = (props) => {
                 setImageUrl2(result.imageUrls[1]);
                 setImageUrl3(result.imageUrls[2]);
                 setProviderName(result.provider.name);
+                setScheduleId(result.schedule.id);
+
+                console.log(result.schedule.id);
                 setScheduledStartDate(parseISO(result.schedule.startDate));
                 setScheduledEndDate(parseISO(result.schedule.endDate));
                 console.log(result.schedule.startTime);
-                //setScheduledStartTime(new Date(result.schedule.startTime));
-                // setScheduledEndTime(parseISO(result.schedule.endTime));
+
+                /* start time */
+                const startTimeArray = result.schedule.startTime.split(':');
+                const startDateTimeMoment = new Date(moment({year: 1980, month:1, day:1, hour: startTimeArray[0], minute: startTimeArray[1]}));
+                setScheduledStartTime(startDateTimeMoment);
+
+                /* end time */
+                const endTimeArray = result.schedule.endTime.split(':');
+                const endDateTimeMoment = new Date(moment({year: 1980, month:1, day:1, hour: endTimeArray[0], minute: endTimeArray[1]}));
+                setScheduledEndTime(endDateTimeMoment);
+
                 setScheduledDayOfWeek(result.schedule.dayOfWeek);
 
-                //setActivity(result);
                 setActivityLoading(false);
             } catch (error) {
                 console.log(error);
@@ -92,6 +104,7 @@ const EditActivity = (props) => {
         }
 
         let schedule = {
+            id: scheduleId,
             startDate: scheduledStartDate,
             endDate: scheduledEndDate,
             startTime: moment(new Date(scheduledStartTime)).format('HH:mm:ss'),

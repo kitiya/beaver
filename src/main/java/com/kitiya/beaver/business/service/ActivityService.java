@@ -70,23 +70,23 @@ public class ActivityService {
     }
 
     public Activity updateActivity(Long id, Activity activity) {
-        Provider lookedUpProvider = providerRepository.findById(activity.getProvider().getId()).orElse(null);
-        Activity lookedUpActivity = activityRepository.findById(activity.getId()).orElse(null);
+//        Provider lookedUpProvider = providerRepository.findById(activity.getProvider().getId()).orElse(null);
+//        Activity lookedUpActivity = activityRepository.findById(activity.getId()).orElse(null);
+//
+//
+//        lookedUpActivity.setProvider(lookedUpProvider);
+//
+//        Schedule schedule = scheduleRepository.findById(activity.getSchedule().getId()).orElse(null);
+//        if (schedule != null) {
+//            schedule.setStartDate(activity.getSchedule().getStartDate());
+//            schedule.setEndDate(activity.getSchedule().getEndDate());
+//            schedule.setStartTime(activity.getSchedule().getStartTime());
+//            schedule.setEndTime(activity.getSchedule().getEndTime());
+//            schedule.setDayOfWeek(activity.getSchedule().getDayOfWeek());
+//            lookedUpActivity.setSchedule(schedule);
+//        }
 
-
-        lookedUpActivity.setProvider(lookedUpProvider);
-
-        Schedule schedule = scheduleRepository.findById(activity.getSchedule().getId()).orElse(null);
-        if (schedule != null) {
-            schedule.setStartDate(activity.getSchedule().getStartDate());
-            schedule.setEndDate(activity.getSchedule().getEndDate());
-            schedule.setStartTime(activity.getSchedule().getStartTime());
-            schedule.setEndTime(activity.getSchedule().getEndTime());
-            schedule.setDayOfWeek(activity.getSchedule().getDayOfWeek());
-            lookedUpActivity.setSchedule(schedule);
-        }
-
-        return activityRepository.save(lookedUpActivity);
+        return activityRepository.save(activity);
     }
 
 }
