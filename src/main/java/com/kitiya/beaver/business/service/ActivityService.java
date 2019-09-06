@@ -70,8 +70,9 @@ public class ActivityService {
     }
 
     public Activity updateActivity(Long id, Activity activity) {
-        Activity lookedUpActivity = activityRepository.findById(id).orElse(null);
         Provider lookedUpProvider = providerRepository.findById(activity.getProvider().getId()).orElse(null);
+        Activity lookedUpActivity = activityRepository.findById(activity.getId()).orElse(null);
+
 
         lookedUpActivity.setProvider(lookedUpProvider);
 

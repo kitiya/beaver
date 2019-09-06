@@ -68,7 +68,7 @@ public class ActivityController {
         return ResponseEntity.ok().body(result);
     }
 
-    @RequestMapping(value="/activities",
+    @RequestMapping(value="/acitvities",
             produces = "application/json",
             method=RequestMethod.POST,
             params="id")
