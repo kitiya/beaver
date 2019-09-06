@@ -3,39 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Providers from './Providers';
 import Pagination from '../util/Pagination';
-//import React, { useContext } from 'react';
-//import { AuthContext } from '../../contexts/AuthContext';
-//import Login from '../user/Login';
-
-// const useFetch = (initialState, url) => {
-//     const [data, setData] = useState(initialState);
-//     const [loading, setLoading] = useState(true);
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             try {
-//                 const response = await fetch(url);
-//                 const result = await response.json();
-//                 setData({providers: result});
-//             } catch (error) {
-//                 console.log(error);
-//             }
-//         };
-//         fetchData();
-//         setLoading(false);
-//     }, [url]);
-//     return { data, loading };
-// };
 
 const ProviderMainPage = () => {
-    //const {isAuthenticated} = useContext(AuthContext);
-    // const { data, loading } = useFetch({providers: []}, "http://localhost:8080/api/providers");
-    // const providerData = data.providers.content;
-
-    // useEffect(() => {
-    //     setProviders(providerData);
-    // },[providerData]);
-
     const [providers, setProviders] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
@@ -47,7 +16,7 @@ const ProviderMainPage = () => {
             setLoading(true);
             const response = await axios.get(`http://localhost:8080/api/providers?page=${currentPage}&size=${providersPerPage}`);
             const data = response.data;
-            console.log(response.data);
+            //console.log(response.data);
             
             setProviders(data.content);
             setTotalPages(data.totalPages);
