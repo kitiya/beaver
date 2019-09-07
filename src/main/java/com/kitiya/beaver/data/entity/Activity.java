@@ -1,6 +1,5 @@
 package com.kitiya.beaver.data.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

@@ -24,8 +24,21 @@ public class ActivityService {
         this.scheduleRepository = scheduleRepository;
     }
 
-    public Activity addActivity(Activity activity) {
-        //Optional<Provider> lookedUpProvider = providerRepository.findById(Long.valueOf(100));
+    public Activity addActivity(Activity activity, Optional<Long> id) {
+        Schedule schedule;
+
+        if (id.isPresent()) {
+            schedule = scheduleRepository.findById(activity.getSchedule().getId()).orElse(null);
+        } else {
+            schedule = new Schedule();
+        }
+        schedule.setStartDate(activity.getSchedule().getStartDate());
+        schedule.setEndDate(activity.getSchedule().getEndDate());
+        schedule.setStartTime(activity.getSchedule().getStartTime());
+        schedule.setEndTime(activity.getSchedule().getEndTime());
+        schedule.setDayOfWeek(activity.getSchedule().getDayOfWeek());
+        activity.setSchedule(schedule);
+
         Provider lookedUpProvider = providerRepository.findByName(activity.getProvider().getName());
 
         if (lookedUpProvider != null) {
@@ -40,7 +53,6 @@ public class ActivityService {
                         "https://cdn.pixabay.com/photo/2012/10/14/11/20/koala-61189__340.jpg",
                         "https://cdn.pixabay.com/photo/2018/04/07/20/32/swan-3299528__340.jpg",
                         "https://cdn.pixabay.com/photo/2019/07/21/12/02/monkeys-4352588__340.jpg"
-
                 ));
 
                 Provider newProvider = new Provider();
@@ -58,35 +70,6 @@ public class ActivityService {
             }
         }
 
-        Schedule schedule = new Schedule();
-        schedule.setStartDate(activity.getSchedule().getStartDate());
-        schedule.setEndDate(activity.getSchedule().getEndDate());
-        schedule.setStartTime(activity.getSchedule().getStartTime());
-        schedule.setEndTime(activity.getSchedule().getEndTime());
-        schedule.setDayOfWeek(activity.getSchedule().getDayOfWeek());
-        activity.setSchedule(schedule);
-
         return activityRepository.save(activity);
     }
-
-    public Activity updateActivity(Long id, Activity activity) {
-//        Provider lookedUpProvider = providerRepository.findById(activity.getProvider().getId()).orElse(null);
-//        Activity lookedUpActivity = activityRepository.findById(activity.getId()).orElse(null);
-//
-//
-//        lookedUpActivity.setProvider(lookedUpProvider);
-//
-//        Schedule schedule = scheduleRepository.findById(activity.getSchedule().getId()).orElse(null);
-//        if (schedule != null) {
-//            schedule.setStartDate(activity.getSchedule().getStartDate());
-//            schedule.setEndDate(activity.getSchedule().getEndDate());
-//            schedule.setStartTime(activity.getSchedule().getStartTime());
-//            schedule.setEndTime(activity.getSchedule().getEndTime());
-//            schedule.setDayOfWeek(activity.getSchedule().getDayOfWeek());
-//            lookedUpActivity.setSchedule(schedule);
-//        }
-
-        return activityRepository.save(activity);
-    }
-
 }

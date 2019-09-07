@@ -45,6 +45,16 @@ public class Schedule {
 
     public Schedule() {}
 
+    public Schedule(Long id, Activity activity, Date startDate, Date endDate, Date startTime, Date endTime, DayOfWeek dayOfWeek) {
+        this.id = id;
+        this.activity = activity;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.dayOfWeek = dayOfWeek;
+    }
+
     public Schedule(Date startDate, Date endDate, Date startTime, Date endTime, DayOfWeek dayOfWeek) {
         this.startDate = startDate;
         this.endDate = endDate;

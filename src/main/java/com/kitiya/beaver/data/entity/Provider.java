@@ -70,6 +70,23 @@ public class Provider {
         this.name = name;
     }
 
+    public Provider(Long id, @NotBlank String name, String description, String streetAddress, City city, Province province, String website, String email, String phone, List<String> imageUrls, Date createdDate, Date modifiedDate, List<Activity> activities) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.province = province;
+        this.website = website;
+        this.email = email;
+        this.phone = phone;
+        this.imageUrls = imageUrls;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.activities = activities;
+    }
+
+    // for development
     public Provider(@NotBlank String name, String description, String streetAddress, City city, Province province, String website, String email, String phone, List<String> imageUrls) {
         this.name = name;
         this.description = description;
