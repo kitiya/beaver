@@ -6,6 +6,7 @@ import com.kitiya.beaver.data.repository.ProviderRepository;
 import com.kitiya.beaver.data.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -71,5 +72,16 @@ public class ActivityService {
         }
 
         return activityRepository.save(activity);
+    }
+
+    public Boolean deleteActivity(Long id) {
+        Activity activity = activityRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Activity not found for this id :: " + id));
+        Schedule schedule = scheduleRepository.findById(activity.getSchedule().getId())
+                .orElseThrow(()->new ResourceNotFoundException("Schedule not found for this :: " + activity.getSchedule().getId()));
+        activity.setImageUrls(null);
+
+        scheduleRepository.delete(schedule);
+        activityRepository.delete(activity);
+        return true;
     }
 }

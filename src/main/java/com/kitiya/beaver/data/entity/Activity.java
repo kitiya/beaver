@@ -181,4 +181,9 @@ public class Activity {
     }
 
     public String getAgeRange() {return this.fromAge + " - " + this.getToAge() + " yrs";}
+
+    @PreRemove
+    private void removeSchedule() {
+        this.schedule = null;
+    }
 }

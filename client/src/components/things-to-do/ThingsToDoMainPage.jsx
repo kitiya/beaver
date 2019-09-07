@@ -23,7 +23,7 @@ const ThingsToDoMainPage = () => {
         fetchThingsTodo();
     },[]);
 
-    console.log(thingsTodo);
+    //console.log(thingsTodo);
 
     if (loading) {
         return ('');

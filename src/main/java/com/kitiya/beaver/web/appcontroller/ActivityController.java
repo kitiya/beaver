@@ -4,6 +4,7 @@ import com.kitiya.beaver.business.service.ActivityService;
 import com.kitiya.beaver.data.entity.Activity;
 import com.kitiya.beaver.data.entity.ActivityType;
 import com.kitiya.beaver.data.entity.City;
+import com.kitiya.beaver.data.entity.Schedule;
 import com.kitiya.beaver.data.repository.ActivityRepository;
 import com.kitiya.beaver.search.IActivityDAO;
 import com.kitiya.beaver.search.SearchCriteria;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,14 +70,13 @@ public class ActivityController {
         return ResponseEntity.ok().body(result);
     }
 
-//    @RequestMapping(value="/acitvities",
-//            produces = "application/json",
-//            method=RequestMethod.POST,
-//            params="id")
-//    ResponseEntity<Activity>  updateActivity(@RequestParam(value="id") Long id, @Valid @RequestBody Activity activity) throws URISyntaxException {
-//        Activity result = activityService.updateActivity(id, activity);
-//        return ResponseEntity.ok().body(result);
-//    }
+    @DeleteMapping("/activities/delete/{id}")
+    public @ResponseBody ResponseEntity<Boolean> deleteActivity(@PathVariable Long id) {
+        Boolean result = activityService.deleteActivity(id);
+
+        // return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().body(result);
+    }
 
     @RequestMapping(value="/activities/search", params = "name")
     @ResponseBody

@@ -63,7 +63,7 @@ const ThingsToDoDetail = ({ match }) => {
                     </p>
                     <p>
                         <i className="layout-icon text-primary fa fa-globe" style={iconStyle}></i>
-                        <a href={thingToDo.website} target="_blank">Website</a>
+                        <a href={thingToDo.website} target="_blank" rel="noopener noreferrer">Website</a>
                     </p>
                 </div>
             </section>

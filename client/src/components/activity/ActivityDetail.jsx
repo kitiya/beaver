@@ -21,8 +21,9 @@ const useFetchActivity = (initialState, activityUrl) => {
     return  { value };
 }
 
-const ActivityDetail = ({ match }) => {
-    const id = match.params.id;
+
+const ActivityDetail = (props) => {
+    const id = props.match.params.id;
     const activityUrl = `http://localhost:8080/api/activities/${id}`;
     const initialState = {
         imageUrls: [],
@@ -34,11 +35,29 @@ const ActivityDetail = ({ match }) => {
     const DATE_OPTIONS = { year: 'numeric', month: 'short', day: 'numeric'};
     const TIME_OPTIONS = { hour: 'numeric', minute: 'numeric'};
     
+    const handleDelete = () => {
+        try {
+            const response = fetch(`http://localhost:8080/api/activities/delete/${id}`, {
+                                    method: "DELETE",
+                                    headers: {
+                                        'Access-Control-Allow-Origin':'http://localhost:3000',
+                                    }
+            }).then(response => response.json());
+
+            console.log(response);
+            let redirectUrl = `/activity/${id}`;
+            props.history.push(redirectUrl);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     if ( !activity ) {
         return (
             <div>Loading...</div>
         );
     }
+    
     return (
         <div className="container mt-3">
             <h3 className="text-center text-info bg-light border border-left-0 border-right-0 py-1">{activity.name}</h3>
@@ -74,6 +93,7 @@ const ActivityDetail = ({ match }) => {
             </div>
             <div className="row justify-content-center">
                 <Link to={`/activity/${activity.id}/edit`} className="btn btn-outline-info mb-2 px-3 py-1 rounded">Edit</Link>
+                <input type="button" className="btn btn-outline-danger mx-2 px-3 py-1 rounded" value="Delete" onClick={handleDelete} />
             </div>
         </div>
     );
