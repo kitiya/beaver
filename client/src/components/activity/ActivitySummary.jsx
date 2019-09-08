@@ -12,7 +12,7 @@ const bannerStyle = {
 const ActivitySummary = (props) => {
     if (!props.activity) {
         return (
-            <div>
+            <div className="container">
                 <section className="row justify-content-center align-items-center p-3 rounded" style={bannerStyle}>
                     <h2 className="text-center text-white font-weight-bold">Find Awesome Afterschool Activities</h2>
                 </section>

@@ -22,7 +22,7 @@ const AddActivity = (props) => {
     const [fromAge, setFromAge] = useState('3');
     const [toAge, setToAge] = useState('6');
     const [cost, setCost] = useState('200');
-    const [imageUrl, setImageUrl] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
+    const [imageUrl1, setImageUrl1] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
     const [imageUrl2, setImageUrl2] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
     const [imageUrl3, setImageUrl3] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe1OHTZ1S-YBb-7Qm7ksJG4ikMbs_bxxRo8Dz5RxB_0nTgzifd');
     const [providerName, setProviderName] = useState('');
@@ -65,7 +65,7 @@ const AddActivity = (props) => {
             fromAge: fromAge,
             toAge: toAge,
             cost: cost,
-            imageUrls: [imageUrl, imageUrl2, imageUrl3],
+            imageUrls: [imageUrl1, imageUrl2, imageUrl3],
         }
         console.log(newActivity);
 
@@ -287,35 +287,47 @@ const AddActivity = (props) => {
                 </div>
 
                 <div className="row">
-                        <legend className="mx-3">Image URLs</legend>
-                        <label className="col-sm-4">
-                            <TextInput required
-                                value={imageUrl}
-                                onChange={(e)=> setImageUrl(e.target.value)}
-                                data-toggle="tooltip"
-                                data-placement="bottom"
-                                placeholder="image url #1"
-                            />
-                        </label>
-                        <label className="col-sm-4">
-                            <TextInput required
-                                value={imageUrl2}
-                                onChange={(e)=> setImageUrl2(e.target.value)}
-                                data-toggle="tooltip"
-                                data-placement="bottom"
-                                placeholder="image url #2"
-                            />
-                        </label>
-                        <label className="col-sm-4">
-                            <TextInput required
-                                value={imageUrl3}
-                                onChange={(e)=> setImageUrl3(e.target.value)}
-                                data-toggle="tooltip"
-                                data-placement="bottom"
-                                placeholder="image url #3"
-                            />
-                        </label>
+                    <legend className="mx-3">Image URLs</legend>
+                    <label className="col-sm-4">
+                        <TextInput required
+                            value={imageUrl1}
+                            onChange={(e)=> setImageUrl1(e.target.value)}
+                            data-toggle="tooltip"
+                            data-placement="bottom"
+                            placeholder="image url #1"
+                        />
+                    </label>
+                    <label className="col-sm-4">
+                        <TextInput required
+                            value={imageUrl2}
+                            onChange={(e)=> setImageUrl2(e.target.value)}
+                            data-toggle="tooltip"
+                            data-placement="bottom"
+                            placeholder="image url #2"
+                        />
+                    </label>
+                    <label className="col-sm-4">
+                        <TextInput required
+                            value={imageUrl3}
+                            onChange={(e)=> setImageUrl3(e.target.value)}
+                            data-toggle="tooltip"
+                            data-placement="bottom"
+                            placeholder="image url #3"
+                        />
+                    </label>
+                </div>
+                
+                <div className="row justify-content-between">
+                    <div className="col-sm-4  text-center">
+                        <img className="img-thumbnail" src={imageUrl1} alt="activity1" />
                     </div>
+                    <div className="col-sm-4 text-center">
+                        <img className="img-thumbnail" src={imageUrl2} alt="activity2" />
+                    </div>
+                    <div className="col-sm-4 text-center">
+                        <img className="img-thumbnail" src={imageUrl3} alt="activity3" />
+                    </div>
+                </div>
                 <div className="row justify-content-center">
                     <button type="button" onClick={handleSubmit} className="btn btn-info  mx-2">Submit</button>
                     <button className="btn btn-info  mx-2">Cancel</button>

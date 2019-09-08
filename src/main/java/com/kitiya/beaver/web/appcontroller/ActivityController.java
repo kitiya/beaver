@@ -9,6 +9,7 @@ import com.kitiya.beaver.data.repository.ActivityRepository;
 import com.kitiya.beaver.search.IActivityDAO;
 import com.kitiya.beaver.search.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -44,9 +45,9 @@ public class ActivityController {
 
     // implemented in the client side
     @GetMapping("/activities")
-    Iterable<Activity> activities(@RequestParam Optional<Integer> page,
-                                  @RequestParam Optional<Integer> size,
-                                  @RequestParam Optional<String> sortBy) {
+    Page<Activity> activities(@RequestParam Optional<Integer> page,
+                              @RequestParam Optional<Integer> size,
+                              @RequestParam Optional<String> sortBy) {
         Pageable pageable = PageRequest.of(
                 page.orElse(0),
                 size.orElse(5),

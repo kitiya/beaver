@@ -91,26 +91,30 @@ const ProviderDetail = ({ match }) => {
     }
     return (
         <div className="container mt-3" key={provider.id}>
-            <h3 className="bg-light text-info text-center rounded py-1 border border-right-0 border-left-0">{provider.name}</h3>
-            <div className="row mb-3">
-                {provider.imageUrls.map((url, index) => (
-                    <div className="col-md-4" key={index}>
-                        <img className="card-img-top rounded border my-1" src={url} alt={provider.name} />
-                    </div>
-                ))}
-            </div>
-            <div className="row">
-                <p className="col-12">{provider.description}</p>
-            </div>
-            <div className="row">
-                <p className="col-md-6">Location: {provider.streetAddress}, {provider.city}, {provider.province}</p>
-                <p className="col-md-6 text-right">Website: {provider.website}</p>
-            </div>
-            <div className="row justify-content-center">
+            <section className="border rounded px-3 py-2 mb-3">
+                <h3 className="bg-light text-info text-center round">{provider.name}</h3>
+                <div className="row mb-3">
+                    {provider.imageUrls.map((url, index) => (
+                        <div className="col-md-4" key={index}>
+                            <img className="card-img-top rounded border my-1" src={url} alt={provider.name} />
+                        </div>
+                    ))}
+                </div>
+                <div className="row">
+                    <p className="col-12">{provider.description}</p>
+                </div>
+                <div className="row">
+                    <p className="col-md-6">Location: {provider.streetAddress}, {provider.city}, {provider.province}</p>
+                    <p className="col-md-6 text-right">Website: {provider.website}</p>
+                </div>
+                <div className="row justify-content-center mb-2">
                     <Link to={`/providers/edit/${provider.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
                     <Link to={`/providers/delete/${provider.id}`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link>
                 </div>
-            <ActivityList  />
+            </section>
+            <section className="border rounded px-3 py-2 mb-3">
+                <ActivityList  />
+            </section>
         </div>
     );
 }
