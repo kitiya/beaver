@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.Optional;
@@ -54,8 +55,14 @@ public class ProviderController {
     }
 
     @PostMapping("/providers")
-    ResponseEntity<Provider> crateProvider(@Valid @RequestBody Provider provider) {
-        Provider result = providerRepository.save(provider);
+    ResponseEntity<Provider> crateProvider(@RequestParam(required = false, name="id") Optional<Long> id, @Valid @RequestBody Provider provider) {
+        Provider result = providerService.addEditProvider(provider, id);
+        return ResponseEntity.ok().body(result);
+    }
+
+    @DeleteMapping("/providers")
+    public @ResponseBody ResponseEntity<Boolean> deleteProvider(@RequestParam(name="id") Long id) {
+        boolean result = providerService.deleteProvider(id);
         return ResponseEntity.ok().body(result);
     }
 }

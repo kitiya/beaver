@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const useFetchProvider = (initialState, providerUrl) => {
     const [value, setValue] = useState(initialState);
@@ -105,6 +106,10 @@ const ProviderDetail = ({ match }) => {
                 <p className="col-md-6">Location: {provider.streetAddress}, {provider.city}, {provider.province}</p>
                 <p className="col-md-6 text-right">Website: {provider.website}</p>
             </div>
+            <div className="row justify-content-center">
+                    <Link to={`/providers/edit/${provider.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
+                    <Link to={`/providers/delete/${provider.id}`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link>
+                </div>
             <ActivityList  />
         </div>
     );

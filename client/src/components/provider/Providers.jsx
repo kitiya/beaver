@@ -25,7 +25,7 @@ const Providers = ({ providers, loading }) => {
                         <p className="row justify-content-end">
                             <Link
                                 className="mr-3"
-                                to={`/provider/${provider.id}`}
+                                to={`/providers/${provider.id}`}
                             >
                                 Read more...
                             </Link>
