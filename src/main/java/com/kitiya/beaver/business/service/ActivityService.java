@@ -76,12 +76,9 @@ public class ActivityService {
 
     public Boolean deleteActivity(Long id) {
         Activity activity = activityRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Activity not found for this id :: " + id));
-        Schedule schedule = scheduleRepository.findById(activity.getSchedule().getId())
-                .orElseThrow(()->new ResourceNotFoundException("Schedule not found for this :: " + activity.getSchedule().getId()));
         activity.setImageUrls(null);
 
-        scheduleRepository.delete(schedule);
-        activityRepository.delete(activity);
+        activityRepository.deleteActivity(id);
         return true;
     }
 }

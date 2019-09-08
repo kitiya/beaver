@@ -73,9 +73,9 @@ public class ActivityController {
     @DeleteMapping("/activities/delete/{id}")
     public @ResponseBody ResponseEntity<Boolean> deleteActivity(@PathVariable Long id) {
         Boolean result = activityService.deleteActivity(id);
-
-        // return ResponseEntity.noContent().build();
         return ResponseEntity.ok().body(result);
+
+//        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(value="/activities/search", params = "name")
