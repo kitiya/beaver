@@ -15,6 +15,7 @@ import EditActivity from './activity/EditActivity';
 import ProviderMainPage from './provider/ProviderMainPage';
 import ProviderDetail from './provider/ProviderDetail';
 import AddProvider from './provider/AddProvider';
+import EditProvider from './provider/EditProvider';
 import EventMainPage from './event/EventMainPage';
 import ThingsToDoMainPage from './things-to-do/ThingsToDoMainPage';
 import ThingsToDoDetail from './things-to-do/ThingsToDoDetail';
@@ -41,8 +42,9 @@ const App = () => (
                         <Route path="/activities/new" component={AddActivity} />
                         <Route path="/activity/:id/edit" component={EditActivity} />
                         <Route exact path="/providers" component={ProviderMainPage} />
-                        <Route path="/provider/:id" component={ProviderDetail} />
-                        <Route path="/providers/new" component={AddProvider} />
+                        <Route exact path="/providers/:id" component={ProviderDetail} />
+                        <Route exact path="/providers/new" component={AddProvider} />
+                        <Route exact path="/providers/edit/:id" component={EditProvider} />
                         <Route exact path="/things-to-do" component={ThingsToDoMainPage} />
                         <Route path="/things-to-do/:id" component={ThingsToDoDetail} />
                         <Route exact path="/events" component={EventMainPage} />

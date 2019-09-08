@@ -74,9 +74,9 @@ const ActivitySummary = (props) => {
                     </span>
                 </div>
                 <div className="row justify-content-center">
-                    <Link to={`/activity/${activity.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Read More...</Link>
                     <Link to={`/activity/${activity.id}/edit`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
                     <Link to={`/activity/${activity.id}/delete`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link>
+                    <Link to={`/activity/${activity.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Read More...</Link>
                     {/* <Link to={`/activity/${activity.id}`} className="mr-3 text-decoration-none">Read more...</Link> */}
                 </div>
             </div>

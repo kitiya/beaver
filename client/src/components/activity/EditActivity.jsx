@@ -45,7 +45,7 @@ const EditActivity = (props) => {
                 setActivityLoading(true);
                 const response = await fetch(`http://localhost:8080/api/activities/${id}`);
                 const result = await response.json();
-                console.log(result);
+                // console.log(result);
                 setName(result.name);
                 setType(result.type);
                 setCost(result.cost);

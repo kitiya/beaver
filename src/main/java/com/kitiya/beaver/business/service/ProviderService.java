@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -35,5 +37,17 @@ public class ProviderService {
 
     public Provider getById(Long id) {
         return providerRepository.findById(id).orElse(null);
+    }
+
+    public Provider addEditProvider(Provider provider, Optional<Long> id) {
+        Provider result = providerRepository.save(provider);
+        return result;
+    }
+
+    public Boolean deleteProvider(Long id) {
+        Provider provider = providerRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No found: provider id# " + id));
+        provider.setImageUrls(null);
+        providerRepository.delete(provider);
+        return true;
     }
 }

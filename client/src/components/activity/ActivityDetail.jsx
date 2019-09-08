@@ -92,7 +92,7 @@ const ActivityDetail = (props) => {
                 </span>
             </div>
             <div className="row justify-content-center">
-                <Link to={`/activity/${activity.id}/edit`} className="btn btn-outline-info mb-2 px-3 py-1 rounded">Edit</Link>
+                <Link to={`/activity/${activity.id}/edit`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
                 <input type="button" className="btn btn-outline-danger mx-2 px-3 py-1 rounded" value="Delete" onClick={handleDelete} />
             </div>
         </div>
