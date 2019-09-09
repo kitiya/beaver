@@ -52,7 +52,7 @@ public class ActivityController {
                 page.orElse(0),
                 size.orElse(5),
                 Sort.by(sortBy.orElse("id")).descending());
-        return activityRepository.findAll(pageable);
+        return activityRepository.findAllByOrderByModifiedDateDesc(pageable);
     }
 
     @GetMapping("/activities/{id}")

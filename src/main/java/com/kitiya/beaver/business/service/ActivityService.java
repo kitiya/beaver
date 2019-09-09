@@ -71,6 +71,8 @@ public class ActivityService {
             }
         }
 
+        activity.setModifiedDate(new Date());
+
         return activityRepository.save(activity);
     }
 
