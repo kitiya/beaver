@@ -42,8 +42,8 @@ const App = () => (
                         <Route path="/activities/new" component={AddActivity} />
                         <Route path="/activity/:id/edit" component={EditActivity} />
                         <Route exact path="/providers" component={ProviderMainPage} />
-                        <Route exact path="/providers/:id" component={ProviderDetail} />
                         <Route exact path="/providers/new" component={AddProvider} />
+                        <Route exact path="/providers/:id" component={ProviderDetail} />
                         <Route exact path="/providers/edit/:id" component={EditProvider} />
                         <Route exact path="/things-to-do" component={ThingsToDoMainPage} />
                         <Route path="/things-to-do/:id" component={ThingsToDoDetail} />

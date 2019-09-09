@@ -201,16 +201,16 @@ const EditProvider = ( props ) => {
                     </label>
                 </div>
                 <div className="row">
-                        <div className="col-sm-4">
-                            <img className="img-thumbnail" src={imageUrl1} alt="activity1" />
-                        </div>
-                        <div className="col-sm-4">
-                            <img className="img-thumbnail" src={imageUrl2} alt="activity2" />
-                        </div>
-                        <div className="col-sm-4">
-                            <img className="img-thumbnail" src={imageUrl3} alt="activity3" />
-                        </div>
+                    <div className="col-sm-4">
+                        <img className="img-thumbnail" src={imageUrl1} alt="activity1" />
                     </div>
+                    <div className="col-sm-4">
+                        <img className="img-thumbnail" src={imageUrl2} alt="activity2" />
+                    </div>
+                    <div className="col-sm-4">
+                        <img className="img-thumbnail" src={imageUrl3} alt="activity3" />
+                    </div>
+                </div>
             </fieldset>
 
             <div className="row justify-content-center mt-3">

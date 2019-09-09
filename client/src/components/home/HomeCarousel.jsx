@@ -15,13 +15,13 @@ const HomeCarousel = () => {
                     </ol>
 
                     <section className="carousel-item active">
-                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/QH6vYHP.jpg"}  alt="kids 1"/>
+                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/0tZdozm.jpg"}  alt="kids 1"/>
                     </section>
                     <section className="carousel-item">
-                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/95OT8Ld.jpg"}  alt="kids 2"/>
+                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/no46Hyl.jpg"}  alt="kids 2"/>
                     </section>
                     <section className="carousel-item">
-                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/BkCBF1g.jpg"}  alt="kids 3"/>
+                        <img className="layout-image img-fluid d-block rounded w-100 mx-auto" src={"https://i.imgur.com/gfQ6nlW.jpg"}  alt="kids 3"/>
                     </section>
 
                     <a className="carousel-control-prev" href="#layout-carousel" role="button" data-slide="prev">

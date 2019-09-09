@@ -75,7 +75,7 @@ const ActivityDetail = (props) => {
                     <span className="badge badge-pill badge-danger kty-bg-pinkish px-2 py-1">Cost: ${activity.cost}</span>
                 </div>
             </div>
-            <p className="text-left">{activity.description}</p>
+            <p className="text-left kty-description">{activity.description}</p>
             <p className="text-left">Age: {activity.ageRange}</p>
             <p className="text-left">
                 <span className="lead text-info">{activity.provider.name}</span> |&nbsp;

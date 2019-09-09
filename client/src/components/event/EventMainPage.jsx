@@ -46,13 +46,13 @@ const EventMainPage = () => {
                         <div className="col-sm-4">
                             <img
                             className="w-100 rounded"
-                            src="https://i.imgur.com/7eqf58J.jpg"
+                            src="https://i.imgur.com/4ZNXSQ2.jpg"
                             alt="camp" />
                         </div>
                         <div className="col-sm-4">
                             <img
                             className="w-100 rounded"
-                            src="https://i.imgur.com/9zRygP6.jpg"
+                            src="https://i.imgur.com/hEdS8JJ.jpg"
                             alt="camp" />
                         </div>
                     </div>

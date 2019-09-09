@@ -20,7 +20,7 @@ const AddProvider = (props) => {
     const [website, setWebsite] = useState('www.beaver.ca');
     const [email, setEmail] = useState('info@beaver.ca');
     const [phone, setPhone] = useState('3061234555');
-    const [imageUrl, setImageUrl] = useState('https://lakelandhillsymca.com/dev/wp-content/uploads/for-kids.jpg');
+    const [imageUrl1, setImageUrl1] = useState('https://lakelandhillsymca.com/dev/wp-content/uploads/for-kids.jpg');
     const [imageUrl2, setImageUrl2] = useState('https://lakelandhillsymca.com/dev/wp-content/uploads/for-kids.jpg');
     const [imageUrl3, setImageUrl3] = useState('https://lakelandhillsymca.com/dev/wp-content/uploads/for-kids.jpg');
 
@@ -36,7 +36,7 @@ const AddProvider = (props) => {
             website: website,
             email: email,
             phone: phone,
-            imageUrls: [imageUrl, imageUrl2, imageUrl3],
+            imageUrls: [imageUrl1, imageUrl2, imageUrl3],
         }
 
         console.log(newProvider.json);
@@ -51,8 +51,8 @@ const AddProvider = (props) => {
         .then(response => response.json());
 
         let redirectUrl = `/providers`;
-        //window.location.reload();
         props.history.push(redirectUrl);
+        //window.location.reload();
     };
 
     return (
@@ -139,8 +139,8 @@ const AddProvider = (props) => {
                         <legend className="mx-3">Image URLs</legend>
                         <label className="col-sm-4">
                             <TextInput required
-                                value={imageUrl}
-                                onChange={(e)=> setImageUrl(e.target.value)}
+                                value={imageUrl1}
+                                onChange={(e)=> setImageUrl1(e.target.value)}
                                 data-toggle="tooltip"
                                 data-placement="bottom"
                                 title="image url #1"
@@ -165,6 +165,17 @@ const AddProvider = (props) => {
                             />
                         </label>
                     </div>
+                    <div className="row">
+                    <div className="col-sm-4">
+                        <img className="img-thumbnail" src={imageUrl1} alt="activity1" />
+                    </div>
+                    <div className="col-sm-4">
+                        <img className="img-thumbnail" src={imageUrl2} alt="activity2" />
+                    </div>
+                    <div className="col-sm-4">
+                        <img className="img-thumbnail" src={imageUrl3} alt="activity3" />
+                    </div>
+                </div>
                 </fieldset>
 
                 <div className="row justify-content-center">

@@ -101,7 +101,7 @@ const ProviderDetail = ({ match }) => {
                     ))}
                 </div>
                 <div className="row">
-                    <p className="col-12">{provider.description}</p>
+                    <p className="col-12 kty-description">{provider.description}</p>
                 </div>
                 <div className="row">
                     <p className="col-md-6">Location: {provider.streetAddress}, {provider.city}, {provider.province}</p>
