@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 const useFetchProvider = (initialState, providerUrl) => {
     const [value, setValue] = useState(initialState);
@@ -55,32 +56,36 @@ const ProviderDetail = ({ match }) => {
                     <h4 className="text-light px-3 py-1 text-center">Classes currently offered by {provider.name}</h4>
                 </header>
                 {activityList.map((activity) => (
-                    <section className="my-1" key={activity.id}>
-                        <div className="row">
-                            <img className="col-md-3 my-1 rounded" src={activity.imageUrls[1]} alt={activity.name}></img>
-                            <div className="col-md-9">
-                                <h5><span className="bg-info text-light p-1 rounded">{activity.name}</span></h5>
-                                <div className="row">
-                                    <span className="col-6 text-left">{activity.type}</span>
-                                    <div className="col-6 text-right">
-                                        <span className="badge badge-pill badge-danger kty-bg-pinkish px-2 py-1">Cost: ${activity.cost}</span>
+                    <Link to={`/activity/${activity.id}`} className=" text-decoration-none">
+                        <section className="my-2" key={activity.id}>
+                            <div className="row align-items-top">
+                                <div className="col-md-3">
+                                    <img className="img-thumbnail rounded" src={activity.imageUrls[1]} alt={activity.name}></img>
+                                </div>
+                                <div className="col-md-9 mt-1">
+                                    <h5><span className="bg-info text-light p-1 rounded">{activity.name}</span></h5>
+                                    <div className="row my-3">
+                                        <span className="col-6 text-left">{activity.type.toProperCase()}</span>
+                                        <div className="col-6 text-right">
+                                            <span className="badge badge-pill badge-danger kty-bg-pinkish px-2 py-1">Cost: ${activity.cost}</span>
+                                        </div>
+                                    </div>
+                                    <div className="row my-2">
+                                        <span className="col text-left">Age: {activity.ageRange}</span>
+                                    </div>
+                                    <div className="row my-2">
+                                        <span className="col-md-8 text-left">
+                                            {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)} - {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)} (On {activity.schedule.dayOfWeek.toProperCase()})
+                                        </span>
+                                        <span className="col-md-4 text-right">
+                                            {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
+                                        </span>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <span className="col text-left">Age: {activity.ageRange}</span>
-                                </div>
-                                <div className="row">
-                                    <span className="col-md-8 text-left">
-                                        {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)} - {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)} (On {activity.schedule.dayOfWeek})
-                                    </span>
-                                    <span className="col-md-4 text-right">
-                                        {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
-                                    </span>
-                                </div>
                             </div>
-                        </div>
-                        <hr/>
-                    </section>
+                            <hr/>
+                        </section>
+                    </Link>
                 ))}
             </div>
         );
@@ -89,6 +94,7 @@ const ProviderDetail = ({ match }) => {
     if (!provider.imageUrls) {
         provider.imageUrls = [];
     }
+
     return (
         <div className="container mt-3" key={provider.id}>
             <section className="border rounded px-3 py-2 mb-3">
@@ -96,18 +102,22 @@ const ProviderDetail = ({ match }) => {
                 <div className="row mb-3">
                     {provider.imageUrls.map((url, index) => (
                         <div className="col-md-4" key={index}>
-                            <img className="card-img-top rounded border my-1" src={url} alt={provider.name} />
+                            <img className="card-img-top img-thumbnail rounded border my-1" src={url} alt={provider.name} />
                         </div>
                     ))}
                 </div>
                 <div className="row">
-                    <p className="col-12 kty-description">{provider.description}</p>
+                    <p className="col-12 kty-preline">{provider.description}</p>
                 </div>
-                <div className="row">
-                    <p className="col-md-6">Location: {provider.streetAddress}, {provider.city}, {provider.province}</p>
-                    <p className="col-md-6 text-right">Website: {provider.website}</p>
+                <div className="row my-3">
+                    <p className="col-md-6">Location: {provider.streetAddress}, {provider.city && provider.city.toProperCase()}, {provider.province}</p>
+                    <p className="col-md-6">Contact: <a href={provider.website}>Website</a></p>
                 </div>
-                <div className="row justify-content-center mb-2">
+                <div className="row my-3">
+                    <p className="col-md-6">Phone: <NumberFormat format="###-###-####" value={provider.phone} displayType={'text'} thousandSeparator={true} /></p>
+                    <p className="col-md-6">Email: {provider.email}</p>
+                </div>
+                <div className="row justify-content-center my-3">
                     <Link to={`/providers/edit/${provider.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
                     <Link to={`/providers/delete/${provider.id}`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link>
                 </div>

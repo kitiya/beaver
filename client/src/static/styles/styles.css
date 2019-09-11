@@ -77,9 +77,18 @@ p, span {
     color: #444;
 }
 
-.kty-description {
+.kty-preline {
     white-space: pre-line;
 }
+.kty-description {
+    /* white-space: pre-line; */
+    /* width:200px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis; */
+}
+
 /* Small devices (landscape phones, 544px and up) */
 @media (min-width: 320px) {
 h1 {font-size: 1.5rem;}
@@ -130,4 +139,8 @@ h1, h2 {
 .react-datepicker-wrapper {
     /* margin-top: 0.5rem; */
     margin-bottom: 0.75rem;
+}
+
+.kty-icon {
+    font-size: 2rem;
 }

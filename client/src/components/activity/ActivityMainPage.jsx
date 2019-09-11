@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ActivitySummary from './ActivitySummary';
-import useFetch from '../util/useFetch';
 import { PaginationPrevNext } from '../util/Pagination';
 import Axios from 'axios';
 
@@ -11,26 +10,20 @@ const ActivityMainPage = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [isFirstPage, setIsFirstPage] = useState(true);
     const [isLastPage, setIsLastPage] = useState(false);
-    const [loading, setLoading] = useState(false);
     const activityNameListPerPage = 7;
 
     useEffect(() => {
         const fetchActivities = async () => {
-            setLoading(true);
-            const response = await Axios.get(`http://localhost:8080/api/activities?page=${currentPage}&size=7`)
+            const response = await Axios.get(`http://localhost:8080/api/activities?page=${currentPage}&size=${activityNameListPerPage}`)
             const data = response.data;
-            //console.log(data);
+            console.log(data);
             setActivities(data.content);
             setTotalPages(data.totalPages);
             setIsFirstPage(data.first);
             setIsLastPage(data.last);
-            setLoading(false);
         }
         fetchActivities();
     },[currentPage])
-    //const activitiesUrl = 'http://localhost:8080/api/activities?page=0&size=7';
-    //const { data } = useFetch({ result: [] }, activitiesUrl);
-    //setActivities(data.result.content);
 
     const [ selectedActivity, setSelectedActivity ] = useState(null);
     const handleSelect = (id) => {
@@ -43,13 +36,13 @@ const ActivityMainPage = () => {
         return ('');
     }
 
-    const handlePrev = () => {
+    const handlePrev = (e) => {
         if (!isFirstPage) {
             setCurrentPage(currentPage-1);
         }
     }
 
-    const handleNext = () => {
+    const handleNext = (e) => {
         if (!isLastPage) {
             setCurrentPage(currentPage+1);
         }

@@ -42,42 +42,42 @@ const ActivitySummary = (props) => {
     
     return (
         <div className="card border-0">
-            <div className="card-body text-center border rounded">
-                <h5 className="card-title bg-info text-light p-2 rounded">{activity.name}</h5>
-                <div className="row mb-2">
+            <h5 className="card-title bg-info text-center text-light p-2 m-0 rounded-top" >{activity.name}</h5>
+            <div className="card-body text-center border p-3 rounded-bottom">
+                <div className="row">
                     {activity.imageUrls.map( (url, index) => (
                         <div key={index} className="col-4">
                             <img className="card-img-top rounded border" src={url} alt={activity.name} />
                         </div>
                     ))}
                 </div>
-                <div className="row">
-                    <span className="col-6 text-left">{activity.type}</span>
+                <div className="row mt-3">
+                    <span className="col-6 text-left">{activity.type.toProperCase()}</span>
                     <div className="col-6 text-right">
                         <span className="badge badge-pill badge-danger kty-bg-pinkish px-2 py-1">Cost: ${activity.cost}</span>
                     </div>
                 </div>
-                <p className="text-left kty-description">{activity.description}</p>
+                <p className="text-left mt-3 w-100 kty-preline">{activity.description}</p>
                 <p className="text-left">Age: {activity.ageRange}</p>
                 <p className="text-left"><span className="lead text-info">
                     {activity.provider.name}</span> |&nbsp;
                     {activity.provider.streetAddress}, 
-                    {activity.provider.city}, 
+                    {activity.provider.city.toProperCase()}, 
                     {activity.provider.province}
                 </p>
                 <div className="row mb-3">
                     <span className="col-md-8 text-left">
-                        {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)} - {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)} (On {activity.schedule.dayOfWeek})
+                        {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)} - {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)} (On {activity.schedule.dayOfWeek.toProperCase()})
                     </span>
                     <span className="col-md-4 text-right">
                         {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}
                     </span>
                 </div>
-                <div className="row justify-content-center">
-                    <Link to={`/activity/${activity.id}/edit`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
-                    <Link to={`/activity/${activity.id}/delete`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link>
-                    <Link to={`/activity/${activity.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Read More...</Link>
-                    {/* <Link to={`/activity/${activity.id}`} className="mr-3 text-decoration-none">Read more...</Link> */}
+                <div className="row justify-content-end">
+                    <Link to={`/activity/${activity.id}`} className="mr-3 text-decoration-none">Read more...</Link>
+                    {/* <Link to={`/activity/${activity.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Read More...</Link> */}
+                    {/* <Link to={`/activity/${activity.id}/edit`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link> */}
+                    {/* <Link to={`/activity/${activity.id}/delete`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link> */}
                 </div>
             </div>
         </div>

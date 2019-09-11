@@ -28,6 +28,11 @@ import NotFound from './shared/NotFound'
 import '../static/styles/App.css';
 import '../static/styles/styles.css';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faBirthdayCake, faMapMarkerAlt, faCalendarAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+library.add(fab, faBirthdayCake, faMapMarkerAlt, faCalendarAlt, faInfoCircle);
+
 const App = () => (
     <Router>
         <ThemeContextProvider>

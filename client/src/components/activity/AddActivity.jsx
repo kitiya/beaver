@@ -93,14 +93,14 @@ const AddActivity = (props) => {
             <h2 className="text-info">Add New Activity</h2>
             <form className="mx-auto p-3 border rounded">
                 <div className="row">
-                    <div className="col-md-6 form-group">
+                    <div className="col-md-4 form-group">
                         <label htmlFor="name">Name</label>
                         <input required type="text" id="name" className="form-control" placeholder="Activity Name" 
                             value={name}
                             onChange={(e)=>setName(e.target.value)}
                         />
                     </div>
-                    <div className="col-md-6 form-group">
+                    <div className="col-md-4 form-group">
                         <label htmlFor="providerSelect">Provider</label>
                         <select className="form-control" id="providerSelect"
                                 value={providerName}
@@ -112,10 +112,7 @@ const AddActivity = (props) => {
                             ))}
                         </select>
                     </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-md-6 form-group">
+                    <div className="col-md-4 form-group">
                         <label htmlFor="activityTypeSelect">Activity Type</label>
                         <select className="form-control" id="activityTypeSelect"
                                 value={type}
@@ -135,22 +132,9 @@ const AddActivity = (props) => {
                             <option value="OTHER">Other</option>
                         </select>
                     </div>
-                    <div className="col-md-6 form-group">
-                        <label htmlFor="cost">Cost</label>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">$</span>
-                            </div>
-                            <input required type="text" pattern="[0-9]*" id="cost" className="form-control" placeholder="" 
-                                value={cost}
-                                onChange={(e)=>setCost(e.target.value)}
-                            />
-                        </div>
-                    </div>
                 </div>
-
                 <div className="row">
-                    <div className="col-md-6 form-group">
+                    <div className="col-md-4 form-group">
                         <label htmlFor="fromAgeSelect">From Age</label>
                         <select className="form-control" id="fromAgeSelect"
                                 value={fromAge}
@@ -179,7 +163,7 @@ const AddActivity = (props) => {
                             <option value="98">More than 18 yrs</option>
                         </select>
                     </div>
-                    <div className="col-md-6 form-group">
+                    <div className="col-md-4 form-group">
                         <label htmlFor="toAgeSelect">To Age</label>
                         <select className="form-control" id="toAgeSelect"
                                 value={toAge}
@@ -207,6 +191,18 @@ const AddActivity = (props) => {
                             <option value="18">18 yrs</option>
                             <option value="98">More than 18 yrs</option>
                         </select>
+                    </div>
+                    <div className="col-md-4 form-group">
+                        <label htmlFor="cost">Cost</label>
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">$</span>
+                            </div>
+                            <input required type="text" pattern="[0-9]*" id="cost" className="form-control" placeholder="" 
+                                value={cost}
+                                onChange={(e)=>setCost(e.target.value)}
+                            />
+                        </div>
                     </div>
                 </div>
 

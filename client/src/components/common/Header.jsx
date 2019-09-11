@@ -5,6 +5,11 @@ import AuthToggle from '../shared/AuthToggle';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Header() {
+
+    String.prototype.toProperCase = function () {
+        return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    };
+
     return (
         <AuthContext.Consumer>{(authContext) => (
             <header>
@@ -29,8 +34,8 @@ export default function Header() {
                                     <HeaderLink to="/events">Events</HeaderLink>
                                     <HeaderLink to="/blogs">Blog</HeaderLink>
                                     <HeaderLink to="/about">About</HeaderLink>
-                                    <HeaderLink to="/users">[User]</HeaderLink>
-                                    <HeaderLink to="/tutorials">Sandbox</HeaderLink>
+                                    <HeaderLink to="/users">User</HeaderLink>
+                                    {/* <HeaderLink to="/tutorials">Sandbox</HeaderLink> */}
                                 </div>
                             </section>
                             <section className="d-block ml-auto">

@@ -18,7 +18,7 @@ const SearchResult = ({activities}) => {
                         ))}
                     </div>
                     <div className="row">
-                        <span className="col-6 text-left">{activity.type}</span>
+                        <span className="col-6 text-left">{activity.type.toProperCase()}</span>
                         <div className="col-6 text-right">
                             <span className="badge badge-pill badge-danger kty-bg-pinkish px-3 py-1">Cost: ${activity.cost}</span>
                         </div>
@@ -28,12 +28,12 @@ const SearchResult = ({activities}) => {
                     <p className="text-left"><span className="lead text-info">
                         {activity.provider.name}</span> |&nbsp;
                         {activity.provider.streetAddress}, 
-                        {activity.provider.city}, 
+                        {activity.provider.city.toProperCase()}, 
                         {activity.provider.province}
                     </p>
                     <div className="row mb-3">
                         <span className="col-md-8 text-left">
-                            {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)} - {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)} (On {activity.schedule.dayOfWeek})
+                            {new Date(activity.schedule.startDate).toLocaleString('en-US', DATE_OPTIONS)} - {new Date(activity.schedule.endDate).toLocaleString('en-US', DATE_OPTIONS)} (On {activity.schedule.dayOfWeek.toProperCase()})
                         </span>
                         <span className="col-md-4 text-left">
                             {new Date('1970-01-01T' + activity.schedule.startTime).toLocaleString('en-US', TIME_OPTIONS)} - {new Date('1970-01-01T' + activity.schedule.endTime).toLocaleString('en-US', TIME_OPTIONS)}

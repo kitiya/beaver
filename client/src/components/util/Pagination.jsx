@@ -39,17 +39,17 @@ export const PaginationPrevNext = ( { props }) => {
         <ul className="pagination justify-content-between align-items-center">
             <li className="page-item">
                 {/* <a className={"page-link " + disableFirst}  href="#" aria-label="Previous"> */}
-                <a className="page-link"  href="#" aria-label="Previous" onClick={handlePrev}>
+                <span className="page-link"  aria-label="Previous" onClick={handlePrev}>
                     <i className="layout-icon text-info fa fa-angle-double-left"></i>
                     <span className="sr-only">Previous</span>
-                </a>
+                </span>
             </li>
             <li className="text-dark">page {currentPage + 1} of {totalPages}</li>
             <li className="page-item">
-                <a className="page-link" href="#" aria-label="Next" onClick={handleNext}>
+                <span className="page-link" aria-label="Next" onClick={handleNext}>
                     <i className="layout-icon text-info fa fa-angle-double-right" ></i>
                     <span className="sr-only">Next</span>
-                </a>
+                </span>
             </li>
         </ul>
     </nav>
