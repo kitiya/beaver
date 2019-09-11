@@ -18,7 +18,9 @@ public class ThingsToDoController {
 
     @GetMapping("/things-to-do")
     List<ThingsToDo> getAllThingsToDos() {
-        return thingsToDoRepository.findAll();
+
+        //return thingsToDoRepository.findAll();
+        return thingsToDoRepository.findAllByOrderByName();
     }
 
     @GetMapping("/things-to-do/{id}")

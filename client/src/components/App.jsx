@@ -19,6 +19,7 @@ import EditProvider from './provider/EditProvider';
 import EventMainPage from './event/EventMainPage';
 import ThingsToDoMainPage from './things-to-do/ThingsToDoMainPage';
 import ThingsToDoDetail from './things-to-do/ThingsToDoDetail';
+import About from './about/About';
 import Users from './user/Users';
 import Tutorials from './tutorial/Tutorials';
 //import MapContainer from './util/MapContainer';
@@ -54,6 +55,7 @@ const App = () => (
                         <Route path="/things-to-do/:id" component={ThingsToDoDetail} />
                         <Route exact path="/events" component={EventMainPage} />
                         <Route path="/users" component={Users} />
+                        <Route path="/about" component={About} />
                         <Route exact path="/tutorials" component={Tutorials} />
                         <Route component={NotFound} />
                     </Switch>

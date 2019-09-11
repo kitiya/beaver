@@ -13,7 +13,7 @@ const EventMainPage = () => {
         <div className="container-fluid m-0 p-0">
             <article className="m-0">
                 <header className="m-0 p-0" style={headerImageStyle}>
-                    <h1 className="text-center text-white mb-4 pt-5">Fun Things to Do with Kids In & Around Saskatoon</h1>
+                    <h1 className="text-center text-white mb-4 pt-5">Your Calendar of Events in Saskatoon</h1>
                 </header>
                 <section className="container row mt-4 mx-auto">
                     <div className="col-sm-6 col-md-8">

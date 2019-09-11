@@ -41,7 +41,7 @@ const ActivitySummary = (props) => {
     //const DATETIME_OPTIONS = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
     
     return (
-        <div className="card border-0">
+        <div className="card border-0 mb-3">
             <h5 className="card-title bg-info text-center text-light p-2 m-0 rounded-top" >{activity.name}</h5>
             <div className="card-body text-center border p-3 rounded-bottom">
                 <div className="row">

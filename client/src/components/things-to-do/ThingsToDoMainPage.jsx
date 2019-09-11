@@ -33,17 +33,17 @@ const ThingsToDoMainPage = () => {
             <header className="m-0 p-0" style={headerImageStyle}>
                 <h1 className="text-center text-white mb-4 pt-4">Fun Things to Do with Kids In & Around Saskatoon</h1>
             </header>
-            <div className="container mt-3">
+            <div className="container mt-1">
                 <div className="row">
                     {thingsTodo.map(t => (
-                        <div key={t.id} className="col-md-4">
-                            <div className="card mt-2">
+                        <div key={t.id} className="col-md-4 px-1 round">
+                            <div className="card my-1">
                                 <Link to={`things-to-do/${t.id}`}>
-                                    <img src={t.imageUrl} alt="t.name" className="card-img-top rounded"/>
+                                    <img src={t.imageUrl} alt="t.name" className="card-img-top border"/>
                                 </Link>
                                 <section className="card-body bg-light p-0">
                                     <Link to={`things-to-do/${t.id}`}>
-                                        <h5 className="card-title p-2 bg-info text-white">{t.name}</h5>
+                                        <h5 className="card-title p-2 bg-info text-white border border-info">{t.name}</h5>
                                     </Link>
                                     <div className="px-3 pb-3">
                                         <p className="card-text text-truncate">{t.description}</p>

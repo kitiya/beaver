@@ -8,4 +8,5 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface ThingsToDoRepository extends JpaRepository<ThingsToDo, Long> {
+    List<ThingsToDo> findAllByOrderByName();
 }

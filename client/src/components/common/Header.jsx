@@ -29,10 +29,10 @@ export default function Header() {
                                 <div className="navbar-nav">
                                     <HeaderLink to="/">Home</HeaderLink>
                                     <HeaderLink to="/activities">Camps & Classes</HeaderLink>
-                                    <HeaderLink to="/providers">Providers</HeaderLink>
                                     <HeaderLink to="/things-to-do">Things To Do</HeaderLink>
                                     <HeaderLink to="/events">Events</HeaderLink>
-                                    <HeaderLink to="/blogs">Blog</HeaderLink>
+                                    <HeaderLink to="/providers">Providers</HeaderLink>
+                                    {/* <HeaderLink to="/blogs">Blog</HeaderLink> */}
                                     <HeaderLink to="/about">About</HeaderLink>
                                     {authContext.isAuthenticated && <HeaderLink to="/users">User</HeaderLink>}
                                     {/* <HeaderLink to="/tutorials">Sandbox</HeaderLink> */}

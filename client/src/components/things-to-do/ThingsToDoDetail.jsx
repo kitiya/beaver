@@ -53,12 +53,12 @@ const ThingsToDoDetail = ({ match }) => {
                             <span>{thingToDo.dateInfo}</span>
                         </div>
                         <div className="col-md-6 ">
-                            <i className="layout-icon text-primary fab fa-business-time" style={iconStyle}></i>
+                            <i className="layout-icon text-primary fa fa-bell" style={iconStyle}></i>
                             <span>{thingToDo.timeInfo}</span>
                         </div>
                     </div>
                     <p>
-                        <i className="layout-icon text-primary fa fa-globe" style={iconStyle}></i>
+                        <i className="layout-icon text-primary fa fa-map" style={iconStyle}></i>
                         <span>{thingToDo.location}</span>
                     </p>
                     <p>
@@ -67,9 +67,9 @@ const ThingsToDoDetail = ({ match }) => {
                     </p>
                 </div>
             </section>
-            <section className="row">
+            <section className="row mt-3">
                 <div className="col-12">
-                    <h4 className="text-light text-center bg-info py-1">Review</h4>
+                    {reviews.length > 0 && <h4 className="text-light text-center bg-secondary py-1">Review</h4>}
                     {reviews.map(review => (
                         <section className="row my-1" key={review.id}>
                             <div className="col-2">

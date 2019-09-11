@@ -134,7 +134,7 @@ const ActivityDetail = (props) => {
 
                     <div id="activitiesCollapse" className="shadow collapse hide" aria-labelledby="activitiesHeading" data-parent="#activitiesAccordion">
                         <div className="card-body">
-                            <h4>//TODO:</h4>
+                            <h4>TODO:</h4>
                         </div>
                     </div>
                 </div>
