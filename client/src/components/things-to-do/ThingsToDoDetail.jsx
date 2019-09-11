@@ -46,14 +46,14 @@ const ThingsToDoDetail = ({ match }) => {
                     <img className="img-thumbnail" src={thingToDo.imageUrl} alt={thingToDo.name}/>
                 </div>
                 <div className="col-md-8">
-                    <p>{thingToDo.description}</p>
+                    <p className="kty-preline">{thingToDo.description}</p>
                     <div className="row mb-3">
                         <div className="col-md-6">
                             <i className="layout-icon text-primary fa fa-calendar" style={iconStyle}></i>
                             <span>{thingToDo.dateInfo}</span>
                         </div>
                         <div className="col-md-6 ">
-                            <i className="layout-icon text-primary fa fa-calendar" style={iconStyle}></i>
+                            <i className="layout-icon text-primary fab fa-business-time" style={iconStyle}></i>
                             <span>{thingToDo.timeInfo}</span>
                         </div>
                     </div>

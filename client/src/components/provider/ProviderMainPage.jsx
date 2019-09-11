@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 import Providers from './Providers';
 import Pagination from '../util/Pagination';
 
 const ProviderMainPage = () => {
+    const authContext = useContext(AuthContext);
     const [providers, setProviders] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
@@ -39,7 +41,9 @@ const ProviderMainPage = () => {
                     <Pagination totalPages={totalPages} paginate={paginate}/>
                 </div>
                 <div className="col-md-6 px-0 text-right">
-                    <Link to={`providers/new`} className="btn bg-info text-white px-3 rounded-pill">Add new provider...</Link>
+                    {authContext.isAuthenticated &&
+                        <Link to={`providers/new`} className="btn bg-info text-white px-3 rounded-pill">Add new provider...</Link>
+                    }
                 </div>
             </div>
         </div>

@@ -80,13 +80,12 @@ p, span {
 .kty-preline {
     white-space: pre-line;
 }
-.kty-description {
-    /* white-space: pre-line; */
-    /* width:200px;
+.kty-truncate {
+    /* width:200px; */
     white-space: nowrap;
     overflow: hidden;
     display: block;
-    text-overflow: ellipsis; */
+    text-overflow: ellipsis;
 }
 
 /* Small devices (landscape phones, 544px and up) */

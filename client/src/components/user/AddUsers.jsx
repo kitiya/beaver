@@ -53,7 +53,7 @@ export default class AddUsers extends Component {
                             </select>
                         </div>
                     <div className="row">
-                        <button type="submit" className="btn btn-info  mx-auto" name="action">Sign in</button>
+                        <button type="submit" className="btn btn-info  mx-auto" name="action">Submit</button>
                     </div>
                 </form>
             </div>

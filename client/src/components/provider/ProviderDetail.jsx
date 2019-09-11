@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 import NumberFormat from 'react-number-format';
 
 const useFetchProvider = (initialState, providerUrl) => {
@@ -22,6 +23,7 @@ const useFetchProvider = (initialState, providerUrl) => {
 }
 
 const ProviderDetail = ({ match }) => {
+    const authContext = useContext(AuthContext);
     const id = match.params.id;
     const providerUrl = `http://localhost:8080/api/providers/${id}`;
     const provider = useFetchProvider({value: []}, providerUrl).value;
@@ -56,8 +58,8 @@ const ProviderDetail = ({ match }) => {
                     <h4 className="text-light px-3 py-1 text-center">Classes currently offered by {provider.name}</h4>
                 </header>
                 {activityList.map((activity) => (
-                    <Link to={`/activity/${activity.id}`} className=" text-decoration-none">
-                        <section className="my-2" key={activity.id}>
+                    <section className="my-2" key={activity.id}>
+                        <Link to={`/activity/${activity.id}`} className=" text-decoration-none">
                             <div className="row align-items-top">
                                 <div className="col-md-3">
                                     <img className="img-thumbnail rounded" src={activity.imageUrls[1]} alt={activity.name}></img>
@@ -84,8 +86,8 @@ const ProviderDetail = ({ match }) => {
                                 </div>
                             </div>
                             <hr/>
-                        </section>
-                    </Link>
+                        </Link>
+                    </section>
                 ))}
             </div>
         );
@@ -109,18 +111,20 @@ const ProviderDetail = ({ match }) => {
                 <div className="row">
                     <p className="col-12 kty-preline">{provider.description}</p>
                 </div>
-                <div className="row my-3">
+                <div className="row my-1">
                     <p className="col-md-6">Location: {provider.streetAddress}, {provider.city && provider.city.toProperCase()}, {provider.province}</p>
-                    <p className="col-md-6">Contact: <a href={provider.website}>Website</a></p>
+                    <p className="col-md-6">More details: <a href={provider.website}>Website</a></p>
                 </div>
-                <div className="row my-3">
-                    <p className="col-md-6">Phone: <NumberFormat format="###-###-####" value={provider.phone} displayType={'text'} thousandSeparator={true} /></p>
+                <div className="row my-1">
+                    <p className="col-md-6">Phone: <NumberFormat format="###-###-####" value={provider.phone} displayType={'text'} /></p>
                     <p className="col-md-6">Email: {provider.email}</p>
                 </div>
-                <div className="row justify-content-center my-3">
-                    <Link to={`/providers/edit/${provider.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
-                    <Link to={`/providers/delete/${provider.id}`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link>
-                </div>
+                {authContext.isAuthenticated && 
+                    <div className="row justify-content-center mt-1 mb-3">
+                        <Link to={`/providers/edit/${provider.id}`} className="btn btn-outline-info mx-2 px-3 py-1 rounded">Edit</Link>
+                        <Link to={`/providers/delete/${provider.id}`} className="btn btn-outline-danger mx-2 px-3 py-1 rounded">Delete</Link>
+                    </div>
+                }
             </section>
             <section className="border rounded px-3 py-2 mb-3">
                 <ActivityList  />

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 import ActivitySummary from './ActivitySummary';
 import { PaginationPrevNext } from '../util/Pagination';
 import Axios from 'axios';
 
 const ActivityMainPage = () => {
+    const authContext = useContext(AuthContext);
     const [activities, setActivities] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
@@ -78,9 +80,11 @@ const ActivityMainPage = () => {
                         <ActivitySummary activity={ selectedActivity } />
                 </div>
             </section>
-            <section className="row justify-content-end pt-3 px-0">
-                <Link to={`activities/new`} className="btn btn-outline-info mb-2 px-3 py-1 rounded">Add new activity...</Link>
-            </section>
+            {authContext.isAuthenticated &&
+                <section className="row justify-content-end p-0 mt-0">
+                    <Link to={`activities/new`} className="btn bg-info text-white m-0 px-3 rounded-pill">Add new activity...</Link>
+                </section>
+            }
         </div>
     );
 }
