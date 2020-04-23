@@ -142,6 +142,28 @@ const ActivityDetail = (props) => {
         );
     }    
 
+    const ReviwAccordion = () => {
+        return (
+            <div id="reviewAccordion">
+                <div className="card mt-3">
+                    <div className="card-header bg-light" style={noBorderStyle} id="activityHeading">
+                        <h4 className="mb-0 text-center">
+                            <button className="btn btn-link text-primary" style={accordionStyle} data-toggle="collapse" data-target="#reviewCollapse" aria-expanded="true" aria-controls="reviewCollapse">
+                            Review...
+                            </button>
+                        </h4>
+                    </div>
+
+                    <div id="reviewCollapse" className="shadow collapse hide" aria-labelledby="activityHeading" data-parent="#reviewAccordion">
+                        <div className="card-body">
+                            <h4>TODO:</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }    
+
     if ( !activity || loading) {
         return (
             <div>Loading...</div>
@@ -217,6 +239,7 @@ const ActivityDetail = (props) => {
             </section>
             <ProviderAccordion />
             <ActivitiesAccordion />
+            <ReviwAccordion />
         </div>
     );
 }

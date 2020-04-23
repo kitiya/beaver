@@ -81,7 +81,8 @@ const About = () => {
                             <li style={largetTextStyle}>React in depth: redux, custom hooks, etc.</li>                        
                             <li style={largetTextStyle}>Utilizing Flyway for database version control</li>
                             <li style={largetTextStyle}>Code refactor</li>
-                            <li style={largetTextStyle}>Form validation</li>
+                            <li style={largetTextStyle}>Form validations</li>
+                            <li style={largetTextStyle}>Test</li>
                             <li style={largetTextStyle}>Advance search</li>
                             <li style={largetTextStyle}>Authentication and authorization</li>
                         </ul>

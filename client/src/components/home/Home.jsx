@@ -64,7 +64,7 @@ const Home = (() => {
 
     return (
         <div className="container mt-3">
-            <h1 className="text-center text-info mb-3">Find Things To Do For Kids in Saskatoon</h1>
+            <h1 className="text-center text-info mb-3">Find Things To Do For Kids in Toronto</h1>
 
             <SearchForm  props={homeProps}></SearchForm>
             { activities.length > 0 ? 
